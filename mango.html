@@ -92,6 +92,17 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 .home-link{font-family:var(--display);font-size:1.05rem;text-decoration:none;color:var(--ink);background:var(--surface);border:3px solid var(--line);border-radius:999px;padding:6px 16px;box-shadow:3px 3px 0 var(--line);min-height:44px;display:inline-flex;align-items:center}
 .home-link:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
 .top-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+/* full screen: HUD + stage fill the screen, stage keeps its 4:3 shape so nothing is cut off */
+.game{display:grid;gap:14px}
+.fs-btn{position:absolute;top:10px;right:10px;z-index:3;font-family:var(--display);font-size:1.1rem;border:3px solid var(--line);border-radius:999px;padding:6px 16px;min-height:48px;cursor:pointer;background:var(--surface);color:var(--ink);box-shadow:3px 3px 0 var(--line)}
+.fs-btn:hover{background:var(--sun);color:var(--on-accent)}
+.fs-btn:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+.game.fs{position:fixed;inset:0;z-index:50;background:var(--bg);align-content:center;justify-content:center;gap:10px;
+  padding:max(10px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) max(10px,env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+.game.fs .hud,.game.fs .stage{width:min(calc(100vw - 24px), calc((100vh - 120px) * 4 / 3));width:min(calc(100vw - 24px), calc((100dvh - 120px) * 4 / 3))}
+.game:fullscreen{width:100%;height:100%}
+body.fs-lock{overflow:hidden}
 </style>
 
 <div class="wrap">
@@ -104,6 +115,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
     </div></div>
   </header>
 
+  <div class="game" id="game">
   <div class="hud" aria-live="off">
     <div><small data-k="score">คะแนน</small><b id="hudScore">0</b></div>
     <div><small data-k="time">เวลา</small><b id="hudTime">30</b></div>
@@ -112,6 +124,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 
   <div class="stage" id="stage">
     <canvas id="cv" aria-label="เกมเก็บมะม่วง" role="img"></canvas>
+    <button class="fs-btn" type="button" id="fsBtn" aria-pressed="false">⛶ เต็มจอ</button>
     <div class="overlay" id="startScreen">
       <div class="panel">
         <h2 data-k="title">เกมเก็บมะม่วง</h2>
@@ -128,6 +141,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
     <div class="overlay" id="endScreen" hidden>
       <div class="panel" id="endPanel"></div>
     </div>
+  </div>
   </div>
 
   <div class="foot"><button class="staff-btn" type="button" id="staffBtn" aria-expanded="false" data-k="staff">ตั้งค่าสำหรับทีมงาน</button></div>
@@ -166,7 +180,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
       tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม ขอบฟุ้งๆ',
       fact:'รู้ไหม? เว็บไซต์ของพี่ๆ ดูรูปมะม่วง แล้วบอกได้ว่าช้ำกี่เปอร์เซ็นต์ และช้ำเพราะโดนกระแทกหรือโดนเขย่า',
       again:'เล่นอีกครั้ง',staff:'ตั้งค่าสำหรับทีมงาน',setTarget:'คะแนนเป้าหมาย',setTime:'เวลาต่อรอบ (วินาที)',setSpeed:'ความเร็ว',setBad:'จำนวนมะม่วงช้ำ',
-      slow:'ช้า',normal:'ปกติ',fast:'เร็ว',few:'น้อย',many:'เยอะ',saved:'บันทึกไว้ในเครื่องนี้อัตโนมัติ',canvas:'เกมเก็บมะม่วง'},
+      slow:'ช้า',normal:'ปกติ',fast:'เร็ว',few:'น้อย',many:'เยอะ',saved:'บันทึกไว้ในเครื่องนี้อัตโนมัติ',canvas:'เกมเก็บมะม่วง',fs:'⛶ เต็มจอ',fsExit:'✕ ออกจากเต็มจอ'},
     en:{home:'← Home',title:'Mango Catch Game',sub:'Help Mango Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
       goalText:function(n,s){return 'Get <b>'+n+' points</b> in '+s+' seconds to win a prize!'},
       howto:'Drag left and right, or use the arrow keys',start:'Start',score:'Score',time:'Time',goal:'Goal',
@@ -176,7 +190,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
       tip:'Tip: bruised mangoes have dark brown spots with blurry edges.',
       fact:'Did you know? Our team\'s website looks at a mango photo and tells how many percent is bruised, and whether the mango was bumped or shaken.',
       again:'Play again',staff:'Team settings',setTarget:'Target score',setTime:'Round time (seconds)',setSpeed:'Speed',setBad:'Bruised mangoes',
-      slow:'Slow',normal:'Normal',fast:'Fast',few:'Few',many:'Many',saved:'Saved on this device automatically',canvas:'Mango catching game'}
+      slow:'Slow',normal:'Normal',fast:'Fast',few:'Few',many:'Many',saved:'Saved on this device automatically',canvas:'Mango catching game',fs:'⛶ Full screen',fsExit:'✕ Exit full screen'}
   };
   var lang='th';
   var cfg={target:7,time:30,speed:'normal',bad:'normal'};
@@ -193,6 +207,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
     $('cv').setAttribute('aria-label',t('canvas'));
     $('goalText').innerHTML=t('goalText')(cfg.target,cfg.time);
     $('langTh').setAttribute('aria-pressed',lang==='th'); $('langEn').setAttribute('aria-pressed',lang==='en');
+    updateFsBtn();
     if(state==='over') renderEnd();
   }
   function setLang(l){lang=l; try{localStorage.setItem('drbot-lang',l)}catch(e){} applyLang();}
@@ -355,6 +370,34 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
     update(dt); draw();
     requestAnimationFrame(loop);
   }
+
+  /* ---------- full screen ---------- */
+  var game=$('game'), fsOn=false;
+  function realFs(){ return document.fullscreenElement||document.webkitFullscreenElement; }
+  function updateFsBtn(){ var b=$('fsBtn'); b.textContent=t(fsOn?'fsExit':'fs'); b.setAttribute('aria-pressed',fsOn); }
+  function setFsLayout(on){
+    fsOn=on; game.classList.toggle('fs',on); document.body.classList.toggle('fs-lock',on);
+    updateFsBtn(); requestAnimationFrame(resize);
+  }
+  function enterFs(){
+    var req=game.requestFullscreen||game.webkitRequestFullscreen;
+    setFsLayout(true);
+    if(req){
+      try{
+        var p=req.call(game);
+        if(p&&p.then) p.then(function(){ try{ screen.orientation.lock('landscape').catch(function(){}); }catch(_){} }).catch(function(){});
+      }catch(_){}
+    }
+  }
+  function exitFs(){
+    if(realFs()){ (document.exitFullscreen||document.webkitExitFullscreen).call(document); }
+    setFsLayout(false);
+  }
+  $('fsBtn').addEventListener('click',function(){ fsOn?exitFs():enterFs(); });
+  function onFsChange(){ if(!realFs()&&fsOn) setFsLayout(false); else requestAnimationFrame(resize); }
+  document.addEventListener('fullscreenchange',onFsChange);
+  document.addEventListener('webkitfullscreenchange',onFsChange);
+  window.addEventListener('keydown',function(e){ if(e.key==='Escape'&&fsOn&&!realFs()) setFsLayout(false); });
 
   /* ---------- controls ---------- */
   function toGame(e){var r=cv.getBoundingClientRect(); return (e.clientX-r.left)/r.width*W;}
