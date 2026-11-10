@@ -23,5 +23,5 @@ Fonts (Itim, Mali) load from Google Fonts, so the first load needs internet. Wit
 ## Booth notes
 
 - **Language:** the ไทย | EN switch is in the header. The choice is saved per device and shared across pages.
-- **Mango game settings:** use the "ตั้งค่าสำหรับทีมงาน / Team settings" button below the game to change the target score (default 7), round time, speed and how many bruised mangoes fall. Saved per device.
+- **Mango game settings:** use the "ตั้งค่าสำหรับทีมงาน / Team settings" button below the game to change the target score (default 15), round time, speed and how many bruised mangoes fall. Saved per device.
 - All pictures are drawn as cartoons. No camera use on the website.
