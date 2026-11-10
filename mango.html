@@ -99,6 +99,9 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 
 @media (max-width:460px){ .rule{font-size:1rem} }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+.sound-btn{position:absolute;top:10px;right:10px;z-index:3;font-family:var(--display);font-size:1.05rem;border:3px solid var(--line);border-radius:999px;padding:4px 14px;min-height:48px;cursor:pointer;background:var(--surface);color:var(--ink);box-shadow:3px 3px 0 var(--line)}
+.sound-btn[aria-pressed="false"]{background:var(--sun);color:var(--on-accent)}
+.sound-btn:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
 .home-link{font-family:var(--display);font-size:1.05rem;text-decoration:none;color:var(--ink);background:var(--surface);border:3px solid var(--line);border-radius:999px;padding:6px 16px;box-shadow:3px 3px 0 var(--line);min-height:44px;display:inline-flex;align-items:center}
 .home-link:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
 .top-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -145,6 +148,7 @@ body.fs-lock{overflow:hidden}
 
   <div class="stage" id="stage">
     <canvas id="cv" aria-label="เกมเก็บมะม่วง" role="img"></canvas>
+    <button class="sound-btn" type="button" id="soundBtn" aria-pressed="true">🔊 เสียง: เปิด</button>
     <div class="overlay" id="startScreen">
       <div class="panel">
         <h2 data-k="title">เกมเก็บมะม่วง</h2>
@@ -185,7 +189,7 @@ body.fs-lock{overflow:hidden}
       stats:function(g,b){return ['มะม่วงดี '+g+' ลูก','มะม่วงช้ำ '+b+' ลูก']},
       tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม ขอบฟุ้งๆ',
       fact:'รู้ไหม? เว็บไซต์ของพี่ๆ ดูรูปมะม่วง แล้วบอกได้ว่าช้ำกี่เปอร์เซ็นต์ และช้ำเพราะโดนกระแทกหรือโดนเขย่า',
-      again:'เล่นอีกครั้ง',canvas:'เกมเก็บมะม่วง',endHome:'← กลับหน้าแรก'},
+      again:'เล่นอีกครั้ง',canvas:'เกมเก็บมะม่วง',endHome:'← กลับหน้าแรก',soundOn:'🔊 เสียง: เปิด',soundOff:'🔇 เสียง: ปิด'},
     en:{home:'← Home',title:'Mango Catch Game',sub:'Help Mango Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
       goalText:function(n,s){return 'Get <b>'+n+' points</b> in '+s+' seconds to win a prize!'},
       howto:'Drag left and right, or use the arrow keys',start:'Start',score:'Score',time:'Time',goal:'Goal',
@@ -194,7 +198,7 @@ body.fs-lock{overflow:hidden}
       stats:function(g,b){return ['Good mangoes: '+g,'Bruised mangoes: '+b]},
       tip:'Tip: bruised mangoes have dark brown spots with blurry edges.',
       fact:'Did you know? Our team\'s website looks at a mango photo and tells how many percent is bruised, and whether the mango was bumped or shaken.',
-      again:'Play again',canvas:'Mango catching game',endHome:'← Back to home'}
+      again:'Play again',canvas:'Mango catching game',endHome:'← Back to home',soundOn:'🔊 Sound: on',soundOff:'🔇 Sound: off'}
   };
   var lang='th';
   var cfg={target:15,time:30};
@@ -211,17 +215,54 @@ body.fs-lock{overflow:hidden}
     $('cv').setAttribute('aria-label',t('canvas'));
     $('goalText').innerHTML=t('goalText')(cfg.target,cfg.time);
     $('langTh').setAttribute('aria-pressed',lang==='th'); $('langEn').setAttribute('aria-pressed',lang==='en');
+    updateSoundBtn();
     if(state==='over') renderEnd();
   }
   function setLang(l){lang=l; try{localStorage.setItem('drbot-lang',l)}catch(e){} applyLang();}
   $('langTh').addEventListener('click',function(){setLang('th')});
   $('langEn').addEventListener('click',function(){setLang('en')});
 
+  /* ---------- sound: pop (good mango), bonk (bruised), cheer (win). Made with Web Audio, no files ---------- */
+  var soundOn=true, actx=null, master=null;
+  try{ if(localStorage.getItem('mango-sound')==='off') soundOn=false; }catch(e){}
+  function audio(){
+    if(!actx){
+      var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null;
+      actx=new AC(); master=actx.createGain(); master.gain.value=.55; master.connect(actx.destination);
+    }
+    if(actx.state==='suspended') actx.resume();
+    return actx;
+  }
+  function tone(f1,f2,at,dur,type,vol){
+    var o=actx.createOscillator(), g=actx.createGain();
+    o.type=type; o.frequency.setValueAtTime(f1,at);
+    if(f2) o.frequency.exponentialRampToValueAtTime(f2,at+dur);
+    g.gain.setValueAtTime(.0001,at); g.gain.exponentialRampToValueAtTime(vol,at+.012); g.gain.exponentialRampToValueAtTime(.0001,at+dur);
+    o.connect(g); g.connect(master); o.start(at); o.stop(at+dur+.03);
+  }
+  function play(name){
+    if(!soundOn||!audio()) return;
+    var t=actx.currentTime+.01;
+    if(name==='pop'){ tone(520,1150,t,.09,'sine',.5); tone(900,1600,t+.06,.08,'sine',.28); }
+    if(name==='bonk'){ tone(240,85,t,.24,'triangle',.65); tone(130,60,t,.14,'square',.12); }
+    if(name==='cheer'){
+      [523,659,784,1047].forEach(function(f,i){ tone(f,0,t+i*.11,.22,'triangle',.32); });
+      tone(1047,0,t+.46,.6,'triangle',.28); tone(1319,0,t+.46,.6,'sine',.18); tone(1568,0,t+.46,.6,'sine',.12);
+      for(var i=0;i<8;i++) tone(1800+Math.random()*900,0,t+.55+i*.07,.06,'sine',.08);
+    }
+  }
+  function updateSoundBtn(){ var b=$('soundBtn'); b.textContent=t(soundOn?'soundOn':'soundOff'); b.setAttribute('aria-pressed',soundOn); }
+  $('soundBtn').addEventListener('click',function(){
+    soundOn=!soundOn; try{ localStorage.setItem('mango-sound',soundOn?'on':'off'); }catch(e){}
+    updateSoundBtn(); if(soundOn) play('pop');
+  });
+
   /* ---------- game ---------- */
   var W=800,H=600,BASKET_Y=500,BASKET_HALF=66; /* H is fixed; W follows the stage shape (see resize) */
   var cv=$('cv'),ctx=cv.getContext('2d'),scale=1;
   var state='ready',mangoes=[],pops=[],confetti=[],score=0,goodN=0,badN=0,timeLeft=cfg.time,spawnT=0;
   var bx=W/2,targetX=W/2,keys={left:false,right:false},last=0;
+  var bounce=0, wobble=0, reduceMotion=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
   var SPEED=1.15, BAD=.35; /* SPEED: 1.15 = a bit faster than the first version (falling and dropping) */
 
   function resize(){
@@ -269,6 +310,9 @@ body.fs-lock{overflow:hidden}
   }
   function drawPlayer(){
     var x=bx,y=BASKET_Y;
+    ctx.save();
+    if(bounce>0){ var sq=Math.sin(bounce*Math.PI)*.12; ctx.translate(x,y+52); ctx.scale(1+sq,1-sq); ctx.translate(-x,-(y+52)); }
+    if(wobble>0&&!reduceMotion){ ctx.translate(Math.sin(wobble*40)*7*wobble,0); }
     // Mango Bot head behind the basket
     ctx.strokeStyle='#1E2847'; ctx.lineWidth=4;
     ctx.beginPath(); ctx.moveTo(x,y-74); ctx.lineTo(x,y-60); ctx.stroke();
@@ -283,6 +327,7 @@ body.fs-lock{overflow:hidden}
     for(var i=1;i<4;i++){ctx.beginPath();ctx.moveTo(x-BASKET_HALF+3.5*i,y+13*i);ctx.lineTo(x+BASKET_HALF-3.5*i,y+13*i);ctx.stroke();}
     for(var j=-2;j<=2;j++){ctx.beginPath();ctx.moveTo(x+j*24,y);ctx.lineTo(x+j*19,y+52);ctx.stroke();}
     ctx.strokeStyle='#1E2847'; ctx.lineWidth=4; ctx.fillStyle='#A86E35'; rr(x-BASKET_HALF-6,y-8,BASKET_HALF*2+12,14,7); ctx.fill(); ctx.stroke();
+    ctx.restore();
   }
   function draw(){
     ctx.setTransform(scale,0,0,scale,0,0);
@@ -306,6 +351,7 @@ body.fs-lock{overflow:hidden}
 
   function startGame(){
     if(!fsOn) enterFs();
+    if(soundOn) audio(); /* browsers only allow sound after a tap: unlock it here */
     mangoes=[];pops=[];confetti=[];score=0;goodN=0;badN=0;timeLeft=cfg.time;spawnT=.3;bx=targetX=W/2;
     state='playing'; $('startScreen').hidden=true; $('endScreen').hidden=true;
     updateHud(true); last=performance.now(); cv.focus({preventScroll:true});
@@ -313,6 +359,7 @@ body.fs-lock{overflow:hidden}
   function endGame(){
     state='over'; mangoes=[];
     if(score>=cfg.target){
+      play('cheer');
       for(var i=0;i<120;i++) confetti.push({x:Math.random()*W,y:-Math.random()*H*.6,vy:120+Math.random()*180,vx:(Math.random()-.5)*80,r:Math.random()*6,vr:(Math.random()-.5)*8,c:['#FFC83D','#FF6A57','#11968E','#7A5AD8','#FF9F1C'][i%5]});
     }
     renderEnd(); $('endScreen').hidden=false;
@@ -346,8 +393,8 @@ body.fs-lock{overflow:hidden}
       for(var i=mangoes.length-1;i>=0;i--){
         var m=mangoes[i]; m.y+=m.vy*dt; m.rot+=m.vr*dt;
         if(m.y+m.r*.6>=BASKET_Y-6 && m.y<BASKET_Y+26 && Math.abs(m.x-bx)<BASKET_HALF+m.r*.3){
-          if(m.bad){ score=Math.max(0,score-1); badN++; pops.push({x:m.x,y:BASKET_Y-90,txt:'−1',c:'#D9443A',life:1}); }
-          else { score++; goodN++; pops.push({x:m.x,y:BASKET_Y-90,txt:'+1',c:'#1F9D55',life:1}); }
+          if(m.bad){ score=Math.max(0,score-1); badN++; pops.push({x:m.x,y:BASKET_Y-90,txt:'−1',c:'#D9443A',life:1}); play('bonk'); wobble=1; }
+          else { score++; goodN++; pops.push({x:m.x,y:BASKET_Y-90,txt:'+1',c:'#1F9D55',life:1}); play('pop'); bounce=1; }
           mangoes.splice(i,1); continue;
         }
         if(m.y-m.r>H) mangoes.splice(i,1);
@@ -355,6 +402,7 @@ body.fs-lock{overflow:hidden}
       if(timeLeft<=0){ timeLeft=0; endGame(); }
       updateHud(false);
     }
+    bounce=Math.max(0,bounce-dt*4); wobble=Math.max(0,wobble-dt*2.5);
     for(var j=pops.length-1;j>=0;j--){ pops[j].y-=60*dt; pops[j].life-=dt*1.2; if(pops[j].life<=0) pops.splice(j,1); }
     for(var k=confetti.length-1;k>=0;k--){ var c=confetti[k]; c.y+=c.vy*dt; c.x+=c.vx*dt; c.r+=c.vr*dt; if(c.y>H+20) confetti.splice(k,1); }
   }

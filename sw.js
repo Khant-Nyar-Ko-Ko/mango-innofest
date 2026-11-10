@@ -3,7 +3,7 @@
    pages open from the saved copy right away, even with no Wi-Fi, and a newer copy is
    fetched in the background whenever there is internet (it shows on the next visit).
    When you add a file the pages need, add it to FILES and change VERSION. */
-const VERSION = 'mango-booth-v1';
+const VERSION = 'mango-booth-v2';
 const FILES = [
   './',
   'index.html',

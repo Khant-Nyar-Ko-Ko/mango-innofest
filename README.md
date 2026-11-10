@@ -29,5 +29,6 @@ Everything (fonts included) is inside this folder, so the site does not need any
 ## Booth notes
 
 - **Language:** the ไทย | EN switch is in the header. The choice is saved per device and shared across pages.
+- **Sound:** the game plays a pop, a bonk and a cheer. Tap **🔊 เสียง: เปิด / Sound: on** in the corner of the game to mute it; the device remembers the choice. On iPhones and iPads the ring/silent switch also mutes it.
 - **Mango game:** no settings panel. Target 15 points in 30 seconds, speed and bruised-mango share are fixed in `mango.html` (`cfg`, `SPEED`, `BAD`).
 - All pictures are drawn as cartoons. No camera use on the website.
