@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>ฟาร์มมะม่วงหมอบอท</title>
+<title>เกมเก็บมะม่วง</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;600;700&display=swap">
 <style>
-/* Layout: one big game stage, sticker-book frame matching the Dr. Bot site; HUD above, staff settings tucked below */
+/* Layout: one big game stage, sticker-book frame matching the Mango Bot site; HUD above, staff settings tucked below */
 :root{
   --bg:#EDF6F0;
   --surface:#FFFFFF;
@@ -96,7 +96,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 
 <div class="wrap">
   <header class="top">
-    <h1 data-k="title">ฟาร์มมะม่วงหมอบอท</h1>
+    <h1 data-k="title">เกมเก็บมะม่วง</h1>
     <div class="top-right"><a class="home-link" href="index.html" data-k="home">← หน้าแรก</a>
     <div class="lang" role="group" aria-label="ภาษา / Language">
       <button type="button" id="langTh" aria-pressed="true">ไทย</button>
@@ -114,8 +114,8 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
     <canvas id="cv" aria-label="เกมเก็บมะม่วง" role="img"></canvas>
     <div class="overlay" id="startScreen">
       <div class="panel">
-        <h2 data-k="title">ฟาร์มมะม่วงหมอบอท</h2>
-        <p data-k="sub">ช่วยหมอบอทเก็บมะม่วงดีๆ ระวังมะม่วงช้ำ!</p>
+        <h2 data-k="title">เกมเก็บมะม่วง</h2>
+        <p data-k="sub">ช่วยบอทมะม่วงเก็บมะม่วงดีๆ ระวังมะม่วงช้ำ!</p>
         <div class="rules">
           <div class="rule plus"><svg viewBox="0 0 40 44" aria-hidden="true"><use href="#mGood"/></svg><span data-k="ruleGood">มะม่วงดี +1</span></div>
           <div class="rule minus"><svg viewBox="0 0 40 44" aria-hidden="true"><use href="#mBad"/></svg><span data-k="ruleBad">มะม่วงช้ำ −1</span></div>
@@ -157,24 +157,24 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 (function(){
   var $=function(id){return document.getElementById(id)};
   var S={
-    th:{home:'← หน้าแรก',title:'ฟาร์มมะม่วงหมอบอท',sub:'ช่วยหมอบอทเก็บมะม่วงดีๆ ระวังมะม่วงช้ำ!',ruleGood:'มะม่วงดี +1',ruleBad:'มะม่วงช้ำ −1',
+    th:{home:'← หน้าแรก',title:'เกมเก็บมะม่วง',sub:'ช่วยบอทมะม่วงเก็บมะม่วงดีๆ ระวังมะม่วงช้ำ!',ruleGood:'มะม่วงดี +1',ruleBad:'มะม่วงช้ำ −1',
       goalText:function(n,s){return 'เก็บให้ได้ <b>'+n+' คะแนน</b> ภายใน '+s+' วินาที รับรางวัลเลย!'},
       howto:'ลากนิ้วไปซ้าย-ขวา หรือกดปุ่มลูกศร',start:'เริ่มเล่น',score:'คะแนน',time:'เวลา',goal:'เป้าหมาย',
       win:'ได้รางวัล!',winSub:function(s){return 'เก่งมาก! ได้ '+s+' คะแนน ไปรับขนมมะม่วงจากพี่ๆ ได้เลย'},
       lose:'เกือบแล้ว!',loseSub:function(s,n){return 'ได้ '+s+' คะแนน ต้องการ '+n+' คะแนน รับสติกเกอร์ไปก่อนนะ แล้วลองใหม่ได้!'},
       stats:function(g,b){return ['มะม่วงดี '+g+' ลูก','มะม่วงช้ำ '+b+' ลูก']},
       tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม ขอบฟุ้งๆ',
-      fact:'รู้ไหม? หมอบอทดูรูปมะม่วง แล้วบอกได้ว่าช้ำกี่เปอร์เซ็นต์ และช้ำเพราะโดนกระแทกหรือโดนเขย่า',
+      fact:'รู้ไหม? เว็บไซต์ของพี่ๆ ดูรูปมะม่วง แล้วบอกได้ว่าช้ำกี่เปอร์เซ็นต์ และช้ำเพราะโดนกระแทกหรือโดนเขย่า',
       again:'เล่นอีกครั้ง',staff:'ตั้งค่าสำหรับทีมงาน',setTarget:'คะแนนเป้าหมาย',setTime:'เวลาต่อรอบ (วินาที)',setSpeed:'ความเร็ว',setBad:'จำนวนมะม่วงช้ำ',
       slow:'ช้า',normal:'ปกติ',fast:'เร็ว',few:'น้อย',many:'เยอะ',saved:'บันทึกไว้ในเครื่องนี้อัตโนมัติ',canvas:'เกมเก็บมะม่วง'},
-    en:{home:'← Home',title:"Dr. Bot's Mango Farm",sub:'Help Dr. Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
+    en:{home:'← Home',title:'Mango Catch Game',sub:'Help Mango Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
       goalText:function(n,s){return 'Get <b>'+n+' points</b> in '+s+' seconds to win a prize!'},
       howto:'Drag left and right, or use the arrow keys',start:'Start',score:'Score',time:'Time',goal:'Goal',
       win:'You win a prize!',winSub:function(s){return 'Great job! You got '+s+' points. Collect your mango candy from the team!'},
       lose:'So close!',loseSub:function(s,n){return 'You got '+s+' points and needed '+n+'. Take a sticker, and try again!'},
       stats:function(g,b){return ['Good mangoes: '+g,'Bruised mangoes: '+b]},
       tip:'Tip: bruised mangoes have dark brown spots with blurry edges.',
-      fact:'Did you know? Dr. Bot looks at a mango photo and tells how many percent is bruised, and whether the mango was bumped or shaken.',
+      fact:'Did you know? Our team\'s website looks at a mango photo and tells how many percent is bruised, and whether the mango was bumped or shaken.',
       again:'Play again',staff:'Team settings',setTarget:'Target score',setTime:'Round time (seconds)',setSpeed:'Speed',setBad:'Bruised mangoes',
       slow:'Slow',normal:'Normal',fast:'Fast',few:'Few',many:'Many',saved:'Saved on this device automatically',canvas:'Mango catching game'}
   };
@@ -263,7 +263,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
   }
   function drawPlayer(){
     var x=bx,y=BASKET_Y;
-    // Dr. Bot head behind the basket
+    // Mango Bot head behind the basket
     ctx.strokeStyle='#1E2847'; ctx.lineWidth=4;
     ctx.beginPath(); ctx.moveTo(x,y-74); ctx.lineTo(x,y-60); ctx.stroke();
     ctx.fillStyle='#FF6A57'; ctx.beginPath(); ctx.arc(x,y-78,7,0,7); ctx.fill(); ctx.stroke();

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>หมอบอทตามหามะม่วงช้ำ</title>
+<title>ตามหามะม่วงช้ำกับบอทมะม่วง</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -185,6 +185,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
 </style>
 <style>
 .analogy + .analogy{margin-top:18px}
+.ai-step svg{background:#CFEAF5;border:3px solid var(--line);border-radius:50%;padding:8px;box-sizing:border-box}
 .bgs{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
 .bgs span{font-size:.95rem;padding:2px 12px;border-radius:999px;border:3px solid var(--line);color:#1E2847}
 </style>
@@ -211,14 +212,14 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
 
 <header class="top">
   <div class="wrap">
-    <div class="brand"><svg aria-hidden="true"><use href="#bot"/></svg> <span data-i18n="brand">หมอบอท</span></div>
+    <div class="brand"><svg aria-hidden="true"><use href="#bot"/></svg> <span data-i18n="brand">บอทมะม่วง</span></div>
     <div class="top-right">
       <a class="home-link" href="index.html" data-i18n="home">← หน้าแรก</a>
       <nav class="nav" data-i18n-aria="navAria" aria-label="ไปที่หัวข้อ">
         <a href="#what" data-i18n="nav1">มะม่วงช้ำคืออะไร</a>
         <a href="#colors" data-i18n="nav2">รอยช้ำเข้มขึ้น</a>
-        <a href="#ai" data-i18n="nav3">AI เรียนรู้ยังไง</a>
-        <a href="#game" data-i18n="nav4">เกมแข่งหุ่นยนต์</a>
+        <a href="#ai" data-i18n="nav3">เว็บไซต์ทำงานยังไง</a>
+        <a href="#game" data-i18n="nav4">เกมแข่งบอทมะม่วง</a>
         <a href="#care" data-i18n="nav5">ดูแลมะม่วง</a>
       </nav>
       <div class="lang" role="group" aria-label="ภาษา / Language">
@@ -235,14 +236,14 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     <div class="hero-copy">
       <p class="eyebrow" data-i18n="heroEyebrow">โครงงานปัญญาประดิษฐ์ (AI)</p>
       <h1 data-i18n="heroTitle">คอมพิวเตอร์<br><mark>หามะม่วงช้ำ</mark>ได้ไหมนะ?</h1>
-      <p class="lead" data-i18n="heroLead">สวัสดี! ฉันชื่อ <b>หมอบอท</b> ฉันเป็นหุ่นยนต์หมอมะม่วง ฉันถูกสอนให้ดูรูปมะม่วง แล้วบอกว่าตรงไหนช้ำ มาดูกันว่าฉันทำได้ยังไง แล้วมาแข่งกันว่าใครเก่งกว่า!</p>
+      <p class="lead" data-i18n="heroLead">สวัสดี! ฉันชื่อ <b>บอทมะม่วง</b> ฉันเป็นแค่ตัวการ์ตูนผู้ช่วยนะ ของจริงคือ<b>เว็บไซต์</b>ของพี่ๆ ที่ใช้คอมพิวเตอร์ดูรูปมะม่วง แล้วบอกว่าตรงไหนช้ำ ฉันจะพาไปดูว่ามันทำงานยังไง แล้วมาแข่งกันว่าใครเก่งกว่า!</p>
       <div class="hero-ctas">
-        <a class="btn" href="#game" data-i18n="ctaPlay">มาแข่งกับหมอบอท</a>
+        <a class="btn" href="#game" data-i18n="ctaPlay">มาแข่งกับบอทมะม่วง</a>
         <a class="btn ghost" href="#what" data-i18n="ctaLearn">เรียนรู้ก่อน</a>
       </div>
     </div>
     <div class="hero-art sticker">
-      <svg viewBox="0 0 400 300" role="img" data-i18n-aria="heroAria" aria-label="ภาพตัวอย่าง: หมอบอทเจอรอยช้ำบนมะม่วง ระบายส่วนที่ช้ำเป็นสีส้ม และบอกว่าช้ำ 12 เปอร์เซ็นต์">
+      <svg viewBox="0 0 400 300" role="img" data-i18n-aria="heroAria" aria-label="ภาพการ์ตูน: เว็บไซต์เจอรอยช้ำบนมะม่วง ระบายส่วนที่ช้ำเป็นสีส้ม และบอกว่าช้ำ 12 เปอร์เซ็นต์">
         <defs>
           <radialGradient id="heroBruise">
             <stop offset="0" stop-color="#5A3418" stop-opacity=".85"/>
@@ -262,7 +263,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
         </g>
         <use href="#bot" x="300" y="196" width="96" height="96"/>
       </svg>
-      <p class="caption" data-i18n="heroCaption">ตัวอย่างหน้าจอ: หมอบอทระบายส่วนที่ช้ำเป็นสีส้ม แล้วบอกว่าช้ำไปกี่เปอร์เซ็นต์</p>
+      <p class="caption" data-i18n="heroCaption">ภาพการ์ตูนของหน้าจอ: เว็บไซต์ระบายส่วนที่ช้ำเป็นสีส้ม แล้วบอกว่าช้ำไปกี่เปอร์เซ็นต์</p>
     </div>
   </div>
 </section>
@@ -341,32 +342,48 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow" data-i18n="part3">ตอนที่ 3</p>
-      <h2 data-i18n="aiTitle">หมอบอทรู้ได้ยังไง?</h2>
-      <p class="lead" data-i18n="aiLead">หมอบอททำงาน 3 ขั้นตอน เหมือนเวลาที่หนูดูรูปแล้วตอบคำถาม</p>
+      <h2 data-i18n="aiTitle">เว็บไซต์ของเราทำงานยังไง?</h2>
+      <p class="lead" data-i18n="aiLead">เว็บไซต์ <b>iate-fruitbruise.com</b> ของพี่ๆ ทำงาน 6 ขั้นตอน ง่ายนิดเดียว</p>
     </div>
     <div class="ai-steps">
       <div class="ai-step sticker">
-        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="10" y="26" width="76" height="52" rx="12" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><rect x="32" y="16" width="32" height="14" rx="5" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><circle cx="48" cy="52" r="16" fill="#fff" stroke="#1E2847" stroke-width="4"/><circle cx="48" cy="52" r="7" fill="#1E2847"/></svg>
-        <h3 data-i18n="ai1t">1. ดู</h3>
-        <p data-i18n="ai1">ถ่ายรูปมะม่วงบนโต๊ะสีเรียบๆ แล้วส่งรูปให้หมอบอท</p>
+        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="14" y="40" width="68" height="42" rx="10" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><path d="M48 66V18M32 32l16-16 16 16" fill="none" stroke="#1E2847" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 data-i18n="ai1t">1. ส่งรูป</h3>
+        <p data-i18n="ai1">ถ่ายรูปมะม่วงบนโต๊ะสีเรียบๆ แล้วส่งรูปเข้าเว็บไซต์</p>
       </div>
       <div class="ai-step sticker">
-        <svg viewBox="0 0 96 96" aria-hidden="true"><path d="M48 14c-14 0-22 8-22 18-8 2-12 9-12 16 0 8 6 14 12 15 0 10 8 18 22 18s22-8 22-18c6-1 12-7 12-15 0-7-4-14-12-16 0-10-8-18-22-18z" fill="#FFC83D" stroke="#1E2847" stroke-width="4"/><path d="M48 18v62M34 34c6 4 8 10 6 16M62 34c-6 4-8 10-6 16M30 60c6-2 12 0 14 6M66 60c-6-2-12 0-14 6" fill="none" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/></svg>
-        <h3 data-i18n="ai2t">2. คิด</h3>
-        <p data-i18n="ai2">ตัดพื้นหลังออก เหลือแค่มะม่วง แล้วดูสีและลวดลายบนเปลือก เทียบกับรูปมะม่วงกว่าพันรูปที่เคยเรียนมา</p>
+        <svg viewBox="0 0 96 96" aria-hidden="true"><path d="M30 48 C29 36 42 28 54 29 C66 30 72 40 70 50 C68 60 56 64 46 63 C36 62 31 57 30 48Z" fill="#FFB627" stroke="#1E2847" stroke-width="3"/><path d="M14 30V14h16M66 14h16v16M82 66v16H66M30 82H14V66" fill="none" stroke="#1E2847" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 data-i18n="ai2t">2. จัดรูป</h3>
+        <p data-i18n="ai2">ย่อรูปให้ขนาดเท่ากัน แล้วตัดขอบรูปให้มะม่วงอยู่ตรงกลาง</p>
       </div>
       <div class="ai-step sticker">
-        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="12" y="20" width="72" height="56" rx="10" fill="#fff" stroke="#1E2847" stroke-width="4"/><path d="M22 50 C20 36 36 28 50 29 C64 30 72 40 70 50 C68 62 54 66 42 64 C30 63 23 58 22 50Z" fill="#3FBF6A" stroke="#1E2847" stroke-width="3"/><ellipse cx="40" cy="50" rx="9" ry="7" fill="#FF8A1F" stroke="#1E2847" stroke-width="2"/><circle cx="72" cy="70" r="16" fill="#1F9D55" stroke="#1E2847" stroke-width="4"/><path d="M64 70l6 6 10-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3 data-i18n="ai3t">3. ตอบ</h3>
-        <p data-i18n="ai3">ระบายส่วนที่ช้ำเป็นสีส้ม ส่วนที่ดีเป็นสีเขียว บอกว่าช้ำกี่เปอร์เซ็นต์ และทายว่าโดนกระแทกหรือโดนเขย่า</p>
+        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="10" y="16" width="76" height="64" rx="10" fill="#fff" stroke="#1E2847" stroke-width="4"/><path d="M10 26h76M10 36h76M10 46h76M10 56h76M10 66h76" stroke="#C9CED6" stroke-width="3"/><path d="M24 48 C23 34 38 26 52 27 C66 28 74 38 72 50 C70 62 56 66 44 65 C32 64 25 58 24 48Z" fill="#FFB627" stroke="#1E2847" stroke-width="3"/></svg>
+        <h3 data-i18n="ai3t">3. ลบพื้นหลัง</h3>
+        <p data-i18n="ai3">ลบโต๊ะข้างหลังออก ให้เหลือแค่ตัวมะม่วง</p>
+      </div>
+      <div class="ai-step sticker">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><path d="M14 50 C12 30 34 18 54 19 C74 20 86 34 82 52 C78 70 58 76 42 74 C26 72 15 64 14 50Z" fill="#3FBF6A" stroke="#1E2847" stroke-width="4"/><ellipse cx="40" cy="50" rx="13" ry="10" fill="#FF8A1F" stroke="#1E2847" stroke-width="3"/><text x="64" y="56" text-anchor="middle" font-family="Itim, sans-serif" font-size="18" fill="#1E2847">%</text></svg>
+        <h3 data-i18n="ai4t">4. หารอยช้ำ</h3>
+        <p data-i18n="ai4">ระบายส่วนที่ช้ำเป็นสีส้ม ส่วนที่ดีเป็นสีเขียว แล้วบอกว่าช้ำกี่เปอร์เซ็นต์</p>
+      </div>
+      <div class="ai-step sticker">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="40" cy="40" r="24" fill="#fff" stroke="#1E2847" stroke-width="5"/><ellipse cx="40" cy="40" rx="12" ry="9" fill="#8A5A2B" opacity=".75"/><path d="M58 58l22 22" stroke="#1E2847" stroke-width="8" stroke-linecap="round"/></svg>
+        <h3 data-i18n="ai5t">5. ดูให้ละเอียด</h3>
+        <p data-i18n="ai5">ดูสี ลวดลาย และรูปร่างของรอยช้ำ แล้วทายว่ามะม่วงโดนกระแทก หรือโดนเขย่า</p>
+      </div>
+      <div class="ai-step sticker">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="14" y="58" width="68" height="24" rx="8" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><path d="M48 14v44M32 42l16 16 16-16" fill="none" stroke="#1E2847" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 data-i18n="ai6t">6. เก็บผล</h3>
+        <p data-i18n="ai6">บันทึกรูปและตัวเลขไว้ ให้นักวิจัยเอาไปใช้ต่อ</p>
       </div>
     </div>
+    <p class="lead" style="margin-top:20px" data-i18n="aiTry">ลองดูเว็บไซต์จริงได้ที่ <a href="https://iate-fruitbruise.com/" target="_blank" rel="noopener"><b>iate-fruitbruise.com</b></a> (ให้ผู้ใหญ่ช่วยเปิดนะ)</p>
     <div class="analogy sticker">
       <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="46" r="26" fill="#FFC83D" stroke="#1E2847" stroke-width="4"/><path d="M18 30 L22 8 L34 22 M62 30 L58 8 L46 22" fill="#FFC83D" stroke="#1E2847" stroke-width="4" stroke-linejoin="round"/><circle cx="31" cy="44" r="4" fill="#1E2847"/><circle cx="49" cy="44" r="4" fill="#1E2847"/><path d="M36 54q4 4 8 0" fill="none" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/><path d="M14 52h12M14 58h12M54 52h12M54 58h12" stroke="#1E2847" stroke-width="2"/></svg>
       <div>
         <h3 data-i18n="catTitle">เหมือนตอนหนูหัดรู้จัก "แมว"</h3>
-        <p data-i18n="catText">ตอนเด็กๆ หนูเห็นแมวหลายตัว ทั้งสีส้ม สีดำ ตัวอ้วน ตัวผอม จนรู้เลยว่าแบบนี้คือแมว หมอบอทก็เหมือนกัน พี่ๆ ให้หมอบอทดูรูปมะม่วงเยอะมากๆ ทั้งลูกเขียว ลูกเหลือง ลูกที่ปอกเปลือกแล้ว จนมันจำได้ว่ารอยช้ำหน้าตาเป็นยังไง</p>
-        <div class="tones" data-i18n-aria="tonesAria" aria-label="มะม่วงหลายสีที่หมอบอทต้องเรียนรู้">
+        <p data-i18n="catText">ตอนเด็กๆ หนูเห็นแมวหลายตัว ทั้งสีส้ม สีดำ ตัวอ้วน ตัวผอม จนรู้เลยว่าแบบนี้คือแมว คอมพิวเตอร์ในเว็บไซต์ของเราก็เหมือนกัน พี่ๆ ให้มันดูรูปมะม่วงกว่าพันรูป ทั้งลูกที่มีเปลือก และลูกที่ปอกเปลือกแล้ว จนมันจำได้ว่ารอยช้ำหน้าตาเป็นยังไง</p>
+        <div class="tones" data-i18n-aria="tonesAria" aria-label="มะม่วงหลายแบบที่คอมพิวเตอร์ต้องเรียนรู้">
           <span style="background:#7CB342"></span><span style="background:#C0CA33"></span><span style="background:#FFC83D"></span><span style="background:#FF9F1C"></span><span style="background:#FFE08A"></span>
         </div>
       </div>
@@ -374,8 +391,8 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     <div class="analogy sticker">
       <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="6" y="20" width="32" height="40" rx="6" fill="#FFFFFF" stroke="#1E2847" stroke-width="3"/><rect x="42" y="20" width="32" height="40" rx="6" fill="#A9B0BC" stroke="#1E2847" stroke-width="3"/><ellipse cx="22" cy="40" rx="10" ry="8" fill="#FFB627" stroke="#1E2847" stroke-width="2"/><ellipse cx="58" cy="40" rx="10" ry="8" fill="#FFB627" stroke="#1E2847" stroke-width="2"/><circle cx="64" cy="12" r="10" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/><text x="64" y="17" text-anchor="middle" font-family="Itim, sans-serif" font-size="14" fill="#1E2847">!</text></svg>
       <div>
-        <h3 data-i18n="bgTitle">อุ๊ย! หมอบอทเคยจำผิดด้วยนะ</h3>
-        <p data-i18n="bgText">ตอนสอน รูปมะม่วงที่โดนกระแทกถ่ายบนโต๊ะสีขาว ส่วนมะม่วงที่โดนเขย่าถ่ายบนโต๊ะสีเทา หมอบอทเลยแอบจำสีโต๊ะ แทนที่จะดูรอยช้ำ! ตอนนี้พี่ๆ กำลังสอนใหม่ ให้ดูแค่ตัวมะม่วงเท่านั้น</p>
+        <h3 data-i18n="bgTitle">อุ๊ย! คอมพิวเตอร์ของเราเคยจำผิดด้วยนะ</h3>
+        <p data-i18n="bgText">ตอนสอน รูปมะม่วงที่โดนกระแทกถ่ายบนโต๊ะสีขาว ส่วนมะม่วงที่โดนเขย่าถ่ายบนโต๊ะสีเทา คอมพิวเตอร์เลยแอบจำสีโต๊ะ แทนที่จะดูรอยช้ำ! ตอนนี้พี่ๆ กำลังสอนใหม่ ให้ดูแค่ตัวมะม่วงเท่านั้น</p>
         <div class="bgs">
           <span style="background:#FFFFFF" data-i18n="bgWhite">โต๊ะขาว = กระแทก?</span><span style="background:#C9CED6" data-i18n="bgGrey">โต๊ะเทา = เขย่า?</span>
         </div>
@@ -389,14 +406,14 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow" data-i18n="part4">ตอนที่ 4 · เกม</p>
-      <h2 data-i18n="gameTitle">ใครเก่งกว่า? หนู หรือ หมอบอท!</h2>
-      <p class="lead" data-i18n="gameLead">ดูรูปแล้วตอบว่ามะม่วงลูกนี้ช้ำหรือเปล่า หมอบอทจะตอบด้วย บางทีหุ่นยนต์ก็ตอบผิดได้นะ!</p>
+      <h2 data-i18n="gameTitle">ใครเก่งกว่า? หนู หรือ บอทมะม่วง!</h2>
+      <p class="lead" data-i18n="gameLead">ดูรูปแล้วตอบว่ามะม่วงลูกนี้ช้ำหรือเปล่า บอทมะม่วงจะตอบแบบคอมพิวเตอร์ บางทีคอมพิวเตอร์ก็ตอบผิดได้นะ!</p>
     </div>
     <div class="game sticker">
       <div class="scoreboard">
         <div class="score kid"><span data-i18n="you">หนู</span><b id="kidScore">0</b></div>
         <div class="vs">VS</div>
-        <div class="score bot"><span data-i18n="brand">หมอบอท</span><b id="botScore">0</b></div>
+        <div class="score bot"><span data-i18n="botName">บอทมะม่วง</span><b id="botScore">0</b></div>
       </div>
       <div id="playArea" class="play">
         <div>
@@ -442,7 +459,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     <div class="notes">
       <div class="sticker">
         <svg viewBox="0 0 52 52" aria-hidden="true"><use href="#bot" width="52" height="52"/></svg>
-        <p data-i18n="note1"><b>หมอบอทยังเรียนรู้อยู่นะ</b><br>หมอบอทเป็นโครงงานของพี่ๆ นักศึกษา หมอบอทตอบผิดได้ คนจึงต้องช่วยตรวจเสมอ</p>
+        <p data-i18n="note1"><b>บอทมะม่วงเป็นแค่ตัวการ์ตูนนะ</b><br>ของจริงคือเว็บไซต์ iate-fruitbruise.com ที่พี่ๆ ทีม IATE มหาวิทยาลัยแม่ฟ้าหลวงสร้างขึ้น คอมพิวเตอร์ตอบผิดได้ คนจึงต้องช่วยตรวจเสมอ</p>
       </div>
       <div class="sticker">
         <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="6" y="12" width="40" height="30" rx="6" fill="#9FE3D8" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="27" r="9" fill="#fff" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="27" r="3.5" fill="#1E2847"/></svg>
@@ -462,15 +479,15 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
 
   /* ---------- English text for static elements (Thai is read from the page itself) ---------- */
   var EN={
-    brand:'Dr. Bot', home:'← Home', navAria:'Go to section',
-    nav1:'What is a mango bruise?', nav2:'Bruises get darker', nav3:'How AI learns', nav4:'Robot game', nav5:'Mango care',
+    brand:'Mango Bot', botName:'Mango Bot', home:'← Home', navAria:'Go to section',
+    nav1:'What is a mango bruise?', nav2:'Bruises get darker', nav3:'How the website works', nav4:'Mango Bot game', nav5:'Mango care',
     heroEyebrow:'An Artificial Intelligence (AI) project',
     heroTitle:'Can a computer<br><mark>find bruised mangoes</mark>?',
-    heroLead:"Hi! I'm <b>Dr. Bot</b>, a mango doctor robot. I have been taught to look at pictures of mangoes and point out where they are bruised. Let's see how I do it, then race me to see who's better!",
-    ctaPlay:'Race Dr. Bot', ctaLearn:'Learn first',
-    heroAria:'Example: Dr. Bot finds a bruise on a mango, colours the bruised part orange and says 12 percent is bruised',
+    heroLead:"Hi! I'm <b>Mango Bot</b>. I'm just a cartoon helper! The real thing is our team's <b>website</b>, which uses a computer to look at mango photos and find where they are bruised. I'll show you how it works, then race me to see who's better!",
+    ctaPlay:'Race Mango Bot', ctaLearn:'Learn first',
+    heroAria:'Cartoon: the website finds a bruise on a mango, colours the bruised part orange and says 12 percent is bruised',
     heroTag:'Bruised 12%',
-    heroCaption:'Example screen: Dr. Bot colours the bruised part orange and says how many percent is bruised',
+    heroCaption:'Cartoon of the screen: the website colours the bruised part orange and says how many percent is bruised',
     part1:'Part 1', part2:'Part 2', part3:'Part 3', part4:'Part 4 · Game', part5:'Part 5',
     whatTitle:'What is a mango bruise?',
     whatLead:'Under the mango skin there is soft flesh made of lots of tiny cells. When a mango gets hit hard, this happens:',
@@ -483,19 +500,23 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     colLead:"Our skin can heal a bruise, but a mango can't heal itself! The bruise gets a little darker every day. Try moving the slider below!",
     armAria:'A mango with a bruise that gets darker each day',
     slideHint:'Slide to see each day', tick0:'Day 0',
-    aiTitle:'How does Dr. Bot know?',
-    aiLead:'Dr. Bot works in 3 steps, just like when you look at a picture and answer a question.',
-    ai1t:'1. Look', ai1:'Take a picture of the mango on a plain table and send it to Dr. Bot.',
-    ai2t:'2. Think', ai2:'It cuts away the background so only the mango is left, then looks at the colours and patterns on the skin and compares them with more than a thousand mango pictures it learned from.',
-    ai3t:'3. Answer', ai3:'It colours the bruised part orange and the good part green, says how many percent is bruised, and guesses if the mango was bumped or shaken.',
+    aiTitle:'How does our website work?',
+    aiLead:'Our team\'s website <b>iate-fruitbruise.com</b> works in 6 easy steps.',
+    ai1t:'1. Upload', ai1:'Take a photo of a mango on a plain table and put it into the website.',
+    ai2t:'2. Tidy up', ai2:'Make all the photos the same size, and trim the edges so the mango is in the middle.',
+    ai3t:'3. Remove the background', ai3:'Erase the table behind it, so only the mango is left.',
+    ai4t:'4. Find the bruise', ai4:'Colour the bruised part orange and the good part green, then say how many percent is bruised.',
+    ai5t:'5. Look closely', ai5:'Look at the colours, patterns and shape of the bruise, then guess if the mango was bumped or shaken.',
+    ai6t:'6. Save the results', ai6:'Save the pictures and numbers so the scientists can use them.',
+    aiTry:'See the real website at <a href="https://iate-fruitbruise.com/" target="_blank" rel="noopener"><b>iate-fruitbruise.com</b></a> (ask a grown-up to open it).',
     catTitle:'Just like when you learned what a "cat" is',
-    catText:"When you were little, you saw lots of cats: orange ones, black ones, fat ones, skinny ones. Soon you just knew: that's a cat! Dr. Bot is the same. The team showed Dr. Bot lots and lots of mango pictures: green ones, yellow ones, and peeled ones, until it remembered what a bruise looks like.",
-    tonesAria:'Different mango colours Dr. Bot has to learn',
-    bgTitle:'Oops! Dr. Bot learned the wrong clue once',
-    bgText:'When we taught Dr. Bot, the bumped mangoes were photographed on a white table and the shaken mangoes on a grey table. So Dr. Bot secretly remembered the table colour instead of looking at the bruise! Now the team is teaching it again so it only looks at the mango.',
+    catText:"When you were little, you saw lots of cats: orange ones, black ones, fat ones, skinny ones. Soon you just knew: that's a cat! The computer in our website is the same. The team showed it more than a thousand mango photos, with the skin on and peeled, until it remembered what a bruise looks like.",
+    tonesAria:'Different mangoes the computer has to learn',
+    bgTitle:'Oops! Our computer learned the wrong clue once',
+    bgText:'When we taught our computer, the bumped mangoes were photographed on a white table and the shaken mangoes on a grey table. So the computer secretly remembered the table colour instead of looking at the bruise! Now the team is teaching it again so it only looks at the mango.',
     bgWhite:'White table = bumped?', bgGrey:'Grey table = shaken?',
-    gameTitle:'Who is better? You or Dr. Bot!',
-    gameLead:'Look at the picture and say if the mango is bruised. Dr. Bot will answer too. Sometimes robots get it wrong!',
+    gameTitle:'Who is better? You or Mango Bot!',
+    gameLead:'Look at the picture and say if the mango is bruised. Mango Bot will answer the way our computer does. Sometimes computers get it wrong!',
     you:'You', yes:'Bruised', no:'Not bruised',
     careTitle:'Let\'s keep mangoes from getting bruised',
     careH:'Do it like this',
@@ -506,7 +527,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     warn1:'Has big black patches and is mushy',
     warn2:'Smells strange and sour',
     warn3:'Has white or green fuzz on it (that is mould)',
-    note1:'<b>Dr. Bot is still learning</b><br>Dr. Bot is a project made by university students. It can make mistakes, so a person should always check.',
+    note1:'<b>Mango Bot is just a cartoon</b><br>The real thing is the website iate-fruitbruise.com, made by the IATE team at Mae Fah Luang University. Computers can make mistakes, so a person should always check.',
     note2:'<b>Our real system</b><br>The real system uses real mango photos and measures the bruise in square centimetres. All pictures on this website are cartoons.',
     footer:'An AI mango bruise detection project · Thanks for visiting our booth!'
   };
@@ -514,7 +535,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   /* ---------- text for parts drawn by script ---------- */
   var T={
     th:{
-      title:'หมอบอทตามหามะม่วงช้ำ',
+      title:'ตามหามะม่วงช้ำกับบอทมะม่วง',
       day:function(d){return 'วันที่ '+d},
       stages:[
         {max:0,name:'แทบมองไม่เห็น',text:'เพิ่งโดนกระแทก ข้างนอกยังดูปกติ แต่เซลล์ข้างในแตกไปแล้ว'},
@@ -528,28 +549,28 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
       kidOk:'หนูตอบถูก!', kidNo:'อุ๊ย หนูตอบผิด',
       kidSaid:function(a){return 'หนูตอบว่า: '+a},
       yes:'ช้ำ', no:'ไม่ช้ำ',
-      thinking:'หมอบอทกำลังคิด',
-      botOk:'หมอบอทตอบถูก', botNo:'หมอบอทตอบผิด!',
-      botSaid:function(a,c){return 'หมอบอทตอบว่า: '+a+' · มั่นใจ '+c+'%'},
+      thinking:'บอทมะม่วงกำลังคิด',
+      botOk:'บอทมะม่วงตอบถูก', botNo:'บอทมะม่วงตอบผิด!',
+      botSaid:function(a,c){return 'บอทมะม่วงตอบว่า: '+a+' · มั่นใจ '+c+'%'},
       answer:function(n){return 'คำเฉลย: '+n},
       next:'รูปต่อไป', seeScore:'ดูผลคะแนน',
-      win:'หนูชนะหมอบอท! เก่งมากเลย', tie:'เสมอกัน! หนูกับหมอบอทเก่งพอๆ กัน', lose:'หมอบอทชนะรอบนี้ ลองใหม่อีกครั้งนะ!',
-      scoreLine:function(k,b){return 'หนูได้ '+k+' คะแนน หมอบอทได้ '+b+' คะแนน'},
-      lesson:'หมอบอทยังตอบผิดได้ เช่น เข้าใจผิดว่าเงาเป็นรอยช้ำ นี่แหละคือเหตุผลที่ AI ต้องเรียนรู้จากรูปเยอะๆ และต้องมีคนช่วยตรวจเสมอ',
+      win:'หนูชนะบอทมะม่วง! เก่งมากเลย', tie:'เสมอกัน! หนูกับบอทมะม่วงเก่งพอๆ กัน', lose:'บอทมะม่วงชนะรอบนี้ ลองใหม่อีกครั้งนะ!',
+      scoreLine:function(k,b){return 'หนูได้ '+k+' คะแนน บอทมะม่วงได้ '+b+' คะแนน'},
+      lesson:'บอทมะม่วงยังตอบผิดได้ เช่น เข้าใจผิดว่าเงาเป็นรอยช้ำ นี่แหละคือเหตุผลที่ AI ต้องเรียนรู้จากรูปเยอะๆ และต้องมีคนช่วยตรวจเสมอ',
       again:'เล่นอีกครั้ง',
       cards:{
         brown:{name:'รอยช้ำสีน้ำตาล',why:'นี่คือรอยช้ำ! เป็นสีน้ำตาล ขอบฟุ้งๆ เนื้อข้างใต้จะนิ่ม'},
         spot:{name:'รอยช้ำจากการกระแทก',why:'มะม่วงลูกนี้ตกพื้น รอยกระแทกจะเป็นวงกลมสีเข้ม อยู่จุดเดียว'},
-        shake:{name:'รอยช้ำจากการเขย่า',why:'มะม่วงลูกนี้สั่นไปมาบนรถขนส่ง รอยจะจางๆ กระจายหลายจุด หมอบอทตอบถูก แต่ไม่ค่อยมั่นใจ เพราะสีจางมาก'},
-        shadow:{name:'เงา',why:'นี่คือเงาเฉยๆ! หมอบอทสับสน เพราะเงาก็เป็นสีเข้มเหมือนรอยช้ำ พี่ๆ ต้องสอนด้วยรูปเงาเพิ่มอีก'},
+        shake:{name:'รอยช้ำจากการเขย่า',why:'มะม่วงลูกนี้สั่นไปมาบนรถขนส่ง รอยจะจางๆ กระจายหลายจุด บอทมะม่วงตอบถูก แต่ไม่ค่อยมั่นใจ เพราะสีจางมาก'},
+        shadow:{name:'เงา',why:'นี่คือเงาเฉยๆ! บอทมะม่วงสับสน เพราะเงาก็เป็นสีเข้มเหมือนรอยช้ำ พี่ๆ ต้องสอนด้วยรูปเงาเพิ่มอีก'},
         dirt:{name:'ดินติดเปลือก',why:'นี่คือดินติดอยู่ ล้างออกได้ เป็นจุดๆ ขอบคม ไม่เหมือนรอยช้ำ'},
         dots:{name:'จุดเล็กๆ บนเปลือก',why:'มะม่วงมีจุดเล็กๆ บนเปลือกอยู่แล้วตามธรรมชาติ ไม่ใช่รอยช้ำ'},
         green:{name:'ส่วนที่ยังไม่สุก',why:'ตรงนี้เป็นสีเขียวเพราะยังไม่สุก ไม่ใช่สีน้ำตาล เลยไม่ใช่รอยช้ำ'},
-        ink:{name:'รอยปากกาเมจิก',why:'นี่คือรอยปากกาเมจิก! สีเข้มทำให้หมอบอทเข้าใจผิดว่าเป็นรอยช้ำ'}
+        ink:{name:'รอยปากกาเมจิก',why:'นี่คือรอยปากกาเมจิก! สีเข้มทำให้บอทมะม่วงเข้าใจผิดว่าเป็นรอยช้ำ'}
       }
     },
     en:{
-      title:'Dr. Bot finds bruised mangoes',
+      title:'Find bruised mangoes with Mango Bot',
       day:function(d){return 'Day '+d},
       stages:[
         {max:0,name:'Hard to see',text:'Just bumped. The outside still looks normal, but the cells inside are already broken.'},
@@ -563,24 +584,24 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
       kidOk:'You got it right!', kidNo:'Oops, not quite',
       kidSaid:function(a){return 'You said: '+a},
       yes:'Bruised', no:'Not bruised',
-      thinking:'Dr. Bot is thinking',
-      botOk:'Dr. Bot got it right', botNo:'Dr. Bot got it wrong!',
-      botSaid:function(a,c){return 'Dr. Bot said: '+a+' · '+c+'% sure'},
+      thinking:'Mango Bot is thinking',
+      botOk:'Mango Bot got it right', botNo:'Mango Bot got it wrong!',
+      botSaid:function(a,c){return 'Mango Bot said: '+a+' · '+c+'% sure'},
       answer:function(n){return 'Answer: '+n},
       next:'Next picture', seeScore:'See the score',
-      win:'You beat Dr. Bot! Great job!', tie:"It's a tie! You and Dr. Bot are just as good", lose:'Dr. Bot wins this round. Try again!',
-      scoreLine:function(k,b){return 'You got '+k+' points. Dr. Bot got '+b+' points.'},
-      lesson:'Dr. Bot can still make mistakes, like thinking a shadow is a bruise. That is why AI needs to learn from lots of pictures, and a person should always check.',
+      win:'You beat Mango Bot! Great job!', tie:"It's a tie! You and Mango Bot are just as good", lose:'Mango Bot wins this round. Try again!',
+      scoreLine:function(k,b){return 'You got '+k+' points. Mango Bot got '+b+' points.'},
+      lesson:'Mango Bot can still make mistakes, like thinking a shadow is a bruise. That is why AI needs to learn from lots of pictures, and a person should always check.',
       again:'Play again',
       cards:{
         brown:{name:'Brown bruise',why:'This is a bruise! It is brown with blurry edges, and the flesh underneath is soft.'},
         spot:{name:'Bump bruise',why:'This mango fell on the floor. A bump bruise is a dark round patch in one place.'},
-        shake:{name:'Shake bruise',why:'This mango was shaken around in a truck. The bruises are faint and spread out. Dr. Bot got it right but was not very sure, because they are so light.'},
-        shadow:{name:'Shadow',why:'This is just a shadow! Dr. Bot got confused because shadows are dark like bruises. The team needs to teach it with more shadow pictures.'},
+        shake:{name:'Shake bruise',why:'This mango was shaken around in a truck. The bruises are faint and spread out. Mango Bot got it right but was not very sure, because they are so light.'},
+        shadow:{name:'Shadow',why:'This is just a shadow! Mango Bot got confused because shadows are dark like bruises. The team needs to teach it with more shadow pictures.'},
         dirt:{name:'Dirt on the skin',why:'This is dirt. It washes off. It is made of spots with sharp edges, not like a bruise.'},
         dots:{name:'Tiny dots on the skin',why:'Mangoes naturally have tiny dots on their skin. They are not bruises.'},
         green:{name:'Not ripe yet',why:'This part is green because it is not ripe yet. It is not brown, so it is not a bruise.'},
-        ink:{name:'Marker pen',why:'This is marker pen! The dark colour made Dr. Bot think it was a bruise.'}
+        ink:{name:'Marker pen',why:'This is marker pen! The dark colour made Mango Bot think it was a bruise.'}
       }
     }
   };

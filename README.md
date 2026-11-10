@@ -1,11 +1,11 @@
-# หมอบอท (Dr. Bot) — Booth website for the project show
+# บอทมะม่วง (Mango Bot) — Booth website for the project show
 
-A Thai / English website for primary school kids that explains our AI mango bruise detection project (IATE team, School of Agro-Industry, Mae Fah Luang University).
+A Thai / English website for primary school kids that explains our AI mango bruise detection website, [iate-fruitbruise.com](https://iate-fruitbruise.com/) (IATE team, School of Agro-Industry, Mae Fah Luang University), in easy words. Mango Bot is only a cartoon helper for the booth; the real project is the website.
 
 | File | Page |
 |---|---|
 | `index.html` | Landing page: the project in 3 picture cards, and links to each activity |
-| `learn.html` | How mangoes get bruised, the bruise-darkening slider, how the AI learns, and the "You vs Dr. Bot" mango quiz (`learn.html#game`) |
+| `learn.html` | How mangoes get bruised, the bruise-darkening slider, how the AI learns, and the 6 steps of the real website, and the "You vs Mango Bot" mango quiz (`learn.html#game`) |
 | `mango.html` | Mango catch game: good mango +1, bruised mango −1, target score wins a prize |
 
 ## Run it
