@@ -12,7 +12,8 @@ A kid-friendly website for our university project show (Innofest) at a primary s
 
 ## Tech rules
 - Plain HTML/CSS/JS, one self-contained file per page, no build step, no frameworks. Keep it that way.
-- Fonts: Google Fonts "Itim" (display) and "Mali" (body), with Thai system font fallbacks.
+- Fonts: "Itim" (display) and "Mali" (body), with Thai system font fallbacks. They are copied into assets/fonts/ (Thai + Latin woff2, fonts.css, OFL licence files) so the site works offline. Do NOT link Google Fonts or any other online resource: the booth must work with no internet.
+- Offline: sw.js (service worker, registered at the end of every page) saves every file in its FILES list on first visit, then serves saved copies and refreshes them in the background. When you add or rename a file a page needs, add it to FILES and bump VERSION in sw.js.
 - Bilingual Thai/English: a ไทย | EN toggle in every header. Language is saved in localStorage key "drbot-lang", shared across pages. Static text uses data-i18n (index/learn) or data-k (mango) attributes with an EN dictionary in the page script; Thai is the default and lives in the HTML. Any new text MUST get both Thai and English.
 - Design: "sticker-book" style (3px navy outlines, offset hard shadows, rounded corners), colours as CSS tokens on :root with a dark-mode version. Keep big touch targets for small hands, and make it work on tablets and phones.
 - Content rules: cartoon drawings only. Keep the "Mango Bot is just a cartoon; the real project is the website; computers can make mistakes so people check" and "be gentle with mangoes" messages. Facts about the system must match the research website (iate-fruitbruise.com, for reference only, never linked) and the user manual (~/Downloads/Mango_Bruise_Detection_System__User_Manual.pdf). Simple words a 7-year-old understands.

@@ -20,7 +20,11 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-Fonts (Itim, Mali) load from Google Fonts, so the first load needs internet. Without internet the pages fall back to system Thai fonts.
+Everything (fonts included) is inside this folder, so the site does not need any online resources.
+
+## Works offline (booth tablet)
+
+`sw.js` saves the whole site on the device the first time it opens with internet. Before the show, open `https://mango-innofest.vercel.app` once on the booth tablet while you have Wi-Fi (opening any one page saves all 3). After that it works with no internet. When the site is updated, the tablet picks up the new version the next time it is opened with internet, and shows it on the visit after that.
 
 ## Booth notes
 
