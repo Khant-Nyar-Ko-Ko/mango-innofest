@@ -163,8 +163,8 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
       win:'ได้รางวัล!',winSub:function(s){return 'เก่งมาก! ได้ '+s+' คะแนน ไปรับขนมมะม่วงจากพี่ๆ ได้เลย'},
       lose:'เกือบแล้ว!',loseSub:function(s,n){return 'ได้ '+s+' คะแนน ต้องการ '+n+' คะแนน รับสติกเกอร์ไปก่อนนะ แล้วลองใหม่ได้!'},
       stats:function(g,b){return ['มะม่วงดี '+g+' ลูก','มะม่วงช้ำ '+b+' ลูก']},
-      tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม เหมือนรอยฟกช้ำบนผิวเลย',
-      fact:'รู้ไหม? โรงงานผลไม้ใช้กล้องและ AI คัดมะม่วงช้ำออก เหมือนที่หมอบอทหารอยฟกช้ำบนผิว',
+      tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม ขอบฟุ้งๆ',
+      fact:'รู้ไหม? หมอบอทดูรูปมะม่วง แล้วบอกได้ว่าช้ำกี่เปอร์เซ็นต์ และช้ำเพราะโดนกระแทกหรือโดนเขย่า',
       again:'เล่นอีกครั้ง',staff:'ตั้งค่าสำหรับทีมงาน',setTarget:'คะแนนเป้าหมาย',setTime:'เวลาต่อรอบ (วินาที)',setSpeed:'ความเร็ว',setBad:'จำนวนมะม่วงช้ำ',
       slow:'ช้า',normal:'ปกติ',fast:'เร็ว',few:'น้อย',many:'เยอะ',saved:'บันทึกไว้ในเครื่องนี้อัตโนมัติ',canvas:'เกมเก็บมะม่วง'},
     en:{home:'← Home',title:"Dr. Bot's Mango Farm",sub:'Help Dr. Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
@@ -173,8 +173,8 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
       win:'You win a prize!',winSub:function(s){return 'Great job! You got '+s+' points. Collect your mango candy from the team!'},
       lose:'So close!',loseSub:function(s,n){return 'You got '+s+' points and needed '+n+'. Take a sticker, and try again!'},
       stats:function(g,b){return ['Good mangoes: '+g,'Bruised mangoes: '+b]},
-      tip:'Tip: bruised mangoes have dark brown spots, just like a bruise on skin.',
-      fact:'Did you know? Fruit factories use cameras and AI to sort out bruised mangoes, just like Dr. Bot finds bruises on skin.',
+      tip:'Tip: bruised mangoes have dark brown spots with blurry edges.',
+      fact:'Did you know? Dr. Bot looks at a mango photo and tells how many percent is bruised, and whether the mango was bumped or shaken.',
       again:'Play again',staff:'Team settings',setTarget:'Target score',setTime:'Round time (seconds)',setSpeed:'Speed',setBad:'Bruised mangoes',
       slow:'Slow',normal:'Normal',fast:'Fast',few:'Few',many:'Many',saved:'Saved on this device automatically',canvas:'Mango catching game'}
   };
@@ -188,6 +188,7 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
   function t(k){return S[lang][k]}
   function applyLang(){
     document.documentElement.lang=lang;
+    document.title=t('title');
     document.querySelectorAll('[data-k]').forEach(function(el){var v=t(el.getAttribute('data-k')); if(typeof v==='string') el.textContent=v;});
     $('cv').setAttribute('aria-label',t('canvas'));
     $('goalText').innerHTML=t('goalText')(cfg.target,cfg.time);

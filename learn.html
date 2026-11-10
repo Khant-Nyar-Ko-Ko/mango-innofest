@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>หมอบอทตามหารอยช้ำ</title>
+<title>หมอบอทตามหามะม่วงช้ำ</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,6 +183,11 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
 .home-link:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
 .top-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 </style>
+<style>
+.analogy + .analogy{margin-top:18px}
+.bgs{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.bgs span{font-size:.95rem;padding:2px 12px;border-radius:999px;border:3px solid var(--line);color:#1E2847}
+</style>
 
 <!-- ===== Mascot (reused) ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -198,7 +203,8 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
       <rect x="6" y="46" width="12" height="22" rx="6" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
       <rect x="102" y="46" width="12" height="22" rx="6" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
       <rect x="40" y="90" width="40" height="22" rx="8" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/>
-      <path d="M54 101h12M60 95v12" stroke="#FF6A57" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="60" cy="102" rx="8" ry="6.5" fill="#FFB627" stroke="#1E2847" stroke-width="2.5"/>
+      <path d="M61 96 q4 -5 9 -3" fill="none" stroke="#1F9D55" stroke-width="3" stroke-linecap="round"/>
     </symbol>
   </defs>
 </svg>
@@ -209,11 +215,11 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     <div class="top-right">
       <a class="home-link" href="index.html" data-i18n="home">← หน้าแรก</a>
       <nav class="nav" data-i18n-aria="navAria" aria-label="ไปที่หัวข้อ">
-        <a href="#what" data-i18n="nav1">รอยฟกช้ำคืออะไร</a>
-        <a href="#colors" data-i18n="nav2">สีเปลี่ยนได้</a>
+        <a href="#what" data-i18n="nav1">มะม่วงช้ำคืออะไร</a>
+        <a href="#colors" data-i18n="nav2">รอยช้ำเข้มขึ้น</a>
         <a href="#ai" data-i18n="nav3">AI เรียนรู้ยังไง</a>
         <a href="#game" data-i18n="nav4">เกมแข่งหุ่นยนต์</a>
-        <a href="#care" data-i18n="nav5">ดูแลตัวเอง</a>
+        <a href="#care" data-i18n="nav5">ดูแลมะม่วง</a>
       </nav>
       <div class="lang" role="group" aria-label="ภาษา / Language">
         <button type="button" id="langTh" lang="th" aria-pressed="true">ไทย</button>
@@ -228,69 +234,69 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   <div class="wrap">
     <div class="hero-copy">
       <p class="eyebrow" data-i18n="heroEyebrow">โครงงานปัญญาประดิษฐ์ (AI)</p>
-      <h1 data-i18n="heroTitle">คอมพิวเตอร์<br><mark>หารอยฟกช้ำ</mark>ได้ไหมนะ?</h1>
-      <p class="lead" data-i18n="heroLead">สวัสดี! ฉันชื่อ <b>หมอบอท</b> ฉันเป็นหุ่นยนต์ที่ถูกสอนให้ดูรูปผิวหนัง แล้วบอกว่าตรงไหนมีรอยฟกช้ำ มาดูกันว่าฉันทำได้ยังไง แล้วมาแข่งกันว่าใครเก่งกว่า!</p>
+      <h1 data-i18n="heroTitle">คอมพิวเตอร์<br><mark>หามะม่วงช้ำ</mark>ได้ไหมนะ?</h1>
+      <p class="lead" data-i18n="heroLead">สวัสดี! ฉันชื่อ <b>หมอบอท</b> ฉันเป็นหุ่นยนต์หมอมะม่วง ฉันถูกสอนให้ดูรูปมะม่วง แล้วบอกว่าตรงไหนช้ำ มาดูกันว่าฉันทำได้ยังไง แล้วมาแข่งกันว่าใครเก่งกว่า!</p>
       <div class="hero-ctas">
         <a class="btn" href="#game" data-i18n="ctaPlay">มาแข่งกับหมอบอท</a>
         <a class="btn ghost" href="#what" data-i18n="ctaLearn">เรียนรู้ก่อน</a>
       </div>
     </div>
     <div class="hero-art sticker">
-      <svg viewBox="0 0 400 300" role="img" data-i18n-aria="heroAria" aria-label="ภาพตัวอย่าง: หมอบอทเจอรอยฟกช้ำบนแขน แล้ววาดกรอบล้อมไว้ พร้อมบอกว่ามั่นใจ 92 เปอร์เซ็นต์">
+      <svg viewBox="0 0 400 300" role="img" data-i18n-aria="heroAria" aria-label="ภาพตัวอย่าง: หมอบอทเจอรอยช้ำบนมะม่วง ระบายส่วนที่ช้ำเป็นสีส้ม และบอกว่าช้ำ 12 เปอร์เซ็นต์">
         <defs>
           <radialGradient id="heroBruise">
-            <stop offset="0" stop-color="#4B2E7A" stop-opacity=".9"/>
-            <stop offset=".55" stop-color="#7E5BA6" stop-opacity=".65"/>
-            <stop offset="1" stop-color="#E0AC8A" stop-opacity="0"/>
+            <stop offset="0" stop-color="#5A3418" stop-opacity=".85"/>
+            <stop offset=".55" stop-color="#8A5A2B" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#FFB627" stop-opacity="0"/>
           </radialGradient>
         </defs>
-        <rect x="10" y="10" width="380" height="250" rx="18" fill="#CFEAF5"/>
-        <path d="M10 120 C120 96 260 100 390 112 L390 222 C260 232 120 232 10 214 Z" fill="#E0AC8A" stroke="#1E2847" stroke-width="4"/>
-        <ellipse cx="210" cy="166" rx="46" ry="30" fill="url(#heroBruise)"/>
-        <g class="scan"><rect x="10" y="100" width="380" height="6" fill="#11968E" opacity=".55"/></g>
+        <rect x="10" y="10" width="380" height="250" rx="18" fill="#E4E8EE"/>
+        <path d="M60 150 C52 82 140 50 220 54 C300 58 340 104 330 152 C320 204 240 222 160 214 C96 207 64 188 60 150Z" fill="#FFB627" stroke="#1E2847" stroke-width="4"/>
+        <path d="M310 70 q18 -26 44 -20" fill="none" stroke="#1F9D55" stroke-width="7" stroke-linecap="round"/>
+        <ellipse cx="170" cy="150" rx="48" ry="32" fill="url(#heroBruise)"/>
+        <g class="scan"><rect x="10" y="60" width="380" height="6" fill="#11968E" opacity=".55"/></g>
         <g class="boxpop">
-          <rect x="154" y="128" width="112" height="76" rx="6" fill="none" stroke="#FF6A57" stroke-width="5" stroke-dasharray="12 7"/>
-          <rect x="154" y="98" width="136" height="30" rx="8" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
-          <text x="222" y="119" text-anchor="middle" font-family="Itim, Mali, sans-serif" font-size="19" fill="#1E2847" data-i18n="heroTag">รอยฟกช้ำ 92%</text>
+          <ellipse cx="170" cy="150" rx="44" ry="28" fill="#FF8A1F" fill-opacity=".55" stroke="#FF6A57" stroke-width="4" stroke-dasharray="10 6"/>
+          <rect x="120" y="86" width="120" height="30" rx="8" fill="#FF8A1F" stroke="#1E2847" stroke-width="3"/>
+          <text x="180" y="107" text-anchor="middle" font-family="Itim, Mali, sans-serif" font-size="19" fill="#1E2847" data-i18n="heroTag">ช้ำ 12%</text>
         </g>
         <use href="#bot" x="300" y="196" width="96" height="96"/>
       </svg>
-      <p class="caption" data-i18n="heroCaption">ตัวอย่างหน้าจอ: หมอบอทวาดกรอบรอบรอยฟกช้ำ แล้วบอกว่ามั่นใจแค่ไหน</p>
+      <p class="caption" data-i18n="heroCaption">ตัวอย่างหน้าจอ: หมอบอทระบายส่วนที่ช้ำเป็นสีส้ม แล้วบอกว่าช้ำไปกี่เปอร์เซ็นต์</p>
     </div>
   </div>
 </section>
 
-<!-- ===== WHAT IS A BRUISE ===== -->
+<!-- ===== WHAT IS A MANGO BRUISE ===== -->
 <section class="band alt" id="what">
   <div class="wrap two">
     <div>
       <div class="sec-head">
         <p class="eyebrow" data-i18n="part1">ตอนที่ 1</p>
-        <h2 data-i18n="whatTitle">รอยฟกช้ำคืออะไร?</h2>
-        <p class="lead" data-i18n="whatLead">ใต้ผิวหนังของเรามีเส้นเลือดเล็กๆ เยอะมาก เวลาเราชนอะไรแรงๆ ก็จะเกิดแบบนี้</p>
+        <h2 data-i18n="whatTitle">มะม่วงช้ำคืออะไร?</h2>
+        <p class="lead" data-i18n="whatLead">ใต้เปลือกมะม่วงมีเนื้อนิ่มๆ ที่ทำจากเซลล์เล็กๆ เยอะมาก ถ้ามะม่วงโดนแรงๆ ก็จะเกิดแบบนี้</p>
       </div>
       <ol class="steps">
-        <li class="sticker"><span class="num">1</span><span data-i18n="step1"><b>ชน หรือ กระแทก</b><br>เช่น ล้ม หรือเดินชนโต๊ะ</span></li>
-        <li class="sticker"><span class="num">2</span><span data-i18n="step2"><b>เส้นเลือดเล็กๆ แตก</b><br>แต่ผิวหนังข้างบนไม่ขาด</span></li>
-        <li class="sticker"><span class="num">3</span><span data-i18n="step3"><b>เลือดซึมอยู่ใต้ผิว</b><br>เราเลยเห็นเป็นรอยสีคล้ำๆ</span></li>
+        <li class="sticker"><span class="num">1</span><span data-i18n="step1"><b>โดนกระแทก หรือโดนเขย่า</b><br>เช่น ตกพื้น โดนชน หรือสั่นไปมาบนรถขนส่ง</span></li>
+        <li class="sticker"><span class="num">2</span><span data-i18n="step2"><b>เซลล์ข้างในถูกบีบจนแตก</b><br>แต่เปลือกข้างนอกไม่ขาด</span></li>
+        <li class="sticker"><span class="num">3</span><span data-i18n="step3"><b>เนื้อตรงนั้นกลายเป็นสีน้ำตาล</b><br>เราเลยเห็นเป็นรอยคล้ำๆ นิ่มๆ บนมะม่วง</span></li>
       </ol>
     </div>
     <div class="diagram sticker">
-      <svg viewBox="0 0 420 300" role="img" data-i18n-aria="diagramAria" aria-label="ภาพตัดผิวหนัง: มีเส้นเลือดเล็กๆ อยู่ข้างใต้ เส้นหนึ่งแตกและเลือดซึมออกมา">
-        <rect x="10" y="40" width="400" height="40" rx="8" fill="#F1C3A3" stroke="#1E2847" stroke-width="3"/>
-        <rect x="10" y="80" width="400" height="170" rx="8" fill="#F7DCC8" stroke="#1E2847" stroke-width="3"/>
-        <path d="M10 140 C90 120 150 160 230 140 S350 120 410 140" fill="none" stroke="#D2384F" stroke-width="9" stroke-linecap="round"/>
-        <path d="M10 200 C100 185 170 215 260 198 S370 190 410 205" fill="none" stroke="#D2384F" stroke-width="7" stroke-linecap="round"/>
-        <g fill="#8B2D5A" opacity=".75">
-          <circle cx="232" cy="118" r="7"/><circle cx="250" cy="108" r="5"/><circle cx="214" cy="104" r="6"/>
-          <circle cx="242" cy="96" r="4"/><circle cx="222" cy="122" r="5"/><circle cx="262" cy="122" r="4"/>
-          <circle cx="200" cy="116" r="4"/>
-        </g>
-        <path d="M230 4 l8 18 18 2 -14 12 4 18 -16 -10 -16 10 4 -18 -14 -12 18 -2z" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/>
-        <text x="20" y="66" data-i18n="dSkin">ผิวหนัง</text>
-        <text x="20" y="122" data-i18n="dVessel">เส้นเลือดเล็กๆ</text>
-        <text x="282" y="100" data-i18n="dLeak">เลือดซึมออกมา</text>
-        <line x1="280" y1="96" x2="258" y2="108" stroke="#1E2847" stroke-width="2"/>
+      <svg viewBox="0 0 420 300" role="img" data-i18n-aria="diagramAria" aria-label="ภาพผ่าครึ่งมะม่วง: มีเปลือก เนื้อสีเหลือง และเมล็ด ตรงที่โดนกระแทก เนื้อกลายเป็นสีน้ำตาล">
+        <rect x="0" y="0" width="420" height="300" rx="14" fill="#CFEAF5"/>
+        <ellipse cx="210" cy="170" rx="190" ry="110" fill="#8CC152" stroke="#1E2847" stroke-width="3"/>
+        <ellipse cx="210" cy="170" rx="180" ry="100" fill="#FFC94A"/>
+        <ellipse cx="210" cy="170" rx="110" ry="45" fill="#F3E3B0" stroke="#1E2847" stroke-width="3"/>
+        <ellipse cx="232" cy="94" rx="42" ry="24" fill="#8A5A2B" opacity=".75"/>
+        <ellipse cx="232" cy="90" rx="24" ry="13" fill="#5A3418" opacity=".7"/>
+        <path d="M232 4 l8 18 18 2 -14 12 4 18 -16 -10 -16 10 4 -18 -14 -12 18 -2z" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/>
+        <text x="20" y="40" data-i18n="dSkin">เปลือก</text>
+        <line x1="44" y1="48" x2="78" y2="88" stroke="#1E2847" stroke-width="2"/>
+        <text x="170" y="180" data-i18n="dSeed">เมล็ด</text>
+        <text x="150" y="252" data-i18n="dFlesh">เนื้อมะม่วง</text>
+        <text x="282" y="128" data-i18n="dBruise">เนื้อช้ำ</text>
+        <line x1="280" y1="122" x2="262" y2="104" stroke="#1E2847" stroke-width="2"/>
         <text x="270" y="30" data-i18n="dBonk">ปั้ก!</text>
       </svg>
     </div>
@@ -302,28 +308,29 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow" data-i18n="part2">ตอนที่ 2</p>
-      <h2 data-i18n="colTitle">รอยฟกช้ำเปลี่ยนสีได้ด้วย!</h2>
-      <p class="lead" data-i18n="colLead">ร่างกายของเราค่อยๆ เก็บกวาดเลือดที่ซึมออกมา สีของรอยช้ำเลยเปลี่ยนไปทุกวัน ลองเลื่อนแถบข้างล่างดูสิ</p>
+      <h2 data-i18n="colTitle">รอยช้ำบนมะม่วงค่อยๆ เข้มขึ้น!</h2>
+      <p class="lead" data-i18n="colLead">ผิวของเราหายช้ำเองได้ แต่มะม่วงหายเองไม่ได้! รอยช้ำจะค่อยๆ เข้มขึ้นทุกวัน ลองเลื่อนแถบข้างล่างดูสิ</p>
     </div>
     <div class="timeline sticker">
-      <svg viewBox="0 0 400 220" role="img" data-i18n-aria="armAria" aria-label="แขนที่มีรอยฟกช้ำ สีเปลี่ยนตามวัน">
+      <svg viewBox="0 0 400 220" role="img" data-i18n-aria="armAria" aria-label="มะม่วงที่มีรอยช้ำ สีเข้มขึ้นตามวัน">
         <defs>
           <radialGradient id="dayBruise">
-            <stop id="dS0" offset="0" stop-color="#C83A4E" stop-opacity=".9"/>
-            <stop id="dS1" offset=".55" stop-color="#C83A4E" stop-opacity=".6"/>
-            <stop offset="1" stop-color="#E0AC8A" stop-opacity="0"/>
+            <stop id="dS0" offset="0" stop-color="#F0AA3C" stop-opacity=".15"/>
+            <stop id="dS1" offset=".55" stop-color="#F0AA3C" stop-opacity=".1"/>
+            <stop offset="1" stop-color="#FFB627" stop-opacity="0"/>
           </radialGradient>
         </defs>
-        <path d="M0 50 C120 26 260 30 400 42 L400 172 C260 182 120 182 0 164 Z" fill="#E0AC8A" stroke="#1E2847" stroke-width="4"/>
-        <ellipse cx="200" cy="106" rx="62" ry="40" fill="url(#dayBruise)"/>
+        <path d="M30 116 C24 56 110 22 200 24 C290 26 376 64 368 118 C360 172 280 200 190 196 C100 192 36 172 30 116Z" fill="#FFB627" stroke="#1E2847" stroke-width="4"/>
+        <path d="M340 44 q16 -24 42 -18" fill="none" stroke="#1F9D55" stroke-width="7" stroke-linecap="round"/>
+        <ellipse cx="190" cy="112" rx="66" ry="42" fill="url(#dayBruise)"/>
       </svg>
       <div class="stage">
         <div class="day-label" id="dayLabel">วันที่ 0</div>
-        <div class="stage-name"><span class="swatch" id="swatch"></span><span id="stageName">สีแดง</span></div>
-        <p id="stageText">เพิ่งชนมาใหม่ๆ เลือดเพิ่งซึมออกมาใต้ผิว</p>
+        <div class="stage-name"><span class="swatch" id="swatch"></span><span id="stageName">แทบมองไม่เห็น</span></div>
+        <p id="stageText">เพิ่งโดนกระแทก ข้างนอกยังดูปกติ แต่เซลล์ข้างในแตกไปแล้ว</p>
         <label for="day" class="hint" data-i18n="slideHint">เลื่อนเพื่อดูแต่ละวัน</label>
-        <input type="range" id="day" min="0" max="14" step="1" value="0">
-        <div class="ticks"><span data-i18n="tick0">วันที่ 0</span><span>7</span><span>14</span></div>
+        <input type="range" id="day" min="0" max="7" step="1" value="0">
+        <div class="ticks"><span data-i18n="tick0">วันที่ 0</span><span>7</span></div>
       </div>
     </div>
   </div>
@@ -341,26 +348,36 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
       <div class="ai-step sticker">
         <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="10" y="26" width="76" height="52" rx="12" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><rect x="32" y="16" width="32" height="14" rx="5" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><circle cx="48" cy="52" r="16" fill="#fff" stroke="#1E2847" stroke-width="4"/><circle cx="48" cy="52" r="7" fill="#1E2847"/></svg>
         <h3 data-i18n="ai1t">1. ดู</h3>
-        <p data-i18n="ai1">ถ่ายรูปผิวหนังด้วยกล้อง แล้วส่งรูปให้หมอบอท</p>
+        <p data-i18n="ai1">ถ่ายรูปมะม่วงบนโต๊ะสีเรียบๆ แล้วส่งรูปให้หมอบอท</p>
       </div>
       <div class="ai-step sticker">
         <svg viewBox="0 0 96 96" aria-hidden="true"><path d="M48 14c-14 0-22 8-22 18-8 2-12 9-12 16 0 8 6 14 12 15 0 10 8 18 22 18s22-8 22-18c6-1 12-7 12-15 0-7-4-14-12-16 0-10-8-18-22-18z" fill="#FFC83D" stroke="#1E2847" stroke-width="4"/><path d="M48 18v62M34 34c6 4 8 10 6 16M62 34c-6 4-8 10-6 16M30 60c6-2 12 0 14 6M66 60c-6-2-12 0-14 6" fill="none" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/></svg>
         <h3 data-i18n="ai2t">2. คิด</h3>
-        <p data-i18n="ai2">เทียบกับรูปหลายพันรูปที่เคยเห็นมาก่อน ว่าเหมือนรอยฟกช้ำไหม</p>
+        <p data-i18n="ai2">ตัดพื้นหลังออก เหลือแค่มะม่วง แล้วดูสีและลวดลายบนเปลือก เทียบกับรูปมะม่วงกว่าพันรูปที่เคยเรียนมา</p>
       </div>
       <div class="ai-step sticker">
-        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="12" y="20" width="72" height="56" rx="10" fill="#fff" stroke="#1E2847" stroke-width="4"/><rect x="30" y="34" width="36" height="28" fill="none" stroke="#FF6A57" stroke-width="4" stroke-dasharray="7 4"/><circle cx="72" cy="70" r="16" fill="#1F9D55" stroke="#1E2847" stroke-width="4"/><path d="M64 70l6 6 10-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="12" y="20" width="72" height="56" rx="10" fill="#fff" stroke="#1E2847" stroke-width="4"/><path d="M22 50 C20 36 36 28 50 29 C64 30 72 40 70 50 C68 62 54 66 42 64 C30 63 23 58 22 50Z" fill="#3FBF6A" stroke="#1E2847" stroke-width="3"/><ellipse cx="40" cy="50" rx="9" ry="7" fill="#FF8A1F" stroke="#1E2847" stroke-width="2"/><circle cx="72" cy="70" r="16" fill="#1F9D55" stroke="#1E2847" stroke-width="4"/><path d="M64 70l6 6 10-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 data-i18n="ai3t">3. ตอบ</h3>
-        <p data-i18n="ai3">วาดกรอบรอบรอยฟกช้ำ แล้วบอกว่ามั่นใจกี่เปอร์เซ็นต์</p>
+        <p data-i18n="ai3">ระบายส่วนที่ช้ำเป็นสีส้ม ส่วนที่ดีเป็นสีเขียว บอกว่าช้ำกี่เปอร์เซ็นต์ และทายว่าโดนกระแทกหรือโดนเขย่า</p>
       </div>
     </div>
     <div class="analogy sticker">
       <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="46" r="26" fill="#FFC83D" stroke="#1E2847" stroke-width="4"/><path d="M18 30 L22 8 L34 22 M62 30 L58 8 L46 22" fill="#FFC83D" stroke="#1E2847" stroke-width="4" stroke-linejoin="round"/><circle cx="31" cy="44" r="4" fill="#1E2847"/><circle cx="49" cy="44" r="4" fill="#1E2847"/><path d="M36 54q4 4 8 0" fill="none" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/><path d="M14 52h12M14 58h12M54 52h12M54 58h12" stroke="#1E2847" stroke-width="2"/></svg>
       <div>
         <h3 data-i18n="catTitle">เหมือนตอนหนูหัดรู้จัก "แมว"</h3>
-        <p data-i18n="catText">ตอนเด็กๆ หนูเห็นแมวหลายตัว ทั้งสีส้ม สีดำ ตัวอ้วน ตัวผอม จนรู้เลยว่าแบบนี้คือแมว หมอบอทก็เหมือนกัน เราให้หมอบอทดูรูปรอยฟกช้ำเยอะมากๆ บนผิวหลายสี จนมันจำได้ว่ารอยฟกช้ำหน้าตาเป็นยังไง</p>
-        <div class="tones" data-i18n-aria="tonesAria" aria-label="สีผิวหลายแบบที่หมอบอทต้องเรียนรู้">
-          <span style="background:#F5D0B5"></span><span style="background:#E0AC8A"></span><span style="background:#C68863"></span><span style="background:#8D5A3B"></span><span style="background:#5E3A25"></span>
+        <p data-i18n="catText">ตอนเด็กๆ หนูเห็นแมวหลายตัว ทั้งสีส้ม สีดำ ตัวอ้วน ตัวผอม จนรู้เลยว่าแบบนี้คือแมว หมอบอทก็เหมือนกัน พี่ๆ ให้หมอบอทดูรูปมะม่วงเยอะมากๆ ทั้งลูกเขียว ลูกเหลือง ลูกที่ปอกเปลือกแล้ว จนมันจำได้ว่ารอยช้ำหน้าตาเป็นยังไง</p>
+        <div class="tones" data-i18n-aria="tonesAria" aria-label="มะม่วงหลายสีที่หมอบอทต้องเรียนรู้">
+          <span style="background:#7CB342"></span><span style="background:#C0CA33"></span><span style="background:#FFC83D"></span><span style="background:#FF9F1C"></span><span style="background:#FFE08A"></span>
+        </div>
+      </div>
+    </div>
+    <div class="analogy sticker">
+      <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="6" y="20" width="32" height="40" rx="6" fill="#FFFFFF" stroke="#1E2847" stroke-width="3"/><rect x="42" y="20" width="32" height="40" rx="6" fill="#A9B0BC" stroke="#1E2847" stroke-width="3"/><ellipse cx="22" cy="40" rx="10" ry="8" fill="#FFB627" stroke="#1E2847" stroke-width="2"/><ellipse cx="58" cy="40" rx="10" ry="8" fill="#FFB627" stroke="#1E2847" stroke-width="2"/><circle cx="64" cy="12" r="10" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/><text x="64" y="17" text-anchor="middle" font-family="Itim, sans-serif" font-size="14" fill="#1E2847">!</text></svg>
+      <div>
+        <h3 data-i18n="bgTitle">อุ๊ย! หมอบอทเคยจำผิดด้วยนะ</h3>
+        <p data-i18n="bgText">ตอนสอน รูปมะม่วงที่โดนกระแทกถ่ายบนโต๊ะสีขาว ส่วนมะม่วงที่โดนเขย่าถ่ายบนโต๊ะสีเทา หมอบอทเลยแอบจำสีโต๊ะ แทนที่จะดูรอยช้ำ! ตอนนี้พี่ๆ กำลังสอนใหม่ ให้ดูแค่ตัวมะม่วงเท่านั้น</p>
+        <div class="bgs">
+          <span style="background:#FFFFFF" data-i18n="bgWhite">โต๊ะขาว = กระแทก?</span><span style="background:#C9CED6" data-i18n="bgGrey">โต๊ะเทา = เขย่า?</span>
         </div>
       </div>
     </div>
@@ -373,7 +390,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     <div class="sec-head">
       <p class="eyebrow" data-i18n="part4">ตอนที่ 4 · เกม</p>
       <h2 data-i18n="gameTitle">ใครเก่งกว่า? หนู หรือ หมอบอท!</h2>
-      <p class="lead" data-i18n="gameLead">ดูรูปแล้วตอบว่าเป็นรอยฟกช้ำหรือเปล่า หมอบอทจะตอบด้วย บางทีหุ่นยนต์ก็ตอบผิดได้นะ!</p>
+      <p class="lead" data-i18n="gameLead">ดูรูปแล้วตอบว่ามะม่วงลูกนี้ช้ำหรือเปล่า หมอบอทจะตอบด้วย บางทีหุ่นยนต์ก็ตอบผิดได้นะ!</p>
     </div>
     <div class="game sticker">
       <div class="scoreboard">
@@ -386,8 +403,8 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
           <p class="progress" id="progress">รูปที่ 1 จาก 8</p>
           <div class="card-frame" id="cardFrame"></div>
           <div class="choices">
-            <button class="btn coral" id="yesBtn" type="button" data-i18n="yes">ใช่ รอยฟกช้ำ</button>
-            <button class="btn teal" id="noBtn" type="button" data-i18n="no">ไม่ใช่</button>
+            <button class="btn coral" id="yesBtn" type="button" data-i18n="yes">ช้ำ</button>
+            <button class="btn teal" id="noBtn" type="button" data-i18n="no">ไม่ช้ำ</button>
           </div>
         </div>
         <div class="result" id="result" aria-live="polite"></div>
@@ -402,41 +419,41 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow" data-i18n="part5">ตอนที่ 5</p>
-      <h2 data-i18n="careTitle">ถ้ามีรอยฟกช้ำ ทำยังไงดี?</h2>
+      <h2 data-i18n="careTitle">ช่วยกันดูแลมะม่วงไม่ให้ช้ำ</h2>
     </div>
     <div class="care">
       <div class="sticker">
-        <h3 data-i18n="careH">ดูแลตัวเองง่ายๆ</h3>
+        <h3 data-i18n="careH">ทำแบบนี้นะ</h3>
         <ul>
-          <li data-i18n="care1"><b>ประคบเย็น</b> เอาน้ำแข็งห่อผ้า วางไว้ประมาณ 10 นาที</li>
-          <li data-i18n="care2"><b>พักส่วนที่ช้ำ</b> อย่าเพิ่งกระแทกซ้ำ</li>
-          <li data-i18n="care3"><b>บอกพ่อแม่ หรือคุณครู</b> ทุกครั้งที่เจ็บ</li>
+          <li data-i18n="care1"><b>จับเบาๆ</b> ใช้สองมือถือมะม่วง อย่าบีบแรง</li>
+          <li data-i18n="care2"><b>วางลงช้าๆ</b> อย่าโยน อย่าทำตก</li>
+          <li data-i18n="care3"><b>อย่าวางของหนักทับ</b> และใส่กล่องที่มีของนิ่มๆ รอง มะม่วงจะได้ไม่สั่นตอนขนส่ง</li>
         </ul>
       </div>
       <div class="sticker warn">
-        <h3 data-i18n="warnH">บอกผู้ใหญ่ทันที ถ้า...</h3>
+        <h3 data-i18n="warnH">ถามผู้ใหญ่ก่อนกิน ถ้ามะม่วง...</h3>
         <ul>
-          <li data-i18n="warn1">เจ็บมาก หรือบวมมาก</li>
-          <li data-i18n="warn2">ขยับแขนหรือขาไม่ได้</li>
-          <li data-i18n="warn3">มีรอยช้ำเยอะ แต่ไม่รู้ว่าไปชนอะไรมา</li>
+          <li data-i18n="warn1">มีรอยดำใหญ่ๆ และเละ</li>
+          <li data-i18n="warn2">มีกลิ่นเปรี้ยวแปลกๆ</li>
+          <li data-i18n="warn3">มีขนฟูๆ สีขาวหรือสีเขียว (เชื้อรา)</li>
         </ul>
       </div>
     </div>
     <div class="notes">
       <div class="sticker">
         <svg viewBox="0 0 52 52" aria-hidden="true"><use href="#bot" width="52" height="52"/></svg>
-        <p data-i18n="note1"><b>หมอบอทไม่ใช่หมอจริงๆ นะ</b><br>หมอบอทเป็นโครงงานของพี่ๆ นักศึกษา ถ้าเจ็บต้องให้คุณหมอหรือผู้ใหญ่ดู</p>
+        <p data-i18n="note1"><b>หมอบอทยังเรียนรู้อยู่นะ</b><br>หมอบอทเป็นโครงงานของพี่ๆ นักศึกษา หมอบอทตอบผิดได้ คนจึงต้องช่วยตรวจเสมอ</p>
       </div>
       <div class="sticker">
-        <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="10" y="22" width="32" height="24" rx="5" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/><path d="M17 22v-6a9 9 0 0 1 18 0v6" fill="none" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="33" r="3" fill="#1E2847"/><path d="M26 35v5" stroke="#1E2847" stroke-width="3"/></svg>
-        <p data-i18n="note2"><b>เราไม่เก็บรูปของหนู</b><br>รูปที่ถ่ายที่บูธจะใช้แค่ตอนเล่นเท่านั้น แล้วลบทิ้งทันที</p>
+        <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="6" y="12" width="40" height="30" rx="6" fill="#9FE3D8" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="27" r="9" fill="#fff" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="27" r="3.5" fill="#1E2847"/></svg>
+        <p data-i18n="note2"><b>ระบบจริงของพี่ๆ</b><br>ระบบจริงใช้รูปถ่ายมะม่วงจริง วัดพื้นที่รอยช้ำเป็นตารางเซนติเมตร ส่วนรูปในเว็บนี้เป็นภาพการ์ตูนทั้งหมด</p>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap" data-i18n="footer">โครงงานตรวจหารอยฟกช้ำด้วยปัญญาประดิษฐ์ (AI) · ขอบคุณที่มาเที่ยวบูธของเรา!</div>
+  <div class="wrap" data-i18n="footer">โครงงานตรวจหารอยช้ำบนมะม่วงด้วยปัญญาประดิษฐ์ (AI) · ขอบคุณที่มาเที่ยวบูธของเรา!</div>
 </footer>
 
 <script>
@@ -446,68 +463,71 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   /* ---------- English text for static elements (Thai is read from the page itself) ---------- */
   var EN={
     brand:'Dr. Bot', home:'← Home', navAria:'Go to section',
-    nav1:'What is a bruise?', nav2:'Colours change', nav3:'How AI learns', nav4:'Robot game', nav5:'Take care',
+    nav1:'What is a mango bruise?', nav2:'Bruises get darker', nav3:'How AI learns', nav4:'Robot game', nav5:'Mango care',
     heroEyebrow:'An Artificial Intelligence (AI) project',
-    heroTitle:'Can a computer<br><mark>find a bruise</mark>?',
-    heroLead:"Hi! I'm <b>Dr. Bot</b>. I'm a robot that has been taught to look at pictures of skin and point out where a bruise is. Let's see how I do it, then race me to see who's better!",
+    heroTitle:'Can a computer<br><mark>find bruised mangoes</mark>?',
+    heroLead:"Hi! I'm <b>Dr. Bot</b>, a mango doctor robot. I have been taught to look at pictures of mangoes and point out where they are bruised. Let's see how I do it, then race me to see who's better!",
     ctaPlay:'Race Dr. Bot', ctaLearn:'Learn first',
-    heroAria:'Example: Dr. Bot finds a bruise on an arm, draws a box around it and says it is 92 percent sure',
-    heroTag:'Bruise 92%',
-    heroCaption:'Example screen: Dr. Bot draws a box around the bruise and says how sure it is',
+    heroAria:'Example: Dr. Bot finds a bruise on a mango, colours the bruised part orange and says 12 percent is bruised',
+    heroTag:'Bruised 12%',
+    heroCaption:'Example screen: Dr. Bot colours the bruised part orange and says how many percent is bruised',
     part1:'Part 1', part2:'Part 2', part3:'Part 3', part4:'Part 4 · Game', part5:'Part 5',
-    whatTitle:'What is a bruise?',
-    whatLead:'Under our skin there are lots of tiny blood vessels. When we bump into something hard, this happens:',
-    step1:'<b>A bump or a knock</b><br>like falling down or walking into a table',
-    step2:"<b>Tiny blood vessels break</b><br>but the skin on top doesn't tear",
-    step3:'<b>Blood stays under the skin</b><br>so we see a dark mark',
-    diagramAria:'Cross-section of skin: tiny blood vessels underneath, one breaks and blood leaks out',
-    dSkin:'Skin', dVessel:'Tiny blood vessels', dLeak:'Blood leaks out', dBonk:'Bonk!',
-    colTitle:'Bruises change colour too!',
-    colLead:'Our body slowly cleans up the blood that leaked out, so the bruise changes colour every day. Try moving the slider below!',
-    armAria:'An arm with a bruise that changes colour each day',
+    whatTitle:'What is a mango bruise?',
+    whatLead:'Under the mango skin there is soft flesh made of lots of tiny cells. When a mango gets hit hard, this happens:',
+    step1:'<b>A bump or a shake</b><br>like falling on the floor, getting knocked, or shaking around in a truck',
+    step2:"<b>Tiny cells inside get squashed and break</b><br>but the skin outside doesn't tear",
+    step3:'<b>That part of the flesh turns brown</b><br>so we see a dark, soft patch on the mango',
+    diagramAria:'A mango cut in half: skin, yellow flesh and a seed. Where it was bumped, the flesh has turned brown',
+    dSkin:'Skin', dSeed:'Seed', dFlesh:'Mango flesh', dBruise:'Bruised flesh', dBonk:'Bonk!',
+    colTitle:'Mango bruises get darker!',
+    colLead:"Our skin can heal a bruise, but a mango can't heal itself! The bruise gets a little darker every day. Try moving the slider below!",
+    armAria:'A mango with a bruise that gets darker each day',
     slideHint:'Slide to see each day', tick0:'Day 0',
     aiTitle:'How does Dr. Bot know?',
     aiLead:'Dr. Bot works in 3 steps, just like when you look at a picture and answer a question.',
-    ai1t:'1. Look', ai1:'A camera takes a picture of the skin and sends it to Dr. Bot.',
-    ai2t:'2. Think', ai2:'It compares the picture with thousands of pictures it has seen before, to check if it looks like a bruise.',
-    ai3t:'3. Answer', ai3:'It draws a box around the bruise and says how many percent sure it is.',
+    ai1t:'1. Look', ai1:'Take a picture of the mango on a plain table and send it to Dr. Bot.',
+    ai2t:'2. Think', ai2:'It cuts away the background so only the mango is left, then looks at the colours and patterns on the skin and compares them with more than a thousand mango pictures it learned from.',
+    ai3t:'3. Answer', ai3:'It colours the bruised part orange and the good part green, says how many percent is bruised, and guesses if the mango was bumped or shaken.',
     catTitle:'Just like when you learned what a "cat" is',
-    catText:'When you were little, you saw lots of cats: orange ones, black ones, fat ones, skinny ones. Soon you just knew: that\'s a cat! Dr. Bot is the same. We showed Dr. Bot lots and lots of bruise pictures on many skin colours, until it remembered what a bruise looks like.',
-    tonesAria:'Different skin colours Dr. Bot has to learn',
+    catText:"When you were little, you saw lots of cats: orange ones, black ones, fat ones, skinny ones. Soon you just knew: that's a cat! Dr. Bot is the same. The team showed Dr. Bot lots and lots of mango pictures: green ones, yellow ones, and peeled ones, until it remembered what a bruise looks like.",
+    tonesAria:'Different mango colours Dr. Bot has to learn',
+    bgTitle:'Oops! Dr. Bot learned the wrong clue once',
+    bgText:'When we taught Dr. Bot, the bumped mangoes were photographed on a white table and the shaken mangoes on a grey table. So Dr. Bot secretly remembered the table colour instead of looking at the bruise! Now the team is teaching it again so it only looks at the mango.',
+    bgWhite:'White table = bumped?', bgGrey:'Grey table = shaken?',
     gameTitle:'Who is better? You or Dr. Bot!',
-    gameLead:'Look at the picture and say if it is a bruise. Dr. Bot will answer too. Sometimes robots get it wrong!',
-    you:'You', yes:'Yes, a bruise', no:'No',
-    careTitle:'What should I do if I get a bruise?',
-    careH:'Easy ways to take care',
-    care1:'<b>Cool it down:</b> wrap ice in a cloth and hold it there for about 10 minutes',
-    care2:'<b>Rest the bruised spot</b> and try not to bump it again',
-    care3:'<b>Tell your parents or teacher</b> every time you get hurt',
-    warnH:'Tell a grown-up right away if...',
-    warn1:'It hurts a lot or is very swollen',
-    warn2:"You can't move your arm or leg",
-    warn3:"You have lots of bruises but don't know how you got them",
-    note1:'<b>Dr. Bot is not a real doctor</b><br>Dr. Bot is a project made by university students. If you get hurt, a doctor or a grown-up should take a look.',
-    note2:"<b>We don't keep your photos</b><br>Photos taken at the booth are only used while you play, then deleted right away.",
-    footer:'An AI bruise detection project · Thanks for visiting our booth!'
+    gameLead:'Look at the picture and say if the mango is bruised. Dr. Bot will answer too. Sometimes robots get it wrong!',
+    you:'You', yes:'Bruised', no:'Not bruised',
+    careTitle:'Let\'s keep mangoes from getting bruised',
+    careH:'Do it like this',
+    care1:'<b>Hold it gently</b> with two hands, and don\'t squeeze',
+    care2:'<b>Put it down slowly</b>. Don\'t throw it or drop it',
+    care3:'<b>Don\'t put heavy things on top</b>, and pack it in a box with something soft so it doesn\'t shake when it travels',
+    warnH:'Ask a grown-up before eating if the mango...',
+    warn1:'Has big black patches and is mushy',
+    warn2:'Smells strange and sour',
+    warn3:'Has white or green fuzz on it (that is mould)',
+    note1:'<b>Dr. Bot is still learning</b><br>Dr. Bot is a project made by university students. It can make mistakes, so a person should always check.',
+    note2:'<b>Our real system</b><br>The real system uses real mango photos and measures the bruise in square centimetres. All pictures on this website are cartoons.',
+    footer:'An AI mango bruise detection project · Thanks for visiting our booth!'
   };
 
   /* ---------- text for parts drawn by script ---------- */
   var T={
     th:{
+      title:'หมอบอทตามหามะม่วงช้ำ',
       day:function(d){return 'วันที่ '+d},
       stages:[
-        {max:1,name:'สีแดง',text:'เพิ่งชนมาใหม่ๆ เลือดเพิ่งซึมออกมาใต้ผิว'},
-        {max:4,name:'สีน้ำเงินม่วง',text:'เลือดใต้ผิวเริ่มเปลี่ยนสี รอยช้ำเลยดูคล้ำขึ้น'},
-        {max:7,name:'สีเขียว',text:'ร่างกายกำลังเก็บกวาดเลือดออกไป ทีละนิด'},
-        {max:11,name:'สีเหลืองน้ำตาล',text:'ใกล้หายแล้ว! สีจางลงเรื่อยๆ'},
-        {max:14,name:'หายแล้ว!',text:'ร่างกายเก็บกวาดเสร็จ ผิวกลับมาเหมือนเดิม เก่งมาก!'}
+        {max:0,name:'แทบมองไม่เห็น',text:'เพิ่งโดนกระแทก ข้างนอกยังดูปกติ แต่เซลล์ข้างในแตกไปแล้ว'},
+        {max:2,name:'สีน้ำตาลอ่อน',text:'ตรงที่ช้ำเริ่มเป็นสีน้ำตาลอ่อนๆ และนิ่มลงนิดหน่อย'},
+        {max:4,name:'สีน้ำตาล',text:'รอยช้ำเข้มขึ้น นิ่มขึ้น และยุบลงไปนิดๆ'},
+        {max:7,name:'สีน้ำตาลเข้ม',text:'รอยช้ำเข้มมากและเละ อาจเริ่มเน่า มะม่วงหายเองไม่ได้นะ ต้องระวังตั้งแต่แรก!'}
       ],
       progress:function(i,n){return 'รูปที่ '+i+' จาก '+n},
-      cardAria:'รูปผิวหนังให้ทาย',
-      hint:'ดูรูปให้ดีๆ แล้วกดตอบเลย! รอยฟกช้ำจะมีขอบฟุ้งๆ และสีคล้ำ',
+      cardAria:'รูปมะม่วงให้ทาย',
+      hint:'ดูรูปให้ดีๆ แล้วกดตอบเลย! รอยช้ำจะเป็นสีน้ำตาล ขอบฟุ้งๆ ไม่คม',
       kidOk:'หนูตอบถูก!', kidNo:'อุ๊ย หนูตอบผิด',
       kidSaid:function(a){return 'หนูตอบว่า: '+a},
-      yes:'ใช่ รอยฟกช้ำ', no:'ไม่ใช่',
+      yes:'ช้ำ', no:'ไม่ช้ำ',
       thinking:'หมอบอทกำลังคิด',
       botOk:'หมอบอทตอบถูก', botNo:'หมอบอทตอบผิด!',
       botSaid:function(a,c){return 'หมอบอทตอบว่า: '+a+' · มั่นใจ '+c+'%'},
@@ -518,31 +538,31 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
       lesson:'หมอบอทยังตอบผิดได้ เช่น เข้าใจผิดว่าเงาเป็นรอยช้ำ นี่แหละคือเหตุผลที่ AI ต้องเรียนรู้จากรูปเยอะๆ และต้องมีคนช่วยตรวจเสมอ',
       again:'เล่นอีกครั้ง',
       cards:{
-        purple:{name:'รอยฟกช้ำสีม่วง',why:'รอยฟกช้ำสีม่วงน้ำเงิน มักเป็นรอยที่เกิดมาได้ 2-4 วัน ขอบจะฟุ้งๆ ไม่คม'},
-        red:{name:'รอยฟกช้ำสีแดง',why:'รอยฟกช้ำสีแดง คือรอยใหม่ที่เพิ่งชนมาไม่นาน'},
-        green:{name:'รอยฟกช้ำสีเขียวเหลือง',why:'รอยฟกช้ำที่กำลังจะหาย หมอบอทตอบถูก แต่ไม่ค่อยมั่นใจ เพราะสีจางกว่ารอยอื่น'},
+        brown:{name:'รอยช้ำสีน้ำตาล',why:'นี่คือรอยช้ำ! เป็นสีน้ำตาล ขอบฟุ้งๆ เนื้อข้างใต้จะนิ่ม'},
+        spot:{name:'รอยช้ำจากการกระแทก',why:'มะม่วงลูกนี้ตกพื้น รอยกระแทกจะเป็นวงกลมสีเข้ม อยู่จุดเดียว'},
+        shake:{name:'รอยช้ำจากการเขย่า',why:'มะม่วงลูกนี้สั่นไปมาบนรถขนส่ง รอยจะจางๆ กระจายหลายจุด หมอบอทตอบถูก แต่ไม่ค่อยมั่นใจ เพราะสีจางมาก'},
         shadow:{name:'เงา',why:'นี่คือเงาเฉยๆ! หมอบอทสับสน เพราะเงาก็เป็นสีเข้มเหมือนรอยช้ำ พี่ๆ ต้องสอนด้วยรูปเงาเพิ่มอีก'},
-        mud:{name:'ดินโคลน',why:'นี่คือดินโคลน ล้างออกได้ เป็นจุดๆ ขอบคม ไม่เหมือนรอยช้ำ'},
-        bite:{name:'รอยยุงกัด',why:'นี่คือรอยยุงกัด เป็นตุ่มเล็กๆ สีชมพู และมักจะคัน'},
-        mark:{name:'ปาน',why:'นี่คือปาน มีมาตั้งแต่เกิด ขอบชัด และสีไม่เปลี่ยนไปตามวัน'},
-        ink:{name:'รอยปากกาเมจิก',why:'นี่คือรอยปากกาเมจิก! สีน้ำเงินทำให้หมอบอทเข้าใจผิดว่าเป็นรอยช้ำ'}
+        dirt:{name:'ดินติดเปลือก',why:'นี่คือดินติดอยู่ ล้างออกได้ เป็นจุดๆ ขอบคม ไม่เหมือนรอยช้ำ'},
+        dots:{name:'จุดเล็กๆ บนเปลือก',why:'มะม่วงมีจุดเล็กๆ บนเปลือกอยู่แล้วตามธรรมชาติ ไม่ใช่รอยช้ำ'},
+        green:{name:'ส่วนที่ยังไม่สุก',why:'ตรงนี้เป็นสีเขียวเพราะยังไม่สุก ไม่ใช่สีน้ำตาล เลยไม่ใช่รอยช้ำ'},
+        ink:{name:'รอยปากกาเมจิก',why:'นี่คือรอยปากกาเมจิก! สีเข้มทำให้หมอบอทเข้าใจผิดว่าเป็นรอยช้ำ'}
       }
     },
     en:{
+      title:'Dr. Bot finds bruised mangoes',
       day:function(d){return 'Day '+d},
       stages:[
-        {max:1,name:'Red',text:'Just bumped. The blood has only just leaked under the skin.'},
-        {max:4,name:'Blue-purple',text:'The blood under the skin starts to change colour, so the bruise looks darker.'},
-        {max:7,name:'Green',text:'The body is cleaning up the blood, little by little.'},
-        {max:11,name:'Yellow-brown',text:'Almost better! The colour keeps fading.'},
-        {max:14,name:'All gone!',text:'The body finished cleaning up and the skin is back to normal. Well done!'}
+        {max:0,name:'Hard to see',text:'Just bumped. The outside still looks normal, but the cells inside are already broken.'},
+        {max:2,name:'Light brown',text:'The bruised spot starts to turn light brown and gets a little soft.'},
+        {max:4,name:'Brown',text:'The bruise gets darker and softer, and sinks in a little.'},
+        {max:7,name:'Dark brown',text:"The bruise is very dark and mushy, and may start to rot. A mango can't heal itself, so we must be careful from the start!"}
       ],
       progress:function(i,n){return 'Picture '+i+' of '+n},
-      cardAria:'A picture of skin to guess',
-      hint:'Look carefully at the picture, then answer! Bruises have soft, blurry edges and a dark colour.',
+      cardAria:'A picture of a mango to guess',
+      hint:'Look carefully at the picture, then answer! Bruises are brown with soft, blurry edges.',
       kidOk:'You got it right!', kidNo:'Oops, not quite',
       kidSaid:function(a){return 'You said: '+a},
-      yes:'Yes, a bruise', no:'No',
+      yes:'Bruised', no:'Not bruised',
       thinking:'Dr. Bot is thinking',
       botOk:'Dr. Bot got it right', botNo:'Dr. Bot got it wrong!',
       botSaid:function(a,c){return 'Dr. Bot said: '+a+' · '+c+'% sure'},
@@ -553,14 +573,14 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
       lesson:'Dr. Bot can still make mistakes, like thinking a shadow is a bruise. That is why AI needs to learn from lots of pictures, and a person should always check.',
       again:'Play again',
       cards:{
-        purple:{name:'Purple bruise',why:'A blue-purple bruise is usually 2 to 4 days old. Its edges are soft and blurry.'},
-        red:{name:'Red bruise',why:'A red bruise is a new one. The bump happened not long ago.'},
-        green:{name:'Green-yellow bruise',why:'This bruise is getting better. Dr. Bot got it right but was not very sure, because the colour is lighter.'},
+        brown:{name:'Brown bruise',why:'This is a bruise! It is brown with blurry edges, and the flesh underneath is soft.'},
+        spot:{name:'Bump bruise',why:'This mango fell on the floor. A bump bruise is a dark round patch in one place.'},
+        shake:{name:'Shake bruise',why:'This mango was shaken around in a truck. The bruises are faint and spread out. Dr. Bot got it right but was not very sure, because they are so light.'},
         shadow:{name:'Shadow',why:'This is just a shadow! Dr. Bot got confused because shadows are dark like bruises. The team needs to teach it with more shadow pictures.'},
-        mud:{name:'Mud',why:'This is mud. It washes off. It is made of spots with sharp edges, not like a bruise.'},
-        bite:{name:'Mosquito bite',why:'This is a mosquito bite. It is a small pink bump, and it is usually itchy.'},
-        mark:{name:'Birthmark',why:'This is a birthmark. You are born with it, its edges are clear, and its colour does not change.'},
-        ink:{name:'Marker pen',why:'This is marker pen! The blue colour made Dr. Bot think it was a bruise.'}
+        dirt:{name:'Dirt on the skin',why:'This is dirt. It washes off. It is made of spots with sharp edges, not like a bruise.'},
+        dots:{name:'Tiny dots on the skin',why:'Mangoes naturally have tiny dots on their skin. They are not bruises.'},
+        green:{name:'Not ripe yet',why:'This part is green because it is not ripe yet. It is not brown, so it is not a bruise.'},
+        ink:{name:'Marker pen',why:'This is marker pen! The dark colour made Dr. Bot think it was a bruise.'}
       }
     }
   };
@@ -575,6 +595,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
 
   function applyStatic(){
     document.documentElement.lang=lang;
+    document.title=T[lang].title;
     i18nEls.forEach(function(el){
       var k=el.getAttribute('data-i18n');
       el.innerHTML = lang==='en' && EN[k]!=null ? EN[k] : el._th;
@@ -594,14 +615,12 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   $('langTh').addEventListener('click',function(){setLang('th')});
   $('langEn').addEventListener('click',function(){setLang('en')});
 
-  /* ---------- colour timeline ---------- */
+  /* ---------- bruise darkening timeline (mango bruises get darker, they don't heal) ---------- */
   var keys=[
-    {d:0,c:[200,58,78],o:.9},
-    {d:3,c:[78,59,143],o:.9},
-    {d:6,c:[110,138,58],o:.85},
-    {d:9,c:[199,164,71],o:.75},
-    {d:11,c:[180,140,90],o:.45},
-    {d:14,c:[224,172,138],o:0}
+    {d:0,c:[226,150,52],o:.25},
+    {d:2,c:[176,118,52],o:.6},
+    {d:4,c:[122,74,34],o:.82},
+    {d:7,c:[58,34,18],o:.95}
   ];
   function lerp(a,b,t){return a+(b-a)*t}
   function colorAt(d){
@@ -620,7 +639,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     $('dS0').setAttribute('stop-color',rgb); $('dS0').setAttribute('stop-opacity',col.o.toFixed(2));
     $('dS1').setAttribute('stop-color',rgb); $('dS1').setAttribute('stop-opacity',(col.o*.65).toFixed(2));
     $('dayLabel').textContent=L.day(d);
-    $('swatch').style.background=d>=12?'#E0AC8A':rgb;
+    $('swatch').style.background=rgb;
     var st=L.stages.filter(function(s){return d<=s.max})[0];
     $('stageName').textContent=st.name;
     $('stageText').textContent=st.text;
@@ -628,39 +647,51 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   day.addEventListener('input',updateDay);
 
   /* ---------- game ---------- */
-  var skins=['#F5D0B5','#E0AC8A','#C68863','#8D5A3B'];
+  var mangoColors=['#FFB627','#F7C948','#F2A23A','#E9C24A'];
   var CARDS=[
-    {kind:'purple',bruise:true, bot:true, conf:94},
-    {kind:'red',   bruise:true, bot:true, conf:88},
-    {kind:'green', bruise:true, bot:true, conf:61},
+    {kind:'brown', bruise:true, bot:true, conf:94},
+    {kind:'spot',  bruise:true, bot:true, conf:88},
+    {kind:'shake', bruise:true, bot:true, conf:61},
     {kind:'shadow',bruise:false,bot:true, conf:72},
-    {kind:'mud',   bruise:false,bot:false,conf:90},
-    {kind:'bite',  bruise:false,bot:false,conf:83},
-    {kind:'mark',  bruise:false,bot:false,conf:77},
+    {kind:'dirt',  bruise:false,bot:false,conf:90},
+    {kind:'dots',  bruise:false,bot:false,conf:83},
+    {kind:'green', bruise:false,bot:false,conf:77},
     {kind:'ink',   bruise:false,bot:true, conf:58}
   ];
+  var MANGO='M40 110 C34 50 110 22 180 26 C246 30 276 72 266 116 C256 162 190 178 124 170 C70 164 42 146 40 110Z';
   var gid=0;
-  function svgFor(kind,skin,aria){
-    var id='g'+(gid++), body='', defs='';
-    function blob(c1,c2,rx,ry,cx,cy){
-      defs+='<radialGradient id="'+id+'"><stop offset="0" stop-color="'+c1+'" stop-opacity=".88"/><stop offset=".55" stop-color="'+c2+'" stop-opacity=".6"/><stop offset="1" stop-color="'+c2+'" stop-opacity="0"/></radialGradient>';
-      body+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="url(#'+id+')"/>';
+  function svgFor(kind,fill,aria){
+    var id='g'+(gid++), body='', defs='<clipPath id="c'+id+'"><path d="'+MANGO+'"/></clipPath>', over='';
+    function blob(c1,c2,rx,ry,cx,cy,n){
+      var gidn=id+'b'+(n||0);
+      defs+='<radialGradient id="'+gidn+'"><stop offset="0" stop-color="'+c1+'" stop-opacity=".85"/><stop offset=".55" stop-color="'+c2+'" stop-opacity=".55"/><stop offset="1" stop-color="'+c2+'" stop-opacity="0"/></radialGradient>';
+      body+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="url(#'+gidn+')"/>';
     }
-    if(kind==='purple') blob('#4B2E7A','#7E5BA6',62,42,150,100);
-    if(kind==='red')    blob('#A8263C','#D9576A',56,38,140,104);
-    if(kind==='green')  blob('#71863A','#C8B25A',60,44,160,96);
+    if(kind==='brown') blob('#5A3418','#8A5A2B',54,36,140,104);
+    if(kind==='spot')  blob('#3E2412','#6B4423',32,28,180,92);
+    if(kind==='shake'){
+      defs+='<radialGradient id="'+id+'s"><stop offset="0" stop-color="#9A6A35" stop-opacity=".55"/><stop offset="1" stop-color="#9A6A35" stop-opacity="0"/></radialGradient>';
+      [[110,96,30,20],[170,74,26,16],[206,124,32,20],[146,140,22,14]].forEach(function(p){body+='<ellipse cx="'+p[0]+'" cy="'+p[1]+'" rx="'+p[2]+'" ry="'+p[3]+'" fill="url(#'+id+'s)"/>'});
+    }
     if(kind==='shadow'){
-      defs+='<radialGradient id="'+id+'"><stop offset="0" stop-color="#000" stop-opacity=".42"/><stop offset=".6" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>';
-      body+='<ellipse cx="150" cy="104" rx="80" ry="46" fill="url(#'+id+')"/>';
+      defs+='<radialGradient id="'+id+'h"><stop offset="0" stop-color="#000" stop-opacity=".4"/><stop offset=".6" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>';
+      over+='<ellipse cx="150" cy="96" rx="84" ry="48" fill="url(#'+id+'h)"/>';
     }
-    if(kind==='mud'){
-      [[120,90,16],[146,104,22],[176,86,12],[160,128,10],[110,120,8],[196,112,7],[132,70,6],[188,140,5],[100,96,4],[212,94,4]]
+    if(kind==='dirt'){
+      [[120,90,10],[136,104,14],[160,88,8],[150,124,7],[112,118,5],[178,110,5],[128,74,4]]
         .forEach(function(p){body+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+p[2]+'" fill="#5E4026" opacity=".9"/>'});
     }
-    if(kind==='bite') body+='<circle cx="150" cy="100" r="22" fill="#E58C8C" opacity=".75"/><circle cx="150" cy="100" r="12" fill="#DB6F72"/><circle cx="150" cy="100" r="3" fill="#8A2E33"/>';
-    if(kind==='mark') body+='<path d="M110 92 C112 70 160 66 186 80 C210 94 200 126 172 130 C140 136 108 118 110 92Z" fill="#7A4E2C" opacity=".55"/>';
-    if(kind==='ink')  body+='<path d="M96 110 C110 70 140 140 156 90 S196 130 208 86 M104 130 C130 112 170 134 196 118" fill="none" stroke="#2E4FCF" stroke-width="7" stroke-linecap="round" opacity=".85"/>';
-    return '<svg viewBox="0 0 300 200" role="img" aria-label="'+aria+'"><defs>'+defs+'</defs><rect width="300" height="200" fill="'+skin+'"/><path d="M0 0h300v14H0zM0 186h300v14H0z" fill="#000" opacity=".06"/>'+body+'</svg>';
+    if(kind==='dots'){
+      for(var y=46;y<170;y+=18){ for(var x=58+(y%36?9:0);x<260;x+=18){ body+='<circle cx="'+x+'" cy="'+y+'" r="1.8" fill="#C98A3A" opacity=".8"/>'; } }
+    }
+    if(kind==='green'){
+      defs+='<radialGradient id="'+id+'g"><stop offset="0" stop-color="#5E9E32" stop-opacity=".9"/><stop offset=".6" stop-color="#7DB544" stop-opacity=".6"/><stop offset="1" stop-color="#9CC44E" stop-opacity="0"/></radialGradient>';
+      body+='<ellipse cx="230" cy="80" rx="90" ry="70" fill="url(#'+id+'g)"/>';
+    }
+    if(kind==='ink') body+='<path d="M96 110 C110 70 140 140 156 90 S196 130 208 86 M104 130 C130 112 170 134 196 118" fill="none" stroke="#2E3A8F" stroke-width="7" stroke-linecap="round" opacity=".85"/>';
+    return '<svg viewBox="0 0 300 200" role="img" aria-label="'+aria+'"><defs>'+defs+'</defs><rect width="300" height="200" fill="#E4E8EE"/>'+
+      '<path d="'+MANGO+'" fill="'+fill+'"/><g clip-path="url(#c'+id+')">'+body+'</g>'+
+      '<path d="'+MANGO+'" fill="none" stroke="#1E2847" stroke-width="4"/><path d="M248 46 q14 -22 36 -16" fill="none" stroke="#1F9D55" stroke-width="6" stroke-linecap="round"/>'+over+'</svg>';
   }
 
   /* state: phase = ask | thinking | answered | final */
@@ -668,7 +699,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
   function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
   function start(){
     clearTimeout(timer);
-    deck=shuffle(CARDS.map(function(c,i){return Object.assign({skin:skins[i%skins.length]},c)}));
+    deck=shuffle(CARDS.map(function(c,i){return Object.assign({fill:mangoColors[i%mangoColors.length]},c)}));
     idx=0;kid=0;bot=0;phase='ask';kidAnswer=null;cardKey='';
     renderGame(false);
   }
@@ -680,7 +711,7 @@ footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
     var c=deck[idx];
     $('progress').textContent=L.progress(idx+1,deck.length);
     var key=idx+'|'+lang;
-    if(cardKey!==key){ $('cardFrame').innerHTML=svgFor(c.kind,c.skin,L.cardAria); cardKey=key; }
+    if(cardKey!==key){ $('cardFrame').innerHTML=svgFor(c.kind,c.fill,L.cardAria); cardKey=key; }
     var locked=phase!=='ask';
     $('yesBtn').disabled=locked; $('noBtn').disabled=locked;
     var r=$('result');

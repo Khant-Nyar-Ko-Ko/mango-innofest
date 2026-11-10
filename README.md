@@ -1,11 +1,11 @@
 # หมอบอท (Dr. Bot) — Booth website for the project show
 
-A Thai / English website for primary school kids that explains our AI bruise detection project.
+A Thai / English website for primary school kids that explains our AI mango bruise detection project (IATE team, School of Agro-Industry, Mae Fah Luang University).
 
 | File | Page |
 |---|---|
 | `index.html` | Landing page: the project in 3 picture cards, and links to each activity |
-| `learn.html` | How bruises form, the colour-change slider, how the AI learns, and the "You vs Dr. Bot" quiz (`learn.html#game`) |
+| `learn.html` | How mangoes get bruised, the bruise-darkening slider, how the AI learns, and the "You vs Dr. Bot" mango quiz (`learn.html#game`) |
 | `mango.html` | Mango catch game: good mango +1, bruised mango −1, target score wins a prize |
 
 ## Run it
@@ -24,4 +24,4 @@ Fonts (Itim, Mali) load from Google Fonts, so the first load needs internet. Wit
 
 - **Language:** the ไทย | EN switch is in the header. The choice is saved per device and shared across pages.
 - **Mango game settings:** use the "ตั้งค่าสำหรับทีมงาน / Team settings" button below the game to change the target score (default 7), round time, speed and how many bruised mangoes fall. Saved per device.
-- All pictures are drawn as cartoons. There are no real injury photos and no camera use.
+- All pictures are drawn as cartoons. No camera use on the website.
