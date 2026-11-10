@@ -7,6 +7,8 @@ A Thai / English website for primary school kids that explains our AI mango brui
 | `index.html` | Landing page: the project in 3 picture cards, and links to each activity |
 | `learn.html` | How mangoes get bruised, the bruise-darkening slider, how the AI learns, and the 6 steps of the real website, and the "You vs Mango Bot" mango quiz (`learn.html#game`) |
 | `mango.html` | Mango catch game: good mango +1, bruised mango −1, target score wins a prize |
+| `assets/` | Mango Bot icons and the share preview picture (`og-image.png`) |
+| `sitemap.xml`, `robots.txt`, `site.webmanifest` | Search engine sitemap, robots rules, and home-screen app settings for https://mango-innofest.vercel.app |
 
 ## Run it
 
