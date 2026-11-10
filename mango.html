@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;600;700&display=swap">
 <style>
-/* Layout: one big game stage, sticker-book frame matching the Mango Bot site; HUD above, staff settings tucked below */
+/* Layout: one big game stage, sticker-book frame matching the Mango Bot site; HUD above */
 :root{
   --bg:#EDF6F0;
   --surface:#FFFFFF;
@@ -92,21 +92,14 @@ canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
 .btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
 .btn.coral{background:var(--coral)}
-.btn:focus-visible,.lang button:focus-visible,.staff-btn:focus-visible,select:focus-visible,input:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+.btn:focus-visible,.lang button:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
 .prize{font-family:var(--display);font-size:clamp(2.2rem,8vw,3.6rem);color:var(--good);line-height:1.1}
 .close{font-family:var(--display);font-size:clamp(2rem,7vw,3rem);color:var(--mango);line-height:1.1}
 .stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .stats span{border:2px solid var(--line);border-radius:999px;padding:2px 12px;font-size:.95rem}
 .fact{background:var(--bg);border-radius:14px;padding:10px 14px;font-size:.95rem;text-align:left}
 
-.foot{display:flex;justify-content:center}
-.staff-btn{font-family:var(--body);font-size:.9rem;background:transparent;border:2px dashed var(--muted);color:var(--muted);border-radius:999px;padding:6px 14px;cursor:pointer}
-.staff{width:min(100%,560px);margin:0 auto;background:var(--surface);border:3px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:12px}
-.staff h3{font-size:1.2rem}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid label{display:grid;gap:4px;font-size:.95rem;min-width:0}
-.grid input,.grid select{font:inherit;font-size:1rem;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
-@media (max-width:460px){ .grid{grid-template-columns:1fr} .rule{font-size:1rem} }
+@media (max-width:460px){ .rule{font-size:1rem} }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
 .home-link{font-family:var(--display);font-size:1.05rem;text-decoration:none;color:var(--ink);background:var(--surface);border:3px solid var(--line);border-radius:999px;padding:6px 16px;box-shadow:3px 3px 0 var(--line);min-height:44px;display:inline-flex;align-items:center}
 .home-link:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
@@ -173,20 +166,6 @@ body.fs-lock{overflow:hidden}
   </div>
   </div>
 
-  <div class="foot"><button class="staff-btn" type="button" id="staffBtn" aria-expanded="false" data-k="staff">ตั้งค่าสำหรับทีมงาน</button></div>
-  <form class="staff" id="staffPanel" hidden>
-    <h3 data-k="staff">ตั้งค่าสำหรับทีมงาน</h3>
-    <div class="grid">
-      <label><span data-k="setTarget">คะแนนเป้าหมาย</span><input id="setTarget" type="number" min="1" max="50" value="15"></label>
-      <label><span data-k="setTime">เวลาต่อรอบ (วินาที)</span>
-        <select id="setTime"><option>20</option><option selected>30</option><option>45</option><option>60</option></select></label>
-      <label><span data-k="setSpeed">ความเร็ว</span>
-        <select id="setSpeed"><option value="slow" data-k="slow">ช้า</option><option value="normal" selected data-k="normal">ปกติ</option><option value="fast" data-k="fast">เร็ว</option></select></label>
-      <label><span data-k="setBad">จำนวนมะม่วงช้ำ</span>
-        <select id="setBad"><option value="few" data-k="few">น้อย</option><option value="normal" selected data-k="normal">ปกติ</option><option value="many" data-k="many">เยอะ</option></select></label>
-    </div>
-    <p class="muted" data-k="saved">บันทึกไว้ในเครื่องนี้อัตโนมัติ</p>
-  </form>
 </div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -208,8 +187,7 @@ body.fs-lock{overflow:hidden}
       stats:function(g,b){return ['มะม่วงดี '+g+' ลูก','มะม่วงช้ำ '+b+' ลูก']},
       tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม ขอบฟุ้งๆ',
       fact:'รู้ไหม? เว็บไซต์ของพี่ๆ ดูรูปมะม่วง แล้วบอกได้ว่าช้ำกี่เปอร์เซ็นต์ และช้ำเพราะโดนกระแทกหรือโดนเขย่า',
-      again:'เล่นอีกครั้ง',staff:'ตั้งค่าสำหรับทีมงาน',setTarget:'คะแนนเป้าหมาย',setTime:'เวลาต่อรอบ (วินาที)',setSpeed:'ความเร็ว',setBad:'จำนวนมะม่วงช้ำ',
-      slow:'ช้า',normal:'ปกติ',fast:'เร็ว',few:'น้อย',many:'เยอะ',saved:'บันทึกไว้ในเครื่องนี้อัตโนมัติ',canvas:'เกมเก็บมะม่วง',endHome:'← กลับหน้าแรก'},
+      again:'เล่นอีกครั้ง',canvas:'เกมเก็บมะม่วง',endHome:'← กลับหน้าแรก'},
     en:{home:'← Home',title:'Mango Catch Game',sub:'Help Mango Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
       goalText:function(n,s){return 'Get <b>'+n+' points</b> in '+s+' seconds to win a prize!'},
       howto:'Drag left and right, or use the arrow keys',start:'Start',score:'Score',time:'Time',goal:'Goal',
@@ -218,14 +196,13 @@ body.fs-lock{overflow:hidden}
       stats:function(g,b){return ['Good mangoes: '+g,'Bruised mangoes: '+b]},
       tip:'Tip: bruised mangoes have dark brown spots with blurry edges.',
       fact:'Did you know? Our team\'s website looks at a mango photo and tells how many percent is bruised, and whether the mango was bumped or shaken.',
-      again:'Play again',staff:'Team settings',setTarget:'Target score',setTime:'Round time (seconds)',setSpeed:'Speed',setBad:'Bruised mangoes',
-      slow:'Slow',normal:'Normal',fast:'Fast',few:'Few',many:'Many',saved:'Saved on this device automatically',canvas:'Mango catching game',endHome:'← Back to home'}
+      again:'Play again',canvas:'Mango catching game',endHome:'← Back to home'}
   };
   var lang='th';
-  var cfg={target:15,time:30,speed:'normal',bad:'normal'};
+  var cfg={target:15,time:30};
   try{
     if(localStorage.getItem('drbot-lang')==='en') lang='en';
-    var saved=JSON.parse(localStorage.getItem('mango-cfg')||'null'); if(saved) Object.assign(cfg,saved);
+    localStorage.removeItem('mango-cfg'); /* old Team settings: no longer used */
   }catch(e){}
 
   function t(k){return S[lang][k]}
@@ -242,27 +219,12 @@ body.fs-lock{overflow:hidden}
   $('langTh').addEventListener('click',function(){setLang('th')});
   $('langEn').addEventListener('click',function(){setLang('en')});
 
-  /* ---------- staff settings ---------- */
-  $('setTarget').value=cfg.target; $('setTime').value=String(cfg.time); $('setSpeed').value=cfg.speed; $('setBad').value=cfg.bad;
-  $('staffBtn').addEventListener('click',function(){
-    var p=$('staffPanel'); p.hidden=!p.hidden; this.setAttribute('aria-expanded',!p.hidden);
-  });
-  $('staffPanel').addEventListener('submit',function(e){e.preventDefault()});
-  $('staffPanel').addEventListener('change',function(){
-    cfg.target=Math.max(1,Math.min(50,parseInt($('setTarget').value,10)||15));
-    cfg.time=parseInt($('setTime').value,10)||30;
-    cfg.speed=$('setSpeed').value; cfg.bad=$('setBad').value;
-    try{localStorage.setItem('mango-cfg',JSON.stringify(cfg))}catch(e){}
-    if(state!=='playing'){ timeLeft=cfg.time; updateHud(true); }
-    applyLang();
-  });
-
   /* ---------- game ---------- */
   var W=800,H=600,BASKET_Y=500,BASKET_HALF=66; /* H is fixed; W follows the stage shape (see resize) */
   var cv=$('cv'),ctx=cv.getContext('2d'),scale=1;
   var state='ready',mangoes=[],pops=[],confetti=[],score=0,goodN=0,badN=0,timeLeft=cfg.time,spawnT=0;
   var bx=W/2,targetX=W/2,keys={left:false,right:false},last=0;
-  var SPEED={slow:.8,normal:1,fast:1.25}, BAD={few:.25,normal:.35,many:.45};
+  var SPEED=1.15, BAD=.35; /* SPEED: 1.15 = a bit faster than the first version (falling and dropping) */
 
   function resize(){
     var r=cv.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
@@ -347,7 +309,7 @@ body.fs-lock{overflow:hidden}
   function startGame(){
     if(!fsOn) enterFs();
     mangoes=[];pops=[];confetti=[];score=0;goodN=0;badN=0;timeLeft=cfg.time;spawnT=.3;bx=targetX=W/2;
-    state='playing'; $('startScreen').hidden=true; $('endScreen').hidden=true; $('staffPanel').hidden=true; $('staffBtn').setAttribute('aria-expanded','false');
+    state='playing'; $('startScreen').hidden=true; $('endScreen').hidden=true;
     updateHud(true); last=performance.now(); cv.focus({preventScroll:true});
   }
   function endGame(){
@@ -372,14 +334,14 @@ body.fs-lock{overflow:hidden}
   function update(dt){
     if(state==='playing'){
       timeLeft-=dt;
-      var p=1-Math.max(0,timeLeft)/cfg.time, mul=SPEED[cfg.speed]||1;
+      var p=1-Math.max(0,timeLeft)/cfg.time, mul=SPEED;
       spawnT-=dt;
       if(spawnT<=0){
         spawnT=(0.95-0.45*p)/mul;
-        var mx=Math.min(90,W*.15); mangoes.push({x:mx+Math.random()*(W-2*mx),y:-30,r:28,bad:Math.random()<(BAD[cfg.bad]||.35),
+        var mx=Math.min(90,W*.15); mangoes.push({x:mx+Math.random()*(W-2*mx),y:-30,r:28,bad:Math.random()<BAD,
           vy:(170+170*p)*mul*(0.9+Math.random()*.25),rot:(Math.random()-.5)*.6,vr:(Math.random()-.5)*1.5});
       }
-      var step=620*dt;
+      var step=720*dt;
       if(keys.left) targetX-=step; if(keys.right) targetX+=step;
       targetX=Math.max(BASKET_HALF+10,Math.min(W-BASKET_HALF-10,targetX));
       bx+= (targetX-bx)*Math.min(1,dt*18);
