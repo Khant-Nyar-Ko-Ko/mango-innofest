@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>หมอบอท AI หารอยช้ำ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;600;700&display=swap">
+<style>
+/* Layout: booth landing — one big hello from Dr. Bot, the project in three picture-stickers, then three huge "go play" doors */
+:root{
+  --bg:#EDF6F0;
+  --band:#DDEFE5;
+  --surface:#FFFFFF;
+  --ink:#1E2847;
+  --muted:#4F5A78;
+  --line:#1E2847;
+  --coral:#FF6A57;
+  --sun:#FFC83D;
+  --mango:#FF9F1C;
+  --plum:#7A5AD8;
+  --teal:#11968E;
+  --on-accent:#1E2847;
+  --display:"Itim","Mali","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;
+  --body:"Mali","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A2E; --band:#1A2240; --surface:#222B4A; --ink:#F2F4FB; --muted:#B4BCD8; --line:#8A96C2;
+    --coral:#FF7D6B; --sun:#FFCF52; --mango:#FFB04A; --plum:#A28BFF; --teal:#3CC4BA; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A2E; --band:#1A2240; --surface:#222B4A; --ink:#F2F4FB; --muted:#B4BCD8; --line:#8A96C2;
+  --coral:#FF7D6B; --sun:#FFCF52; --mango:#FFB04A; --plum:#A28BFF; --teal:#3CC4BA; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.2;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.8rem,4.6vw,2.6rem)}
+h3{font-size:1.45rem}
+p{margin:0}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:52px}
+.band.alt{background:var(--band)}
+.eyebrow{font-family:var(--display);font-size:1.05rem;letter-spacing:.04em;color:var(--teal)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.sec-head{display:grid;gap:8px;margin-bottom:26px}
+.sticker{background:var(--surface);border:3px solid var(--line);border-radius:22px;box-shadow:5px 5px 0 var(--line)}
+.btn{font-family:var(--display);font-size:1.3rem;border:3px solid var(--line);border-radius:999px;padding:10px 26px;cursor:pointer;box-shadow:4px 4px 0 var(--line);background:var(--sun);color:var(--on-accent);text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:54px;transition:transform .12s, box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn.ghost{background:var(--surface);color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+
+.top{padding-block:14px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.4rem}
+.brand svg{width:44px;height:44px}
+.lang{display:inline-flex;border:3px solid var(--line);border-radius:999px;overflow:hidden;box-shadow:3px 3px 0 var(--line);background:var(--surface)}
+.lang button{font-family:var(--display);font-size:1.05rem;border:0;background:transparent;color:var(--ink);padding:6px 16px;min-height:44px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sun);color:var(--on-accent)}
+
+/* hero */
+.hero{padding-block:20px 52px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero-copy{display:grid;gap:18px;min-width:0}
+.hero h1{font-size:clamp(2.3rem,6.6vw,4.2rem)}
+.hero h1 mark{background:linear-gradient(transparent 58%, var(--sun) 58%);color:inherit;padding:0 4px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.bot-wrap{position:relative;display:grid;place-items:center;min-width:0}
+.bot-wrap svg.big{width:min(100%,340px);height:auto;animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.bubble{position:absolute;top:0;right:4%;background:var(--surface);border:3px solid var(--line);border-radius:20px;padding:8px 16px;font-family:var(--display);font-size:1.25rem;box-shadow:3px 3px 0 var(--line);max-width:60%}
+
+/* project in 3 */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.trio > div{padding:22px;display:grid;gap:10px;align-content:start;justify-items:center;text-align:center;min-width:0}
+.trio svg{width:110px;height:90px}
+.tag{font-family:var(--display);font-size:1rem;padding:2px 12px;border-radius:999px;border:2px solid var(--line)}
+.tag.p{background:var(--coral);color:var(--on-accent)}
+.tag.s{background:var(--teal);color:#fff}
+.tag.h{background:var(--sun);color:var(--on-accent)}
+
+/* doors */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.door{display:grid;grid-template-rows:auto 1fr auto;text-decoration:none;color:inherit;overflow:hidden;transition:transform .12s, box-shadow .12s;min-width:0}
+.door:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--line)}
+.door .art{aspect-ratio:16/10;display:grid;place-items:center;border-bottom:3px solid var(--line)}
+.door .art svg{width:70%;height:auto;max-height:90%}
+.door .body{padding:18px 20px;display:grid;gap:8px;align-content:start}
+.door .go{margin:0 20px 20px;justify-self:start;pointer-events:none}
+.art.learn{background:#CFEAF5}
+.art.quiz{background:#E6DEFF}
+.art.mango{background:#FFE8B8}
+.prize{display:inline-block;font-family:var(--display);background:var(--coral);color:var(--on-accent);border:2px solid var(--line);border-radius:999px;padding:0 12px;font-size:1rem;justify-self:start}
+
+.safe{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.safe > div{padding:18px 22px;display:flex;gap:14px;align-items:center}
+.safe svg{flex:none;width:52px;height:52px}
+footer{padding-block:32px;text-align:center;color:var(--muted);font-size:.95rem}
+
+@media (max-width:860px){
+  .hero .wrap,.safe{grid-template-columns:1fr}
+  .trio,.doors{grid-template-columns:1fr}
+  .bot-wrap{order:-1}
+  .bot-wrap svg.big{width:220px}
+  .band{padding-block:40px}
+}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="bot" viewBox="0 0 120 120">
+      <line x1="60" y1="8" x2="60" y2="24" stroke="#1E2847" stroke-width="4"/>
+      <circle cx="60" cy="8" r="7" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+      <rect x="18" y="24" width="84" height="66" rx="22" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/>
+      <rect x="30" y="38" width="60" height="34" rx="14" fill="#1E2847"/>
+      <circle cx="46" cy="55" r="7" fill="#FFC83D"/>
+      <circle cx="74" cy="55" r="7" fill="#FFC83D"/>
+      <path d="M48 80 Q60 88 72 80" fill="none" stroke="#1E2847" stroke-width="4" stroke-linecap="round"/>
+      <rect x="6" y="46" width="12" height="22" rx="6" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+      <rect x="102" y="46" width="12" height="22" rx="6" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+      <rect x="40" y="90" width="40" height="22" rx="8" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/>
+      <path d="M54 101h12M60 95v12" stroke="#FF6A57" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><svg aria-hidden="true"><use href="#bot"/></svg> <span data-i18n="brand">หมอบอท</span></div>
+    <div class="lang" role="group" aria-label="ภาษา / Language">
+      <button type="button" id="langTh" aria-pressed="true">ไทย</button>
+      <button type="button" id="langEn" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="eyebrow">ยินดีต้อนรับสู่บูธของเรา!</p>
+      <h1 data-i18n="title">พวกเราสร้าง<br><mark>หุ่นยนต์ AI</mark><br>ที่หารอยฟกช้ำได้</h1>
+      <p class="lead" data-i18n="lead">หุ่นยนต์ของเราชื่อ <b>หมอบอท</b> หมอบอทดูรูปผิวหนัง แล้วบอกได้ว่าตรงไหนมีรอยฟกช้ำ เพื่อช่วยให้คุณหมอและผู้ใหญ่ดูแลเด็กๆ ได้ดีขึ้น</p>
+      <div class="ctas">
+        <a class="btn" href="#play" data-i18n="ctaPlay">ไปเล่นเกมกัน</a>
+        <a class="btn ghost" href="#project" data-i18n="ctaWhat">โครงงานของเราคืออะไร?</a>
+      </div>
+    </div>
+    <div class="bot-wrap">
+      <svg class="big" viewBox="0 0 120 120" aria-hidden="true"><use href="#bot"/></svg>
+      <div class="bubble" data-i18n="hello">สวัสดีจ้า!</div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="project">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="projEyebrow">โครงงานของเรา</p>
+      <h2 data-i18n="projTitle">หมอบอทช่วยอะไรได้บ้าง?</h2>
+    </div>
+    <div class="trio">
+      <div class="sticker">
+        <svg viewBox="0 0 110 90" aria-hidden="true"><path d="M8 34 C40 22 80 24 102 30 L102 70 C80 76 40 76 8 66Z" fill="#E0AC8A" stroke="#1E2847" stroke-width="3"/><ellipse cx="56" cy="50" rx="16" ry="11" fill="#7E5BA6" opacity=".55"/><circle cx="84" cy="22" r="14" fill="#fff" stroke="#1E2847" stroke-width="3"/><text x="84" y="29" text-anchor="middle" font-family="Itim, sans-serif" font-size="20" fill="#1E2847">?</text></svg>
+        <span class="tag p" data-i18n="t1tag">ปัญหา</span>
+        <h3 data-i18n="t1h">รอยฟกช้ำบางทีมองยาก</h3>
+        <p data-i18n="t1">บางรอยสีจาง บางรอยอยู่บนผิวสีเข้ม ผู้ใหญ่อาจมองไม่เห็น</p>
+      </div>
+      <div class="sticker">
+        <svg viewBox="0 0 110 90" aria-hidden="true"><rect x="10" y="20" width="60" height="44" rx="10" fill="#9FE3D8" stroke="#1E2847" stroke-width="3"/><circle cx="40" cy="42" r="13" fill="#fff" stroke="#1E2847" stroke-width="3"/><circle cx="40" cy="42" r="5" fill="#1E2847"/><path d="M74 42h10" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/><use href="#bot" x="80" y="26" width="30" height="30"/></svg>
+        <span class="tag s" data-i18n="t2tag">วิธีของเรา</span>
+        <h3 data-i18n="t2h">กล้อง + AI</h3>
+        <p data-i18n="t2">ถ่ายรูปผิวหนัง หมอบอทจะวาดกรอบรอบรอยฟกช้ำ และบอกว่ามั่นใจกี่เปอร์เซ็นต์</p>
+      </div>
+      <div class="sticker">
+        <svg viewBox="0 0 110 90" aria-hidden="true"><path d="M55 78 C20 56 10 40 18 26 C26 12 46 14 55 28 C64 14 84 12 92 26 C100 40 90 56 55 78Z" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/><path d="M47 44h16M55 36v16" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
+        <span class="tag h" data-i18n="t3tag">ช่วยใคร</span>
+        <h3 data-i18n="t3h">ช่วยดูแลเด็กๆ</h3>
+        <p data-i18n="t3">ช่วยคุณหมอ คุณครู และพ่อแม่ เห็นรอยฟกช้ำได้เร็วขึ้น เด็กๆ จะได้รับการดูแลทันที</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="play">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="playEyebrow">มาสนุกกัน!</p>
+      <h2 data-i18n="playTitle">เลือกเลย อยากทำอะไรก่อน?</h2>
+    </div>
+    <div class="doors">
+      <a class="door sticker" href="learn.html">
+        <div class="art learn"><svg viewBox="0 0 160 100" aria-hidden="true"><path d="M10 34 C60 22 110 24 150 30 L150 76 C110 82 60 82 10 72Z" fill="#E0AC8A" stroke="#1E2847" stroke-width="3"/><ellipse cx="80" cy="54" rx="22" ry="15" fill="#C83A4E" opacity=".6"/><ellipse cx="80" cy="54" rx="14" ry="9" fill="#4E3B8F" opacity=".5"/></svg></div>
+        <div class="body"><h3 data-i18n="d1h">เรียนรู้เรื่องรอยฟกช้ำ</h3><p data-i18n="d1">รอยฟกช้ำเกิดจากอะไร ทำไมเปลี่ยนสีได้ และหมอบอทคิดยังไง</p></div>
+        <span class="btn ghost go" data-i18n="d1go">ไปเรียนรู้</span>
+      </a>
+      <a class="door sticker" href="learn.html#game">
+        <div class="art quiz"><svg viewBox="0 0 160 100" aria-hidden="true"><rect x="16" y="20" width="56" height="62" rx="12" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/><text x="44" y="62" text-anchor="middle" font-family="Itim, sans-serif" font-size="30" fill="#1E2847">VS</text><use href="#bot" x="88" y="18" width="62" height="62"/></svg></div>
+        <div class="body"><h3 data-i18n="d2h">เกมทายรอยช้ำ</h3><p data-i18n="d2">ดูรูปแล้วทายว่าเป็นรอยฟกช้ำไหม แข่งกับหมอบอทว่าใครเก่งกว่า!</p></div>
+        <span class="btn ghost go" data-i18n="d2go">แข่งกับหมอบอท</span>
+      </a>
+      <a class="door sticker" href="mango.html">
+        <div class="art mango"><svg viewBox="0 0 160 100" aria-hidden="true"><ellipse cx="54" cy="44" rx="16" ry="20" fill="#FFB627" stroke="#1E2847" stroke-width="3"/><ellipse cx="104" cy="30" rx="13" ry="16" fill="#C9963E" stroke="#1E2847" stroke-width="3"/><ellipse cx="108" cy="27" rx="5" ry="4" fill="#5A3418"/><circle cx="99" cy="36" r="3" fill="#5A3418"/><path d="M44 72h72l-8 22H52Z" fill="#C68B4E" stroke="#1E2847" stroke-width="3"/><rect x="40" y="66" width="80" height="9" rx="4" fill="#A86E35" stroke="#1E2847" stroke-width="3"/></svg></div>
+        <div class="body"><h3 data-i18n="d3h">เกมเก็บมะม่วง</h3><p data-i18n="d3">เก็บมะม่วงดี หลบมะม่วงช้ำ ภายใน 30 วินาที</p><span class="prize" data-i18n="d3prize">ได้ 7 คะแนน รับรางวัล!</span></div>
+        <span class="btn ghost go" data-i18n="d3go">เล่นเลย</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap safe">
+    <div class="sticker">
+      <svg viewBox="0 0 52 52" aria-hidden="true"><use href="#bot" width="52" height="52"/></svg>
+      <p data-i18n="s1"><b>หมอบอทไม่ใช่หมอจริงๆ นะ</b><br>ถ้าเจ็บ ต้องบอกพ่อแม่ คุณครู หรือคุณหมอเสมอ</p>
+    </div>
+    <div class="sticker">
+      <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="10" y="22" width="32" height="24" rx="5" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/><path d="M17 22v-6a9 9 0 0 1 18 0v6" fill="none" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="33" r="3" fill="#1E2847"/><path d="M26 35v5" stroke="#1E2847" stroke-width="3"/></svg>
+      <p data-i18n="s2"><b>เราไม่เก็บรูปของหนู</b><br>รูปที่ถ่ายที่บูธใช้แค่ตอนเล่น แล้วลบทิ้งทันที</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap" data-i18n="footer">โครงงานตรวจหารอยฟกช้ำด้วยปัญญาประดิษฐ์ (AI) · ขอบคุณที่มาเที่ยวบูธของเรา!</div></footer>
+
+<script>
+(function(){
+  var EN={
+    brand:'Dr. Bot', eyebrow:'Welcome to our booth!',
+    title:'We built an<br><mark>AI robot</mark><br>that finds bruises',
+    lead:'Our robot is called <b>Dr. Bot</b>. Dr. Bot looks at pictures of skin and tells us where a bruise is, so doctors and grown-ups can take better care of kids.',
+    ctaPlay:"Let's play!", ctaWhat:'What is our project?', hello:'Hello there!',
+    projEyebrow:'Our project', projTitle:'How does Dr. Bot help?',
+    t1tag:'The problem', t1h:'Bruises can be hard to see', t1:'Some are faint, and some are on darker skin. Grown-ups might miss them.',
+    t2tag:'Our idea', t2h:'Camera + AI', t2:'Take a picture of the skin. Dr. Bot draws a box around the bruise and says how sure it is.',
+    t3tag:'Who it helps', t3h:'Taking care of kids', t3:'It helps doctors, teachers and parents spot bruises faster, so kids get help right away.',
+    playEyebrow:"Let's have fun!", playTitle:'What do you want to do first?',
+    d1h:'Learn about bruises', d1:'What causes a bruise, why it changes colour, and how Dr. Bot thinks.', d1go:'Start learning',
+    d2h:'Guess the bruise', d2:'Look at pictures and guess if it is a bruise. Race Dr. Bot to see who is better!', d2go:'Race Dr. Bot',
+    d3h:'Mango catch', d3:'Catch the good mangoes and avoid the bruised ones in 30 seconds.', d3prize:'Get 7 points to win a prize!', d3go:'Play now',
+    s1:'<b>Dr. Bot is not a real doctor</b><br>If you get hurt, always tell your parents, teacher or a doctor.',
+    s2:"<b>We don't keep your photos</b><br>Photos taken at the booth are only used while you play, then deleted right away.",
+    footer:'An AI bruise detection project · Thanks for visiting our booth!'
+  };
+  var lang='th';
+  try{ if(localStorage.getItem('drbot-lang')==='en') lang='en'; }catch(e){}
+  var els=[].slice.call(document.querySelectorAll('[data-i18n]'));
+  els.forEach(function(el){el._th=el.innerHTML});
+  function apply(){
+    document.documentElement.lang=lang;
+    els.forEach(function(el){var k=el.getAttribute('data-i18n'); el.innerHTML=lang==='en'&&EN[k]!=null?EN[k]:el._th;});
+    document.getElementById('langTh').setAttribute('aria-pressed',lang==='th');
+    document.getElementById('langEn').setAttribute('aria-pressed',lang==='en');
+  }
+  function set(l){lang=l; try{localStorage.setItem('drbot-lang',l)}catch(e){} apply();}
+  document.getElementById('langTh').addEventListener('click',function(){set('th')});
+  document.getElementById('langEn').addEventListener('click',function(){set('en')});
+  apply();
+})();
+</script>

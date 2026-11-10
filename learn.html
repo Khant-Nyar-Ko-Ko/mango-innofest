@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>หมอบอทตามหารอยช้ำ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;600;700&display=swap">
+<style>
+/* Layout: a sticker-book — chunky outlined "stickers" on a minty page, one idea per band, big touch targets for small hands */
+:root{
+  --bg:#EDF6F0;
+  --band:#DDEFE5;
+  --surface:#FFFFFF;
+  --ink:#1E2847;
+  --muted:#4F5A78;
+  --line:#1E2847;
+  --coral:#FF6A57;
+  --sun:#FFC83D;
+  --plum:#7A5AD8;
+  --teal:#11968E;
+  --good:#1F9D55;
+  --bad:#D9443A;
+  --on-accent:#1E2847;
+  --display:"Itim","Mali","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;
+  --body:"Mali","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A2E; --band:#1A2240; --surface:#222B4A; --ink:#F2F4FB; --muted:#B4BCD8;
+    --line:#8A96C2; --coral:#FF7D6B; --sun:#FFCF52; --plum:#A28BFF; --teal:#3CC4BA;
+    --good:#4CCB7F; --bad:#FF6F66; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A2E; --band:#1A2240; --surface:#222B4A; --ink:#F2F4FB; --muted:#B4BCD8;
+  --line:#8A96C2; --coral:#FF7D6B; --sun:#FFCF52; --plum:#A28BFF; --teal:#3CC4BA;
+  --good:#4CCB7F; --bad:#FF6F66; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.25;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.8rem,4.6vw,2.6rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:56px}
+.band.alt{background:var(--band)}
+.eyebrow{font-family:var(--display);font-size:1.05rem;letter-spacing:.04em;color:var(--teal)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.sec-head{display:grid;gap:8px;margin-bottom:28px}
+
+.sticker{background:var(--surface);border:3px solid var(--line);border-radius:22px;box-shadow:5px 5px 0 var(--line)}
+.btn{font-family:var(--display);font-size:1.25rem;border:3px solid var(--line);border-radius:999px;padding:10px 24px;cursor:pointer;box-shadow:4px 4px 0 var(--line);background:var(--sun);color:var(--on-accent);transition:transform .12s, box-shadow .12s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:52px}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn:focus-visible,input:focus-visible,.lang button:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+.btn.coral{background:var(--coral)}
+.btn.teal{background:var(--teal);color:#fff}
+.btn.ghost{background:var(--surface);color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:4px 4px 0 var(--line)}
+
+/* top */
+.top{padding-block:14px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.4rem}
+.brand svg{width:44px;height:44px}
+.top-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-size:.95rem;text-decoration:none;padding:6px 12px;border-radius:999px;border:2px solid transparent}
+.nav a:hover{border-color:var(--line)}
+.lang{display:inline-flex;border:3px solid var(--line);border-radius:999px;overflow:hidden;box-shadow:3px 3px 0 var(--line);background:var(--surface)}
+.lang button{font-family:var(--display);font-size:1.05rem;border:0;background:transparent;color:var(--ink);padding:6px 16px;min-height:44px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sun);color:var(--on-accent)}
+
+/* hero */
+.hero{padding-block:24px 56px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,6.4vw,4rem)}
+.hero h1 mark{background:linear-gradient(transparent 58%, var(--sun) 58%);color:inherit;padding:0 4px}
+.hero-copy{display:grid;gap:18px;min-width:0}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{position:relative;padding:18px;min-width:0}
+.hero-art svg{width:100%;height:auto;display:block}
+.caption{font-size:.85rem;color:var(--muted);text-align:center;margin-top:8px}
+.scan{animation:scan 2.6s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translateY(0)}50%{transform:translateY(118px)}}
+.boxpop{animation:pop 2.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pop{0%,35%{opacity:0;transform:scale(.85)}45%,100%{opacity:1;transform:scale(1)}}
+
+/* what is a bruise */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.two > *{min-width:0}
+.steps{display:grid;gap:14px;list-style:none;padding:0;margin:0}
+.steps li{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center;padding:14px 16px}
+.num{width:48px;height:48px;border-radius:50%;border:3px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-size:1.4rem;background:var(--sun);color:var(--on-accent)}
+.diagram{padding:16px}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram text{font-family:var(--body);font-size:15px;fill:#1E2847}
+
+/* colour timeline */
+.timeline{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;padding:24px}
+.timeline > *{min-width:0}
+.timeline svg{width:100%;height:auto;display:block}
+.day-label{font-family:var(--display);font-size:2.4rem;line-height:1}
+.stage{display:grid;gap:10px}
+.stage-name{font-family:var(--display);font-size:1.6rem}
+.swatch{display:inline-block;width:28px;height:28px;border-radius:50%;border:3px solid var(--line);vertical-align:middle;margin-right:8px}
+input[type=range]{width:100%;accent-color:var(--plum);height:36px;cursor:pointer}
+.ticks{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ai steps */
+.ai-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.ai-step{padding:22px;display:grid;gap:10px;align-content:start;text-align:center;justify-items:center}
+.ai-step svg{width:96px;height:96px}
+.analogy{margin-top:28px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.analogy svg{width:80px;height:80px}
+.tones{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.tones span{width:40px;height:40px;border-radius:50%;border:3px solid var(--line)}
+
+/* game */
+.game{padding:24px;display:grid;gap:20px}
+.scoreboard{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;text-align:center}
+.score{padding:10px 12px;border-radius:18px;border:3px solid var(--line)}
+.score.kid{background:var(--sun);color:var(--on-accent)}
+.score.bot{background:var(--plum);color:#fff}
+.score b{display:block;font-family:var(--display);font-size:2.4rem;line-height:1.1;font-weight:400;font-variant-numeric:tabular-nums}
+.vs{font-family:var(--display);font-size:1.4rem;color:var(--muted)}
+.play{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.play > *{min-width:0}
+.card-frame{border:3px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);position:relative}
+.card-frame svg{display:block;width:100%;height:auto}
+.progress{font-size:.95rem;color:var(--muted);margin-bottom:8px}
+.choices{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.choices .btn{flex:1 1 180px;justify-content:center}
+.result{display:grid;gap:14px}
+.res-row{padding:14px 16px;border-radius:16px;border:3px solid var(--line);background:var(--bg);display:grid;gap:6px}
+.res-row .tag{font-family:var(--display);font-size:1.3rem}
+.ok{color:var(--good)}
+.no{color:var(--bad)}
+.meter{height:18px;border:3px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.meter i{display:block;height:100%;width:0;background:var(--plum);transition:width .7s ease}
+.why{font-size:1.05rem}
+.thinking{font-family:var(--display);color:var(--plum)}
+.dots::after{content:"";animation:dots 1s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.hint{color:var(--muted)}
+.final{text-align:center;display:grid;gap:14px;justify-items:center;padding:12px}
+.final h3{font-size:2rem}
+
+/* care */
+.care{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.care > div{padding:24px;display:grid;gap:12px;align-content:start}
+.care ul{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.care .warn{background:var(--coral);color:var(--on-accent)}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.notes > div{padding:18px 22px;display:flex;gap:14px;align-items:center}
+.notes svg{flex:none;width:52px;height:52px}
+
+footer{padding-block:36px;text-align:center;color:var(--muted);font-size:.95rem}
+
+@media (max-width:820px){
+  .hero .wrap,.two,.timeline,.play,.care,.notes{grid-template-columns:1fr}
+  .ai-steps{grid-template-columns:1fr}
+  .band{padding-block:40px}
+  .nav{display:none}
+}
+@media (max-width:460px){
+  body{font-size:17px}
+  .analogy{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .score b{font-size:1.9rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .boxpop{opacity:1}
+}
+.home-link{font-family:var(--display);font-size:1.05rem;text-decoration:none;color:var(--ink);background:var(--surface);border:3px solid var(--line);border-radius:999px;padding:6px 16px;box-shadow:3px 3px 0 var(--line);min-height:44px;display:inline-flex;align-items:center}
+.home-link:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+.top-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+</style>
+
+<!-- ===== Mascot (reused) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="bot" viewBox="0 0 120 120">
+      <line x1="60" y1="8" x2="60" y2="24" stroke="#1E2847" stroke-width="4"/>
+      <circle cx="60" cy="8" r="7" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+      <rect x="18" y="24" width="84" height="66" rx="22" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/>
+      <rect x="30" y="38" width="60" height="34" rx="14" fill="#1E2847"/>
+      <circle cx="46" cy="55" r="7" fill="#FFC83D"/>
+      <circle cx="74" cy="55" r="7" fill="#FFC83D"/>
+      <path d="M48 80 Q60 88 72 80" fill="none" stroke="#1E2847" stroke-width="4" stroke-linecap="round"/>
+      <rect x="6" y="46" width="12" height="22" rx="6" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+      <rect x="102" y="46" width="12" height="22" rx="6" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+      <rect x="40" y="90" width="40" height="22" rx="8" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/>
+      <path d="M54 101h12M60 95v12" stroke="#FF6A57" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><svg aria-hidden="true"><use href="#bot"/></svg> <span data-i18n="brand">หมอบอท</span></div>
+    <div class="top-right">
+      <a class="home-link" href="index.html" data-i18n="home">← หน้าแรก</a>
+      <nav class="nav" data-i18n-aria="navAria" aria-label="ไปที่หัวข้อ">
+        <a href="#what" data-i18n="nav1">รอยฟกช้ำคืออะไร</a>
+        <a href="#colors" data-i18n="nav2">สีเปลี่ยนได้</a>
+        <a href="#ai" data-i18n="nav3">AI เรียนรู้ยังไง</a>
+        <a href="#game" data-i18n="nav4">เกมแข่งหุ่นยนต์</a>
+        <a href="#care" data-i18n="nav5">ดูแลตัวเอง</a>
+      </nav>
+      <div class="lang" role="group" aria-label="ภาษา / Language">
+        <button type="button" id="langTh" lang="th" aria-pressed="true">ไทย</button>
+        <button type="button" id="langEn" lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="heroEyebrow">โครงงานปัญญาประดิษฐ์ (AI)</p>
+      <h1 data-i18n="heroTitle">คอมพิวเตอร์<br><mark>หารอยฟกช้ำ</mark>ได้ไหมนะ?</h1>
+      <p class="lead" data-i18n="heroLead">สวัสดี! ฉันชื่อ <b>หมอบอท</b> ฉันเป็นหุ่นยนต์ที่ถูกสอนให้ดูรูปผิวหนัง แล้วบอกว่าตรงไหนมีรอยฟกช้ำ มาดูกันว่าฉันทำได้ยังไง แล้วมาแข่งกันว่าใครเก่งกว่า!</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#game" data-i18n="ctaPlay">มาแข่งกับหมอบอท</a>
+        <a class="btn ghost" href="#what" data-i18n="ctaLearn">เรียนรู้ก่อน</a>
+      </div>
+    </div>
+    <div class="hero-art sticker">
+      <svg viewBox="0 0 400 300" role="img" data-i18n-aria="heroAria" aria-label="ภาพตัวอย่าง: หมอบอทเจอรอยฟกช้ำบนแขน แล้ววาดกรอบล้อมไว้ พร้อมบอกว่ามั่นใจ 92 เปอร์เซ็นต์">
+        <defs>
+          <radialGradient id="heroBruise">
+            <stop offset="0" stop-color="#4B2E7A" stop-opacity=".9"/>
+            <stop offset=".55" stop-color="#7E5BA6" stop-opacity=".65"/>
+            <stop offset="1" stop-color="#E0AC8A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="10" y="10" width="380" height="250" rx="18" fill="#CFEAF5"/>
+        <path d="M10 120 C120 96 260 100 390 112 L390 222 C260 232 120 232 10 214 Z" fill="#E0AC8A" stroke="#1E2847" stroke-width="4"/>
+        <ellipse cx="210" cy="166" rx="46" ry="30" fill="url(#heroBruise)"/>
+        <g class="scan"><rect x="10" y="100" width="380" height="6" fill="#11968E" opacity=".55"/></g>
+        <g class="boxpop">
+          <rect x="154" y="128" width="112" height="76" rx="6" fill="none" stroke="#FF6A57" stroke-width="5" stroke-dasharray="12 7"/>
+          <rect x="154" y="98" width="136" height="30" rx="8" fill="#FF6A57" stroke="#1E2847" stroke-width="3"/>
+          <text x="222" y="119" text-anchor="middle" font-family="Itim, Mali, sans-serif" font-size="19" fill="#1E2847" data-i18n="heroTag">รอยฟกช้ำ 92%</text>
+        </g>
+        <use href="#bot" x="300" y="196" width="96" height="96"/>
+      </svg>
+      <p class="caption" data-i18n="heroCaption">ตัวอย่างหน้าจอ: หมอบอทวาดกรอบรอบรอยฟกช้ำ แล้วบอกว่ามั่นใจแค่ไหน</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT IS A BRUISE ===== -->
+<section class="band alt" id="what">
+  <div class="wrap two">
+    <div>
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="part1">ตอนที่ 1</p>
+        <h2 data-i18n="whatTitle">รอยฟกช้ำคืออะไร?</h2>
+        <p class="lead" data-i18n="whatLead">ใต้ผิวหนังของเรามีเส้นเลือดเล็กๆ เยอะมาก เวลาเราชนอะไรแรงๆ ก็จะเกิดแบบนี้</p>
+      </div>
+      <ol class="steps">
+        <li class="sticker"><span class="num">1</span><span data-i18n="step1"><b>ชน หรือ กระแทก</b><br>เช่น ล้ม หรือเดินชนโต๊ะ</span></li>
+        <li class="sticker"><span class="num">2</span><span data-i18n="step2"><b>เส้นเลือดเล็กๆ แตก</b><br>แต่ผิวหนังข้างบนไม่ขาด</span></li>
+        <li class="sticker"><span class="num">3</span><span data-i18n="step3"><b>เลือดซึมอยู่ใต้ผิว</b><br>เราเลยเห็นเป็นรอยสีคล้ำๆ</span></li>
+      </ol>
+    </div>
+    <div class="diagram sticker">
+      <svg viewBox="0 0 420 300" role="img" data-i18n-aria="diagramAria" aria-label="ภาพตัดผิวหนัง: มีเส้นเลือดเล็กๆ อยู่ข้างใต้ เส้นหนึ่งแตกและเลือดซึมออกมา">
+        <rect x="10" y="40" width="400" height="40" rx="8" fill="#F1C3A3" stroke="#1E2847" stroke-width="3"/>
+        <rect x="10" y="80" width="400" height="170" rx="8" fill="#F7DCC8" stroke="#1E2847" stroke-width="3"/>
+        <path d="M10 140 C90 120 150 160 230 140 S350 120 410 140" fill="none" stroke="#D2384F" stroke-width="9" stroke-linecap="round"/>
+        <path d="M10 200 C100 185 170 215 260 198 S370 190 410 205" fill="none" stroke="#D2384F" stroke-width="7" stroke-linecap="round"/>
+        <g fill="#8B2D5A" opacity=".75">
+          <circle cx="232" cy="118" r="7"/><circle cx="250" cy="108" r="5"/><circle cx="214" cy="104" r="6"/>
+          <circle cx="242" cy="96" r="4"/><circle cx="222" cy="122" r="5"/><circle cx="262" cy="122" r="4"/>
+          <circle cx="200" cy="116" r="4"/>
+        </g>
+        <path d="M230 4 l8 18 18 2 -14 12 4 18 -16 -10 -16 10 4 -18 -14 -12 18 -2z" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/>
+        <text x="20" y="66" data-i18n="dSkin">ผิวหนัง</text>
+        <text x="20" y="122" data-i18n="dVessel">เส้นเลือดเล็กๆ</text>
+        <text x="282" y="100" data-i18n="dLeak">เลือดซึมออกมา</text>
+        <line x1="280" y1="96" x2="258" y2="108" stroke="#1E2847" stroke-width="2"/>
+        <text x="270" y="30" data-i18n="dBonk">ปั้ก!</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COLOURS ===== -->
+<section class="band" id="colors">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="part2">ตอนที่ 2</p>
+      <h2 data-i18n="colTitle">รอยฟกช้ำเปลี่ยนสีได้ด้วย!</h2>
+      <p class="lead" data-i18n="colLead">ร่างกายของเราค่อยๆ เก็บกวาดเลือดที่ซึมออกมา สีของรอยช้ำเลยเปลี่ยนไปทุกวัน ลองเลื่อนแถบข้างล่างดูสิ</p>
+    </div>
+    <div class="timeline sticker">
+      <svg viewBox="0 0 400 220" role="img" data-i18n-aria="armAria" aria-label="แขนที่มีรอยฟกช้ำ สีเปลี่ยนตามวัน">
+        <defs>
+          <radialGradient id="dayBruise">
+            <stop id="dS0" offset="0" stop-color="#C83A4E" stop-opacity=".9"/>
+            <stop id="dS1" offset=".55" stop-color="#C83A4E" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#E0AC8A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M0 50 C120 26 260 30 400 42 L400 172 C260 182 120 182 0 164 Z" fill="#E0AC8A" stroke="#1E2847" stroke-width="4"/>
+        <ellipse cx="200" cy="106" rx="62" ry="40" fill="url(#dayBruise)"/>
+      </svg>
+      <div class="stage">
+        <div class="day-label" id="dayLabel">วันที่ 0</div>
+        <div class="stage-name"><span class="swatch" id="swatch"></span><span id="stageName">สีแดง</span></div>
+        <p id="stageText">เพิ่งชนมาใหม่ๆ เลือดเพิ่งซึมออกมาใต้ผิว</p>
+        <label for="day" class="hint" data-i18n="slideHint">เลื่อนเพื่อดูแต่ละวัน</label>
+        <input type="range" id="day" min="0" max="14" step="1" value="0">
+        <div class="ticks"><span data-i18n="tick0">วันที่ 0</span><span>7</span><span>14</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW AI LEARNS ===== -->
+<section class="band alt" id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="part3">ตอนที่ 3</p>
+      <h2 data-i18n="aiTitle">หมอบอทรู้ได้ยังไง?</h2>
+      <p class="lead" data-i18n="aiLead">หมอบอททำงาน 3 ขั้นตอน เหมือนเวลาที่หนูดูรูปแล้วตอบคำถาม</p>
+    </div>
+    <div class="ai-steps">
+      <div class="ai-step sticker">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="10" y="26" width="76" height="52" rx="12" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><rect x="32" y="16" width="32" height="14" rx="5" fill="#9FE3D8" stroke="#1E2847" stroke-width="4"/><circle cx="48" cy="52" r="16" fill="#fff" stroke="#1E2847" stroke-width="4"/><circle cx="48" cy="52" r="7" fill="#1E2847"/></svg>
+        <h3 data-i18n="ai1t">1. ดู</h3>
+        <p data-i18n="ai1">ถ่ายรูปผิวหนังด้วยกล้อง แล้วส่งรูปให้หมอบอท</p>
+      </div>
+      <div class="ai-step sticker">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><path d="M48 14c-14 0-22 8-22 18-8 2-12 9-12 16 0 8 6 14 12 15 0 10 8 18 22 18s22-8 22-18c6-1 12-7 12-15 0-7-4-14-12-16 0-10-8-18-22-18z" fill="#FFC83D" stroke="#1E2847" stroke-width="4"/><path d="M48 18v62M34 34c6 4 8 10 6 16M62 34c-6 4-8 10-6 16M30 60c6-2 12 0 14 6M66 60c-6-2-12 0-14 6" fill="none" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3 data-i18n="ai2t">2. คิด</h3>
+        <p data-i18n="ai2">เทียบกับรูปหลายพันรูปที่เคยเห็นมาก่อน ว่าเหมือนรอยฟกช้ำไหม</p>
+      </div>
+      <div class="ai-step sticker">
+        <svg viewBox="0 0 96 96" aria-hidden="true"><rect x="12" y="20" width="72" height="56" rx="10" fill="#fff" stroke="#1E2847" stroke-width="4"/><rect x="30" y="34" width="36" height="28" fill="none" stroke="#FF6A57" stroke-width="4" stroke-dasharray="7 4"/><circle cx="72" cy="70" r="16" fill="#1F9D55" stroke="#1E2847" stroke-width="4"/><path d="M64 70l6 6 10-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 data-i18n="ai3t">3. ตอบ</h3>
+        <p data-i18n="ai3">วาดกรอบรอบรอยฟกช้ำ แล้วบอกว่ามั่นใจกี่เปอร์เซ็นต์</p>
+      </div>
+    </div>
+    <div class="analogy sticker">
+      <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="46" r="26" fill="#FFC83D" stroke="#1E2847" stroke-width="4"/><path d="M18 30 L22 8 L34 22 M62 30 L58 8 L46 22" fill="#FFC83D" stroke="#1E2847" stroke-width="4" stroke-linejoin="round"/><circle cx="31" cy="44" r="4" fill="#1E2847"/><circle cx="49" cy="44" r="4" fill="#1E2847"/><path d="M36 54q4 4 8 0" fill="none" stroke="#1E2847" stroke-width="3" stroke-linecap="round"/><path d="M14 52h12M14 58h12M54 52h12M54 58h12" stroke="#1E2847" stroke-width="2"/></svg>
+      <div>
+        <h3 data-i18n="catTitle">เหมือนตอนหนูหัดรู้จัก "แมว"</h3>
+        <p data-i18n="catText">ตอนเด็กๆ หนูเห็นแมวหลายตัว ทั้งสีส้ม สีดำ ตัวอ้วน ตัวผอม จนรู้เลยว่าแบบนี้คือแมว หมอบอทก็เหมือนกัน เราให้หมอบอทดูรูปรอยฟกช้ำเยอะมากๆ บนผิวหลายสี จนมันจำได้ว่ารอยฟกช้ำหน้าตาเป็นยังไง</p>
+        <div class="tones" data-i18n-aria="tonesAria" aria-label="สีผิวหลายแบบที่หมอบอทต้องเรียนรู้">
+          <span style="background:#F5D0B5"></span><span style="background:#E0AC8A"></span><span style="background:#C68863"></span><span style="background:#8D5A3B"></span><span style="background:#5E3A25"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GAME ===== -->
+<section class="band" id="game">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="part4">ตอนที่ 4 · เกม</p>
+      <h2 data-i18n="gameTitle">ใครเก่งกว่า? หนู หรือ หมอบอท!</h2>
+      <p class="lead" data-i18n="gameLead">ดูรูปแล้วตอบว่าเป็นรอยฟกช้ำหรือเปล่า หมอบอทจะตอบด้วย บางทีหุ่นยนต์ก็ตอบผิดได้นะ!</p>
+    </div>
+    <div class="game sticker">
+      <div class="scoreboard">
+        <div class="score kid"><span data-i18n="you">หนู</span><b id="kidScore">0</b></div>
+        <div class="vs">VS</div>
+        <div class="score bot"><span data-i18n="brand">หมอบอท</span><b id="botScore">0</b></div>
+      </div>
+      <div id="playArea" class="play">
+        <div>
+          <p class="progress" id="progress">รูปที่ 1 จาก 8</p>
+          <div class="card-frame" id="cardFrame"></div>
+          <div class="choices">
+            <button class="btn coral" id="yesBtn" type="button" data-i18n="yes">ใช่ รอยฟกช้ำ</button>
+            <button class="btn teal" id="noBtn" type="button" data-i18n="no">ไม่ใช่</button>
+          </div>
+        </div>
+        <div class="result" id="result" aria-live="polite"></div>
+      </div>
+      <div id="finalArea" class="final" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CARE ===== -->
+<section class="band alt" id="care">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="part5">ตอนที่ 5</p>
+      <h2 data-i18n="careTitle">ถ้ามีรอยฟกช้ำ ทำยังไงดี?</h2>
+    </div>
+    <div class="care">
+      <div class="sticker">
+        <h3 data-i18n="careH">ดูแลตัวเองง่ายๆ</h3>
+        <ul>
+          <li data-i18n="care1"><b>ประคบเย็น</b> เอาน้ำแข็งห่อผ้า วางไว้ประมาณ 10 นาที</li>
+          <li data-i18n="care2"><b>พักส่วนที่ช้ำ</b> อย่าเพิ่งกระแทกซ้ำ</li>
+          <li data-i18n="care3"><b>บอกพ่อแม่ หรือคุณครู</b> ทุกครั้งที่เจ็บ</li>
+        </ul>
+      </div>
+      <div class="sticker warn">
+        <h3 data-i18n="warnH">บอกผู้ใหญ่ทันที ถ้า...</h3>
+        <ul>
+          <li data-i18n="warn1">เจ็บมาก หรือบวมมาก</li>
+          <li data-i18n="warn2">ขยับแขนหรือขาไม่ได้</li>
+          <li data-i18n="warn3">มีรอยช้ำเยอะ แต่ไม่รู้ว่าไปชนอะไรมา</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="sticker">
+        <svg viewBox="0 0 52 52" aria-hidden="true"><use href="#bot" width="52" height="52"/></svg>
+        <p data-i18n="note1"><b>หมอบอทไม่ใช่หมอจริงๆ นะ</b><br>หมอบอทเป็นโครงงานของพี่ๆ นักศึกษา ถ้าเจ็บต้องให้คุณหมอหรือผู้ใหญ่ดู</p>
+      </div>
+      <div class="sticker">
+        <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="10" y="22" width="32" height="24" rx="5" fill="#FFC83D" stroke="#1E2847" stroke-width="3"/><path d="M17 22v-6a9 9 0 0 1 18 0v6" fill="none" stroke="#1E2847" stroke-width="3"/><circle cx="26" cy="33" r="3" fill="#1E2847"/><path d="M26 35v5" stroke="#1E2847" stroke-width="3"/></svg>
+        <p data-i18n="note2"><b>เราไม่เก็บรูปของหนู</b><br>รูปที่ถ่ายที่บูธจะใช้แค่ตอนเล่นเท่านั้น แล้วลบทิ้งทันที</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" data-i18n="footer">โครงงานตรวจหารอยฟกช้ำด้วยปัญญาประดิษฐ์ (AI) · ขอบคุณที่มาเที่ยวบูธของเรา!</div>
+</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+
+  /* ---------- English text for static elements (Thai is read from the page itself) ---------- */
+  var EN={
+    brand:'Dr. Bot', home:'← Home', navAria:'Go to section',
+    nav1:'What is a bruise?', nav2:'Colours change', nav3:'How AI learns', nav4:'Robot game', nav5:'Take care',
+    heroEyebrow:'An Artificial Intelligence (AI) project',
+    heroTitle:'Can a computer<br><mark>find a bruise</mark>?',
+    heroLead:"Hi! I'm <b>Dr. Bot</b>. I'm a robot that has been taught to look at pictures of skin and point out where a bruise is. Let's see how I do it, then race me to see who's better!",
+    ctaPlay:'Race Dr. Bot', ctaLearn:'Learn first',
+    heroAria:'Example: Dr. Bot finds a bruise on an arm, draws a box around it and says it is 92 percent sure',
+    heroTag:'Bruise 92%',
+    heroCaption:'Example screen: Dr. Bot draws a box around the bruise and says how sure it is',
+    part1:'Part 1', part2:'Part 2', part3:'Part 3', part4:'Part 4 · Game', part5:'Part 5',
+    whatTitle:'What is a bruise?',
+    whatLead:'Under our skin there are lots of tiny blood vessels. When we bump into something hard, this happens:',
+    step1:'<b>A bump or a knock</b><br>like falling down or walking into a table',
+    step2:"<b>Tiny blood vessels break</b><br>but the skin on top doesn't tear",
+    step3:'<b>Blood stays under the skin</b><br>so we see a dark mark',
+    diagramAria:'Cross-section of skin: tiny blood vessels underneath, one breaks and blood leaks out',
+    dSkin:'Skin', dVessel:'Tiny blood vessels', dLeak:'Blood leaks out', dBonk:'Bonk!',
+    colTitle:'Bruises change colour too!',
+    colLead:'Our body slowly cleans up the blood that leaked out, so the bruise changes colour every day. Try moving the slider below!',
+    armAria:'An arm with a bruise that changes colour each day',
+    slideHint:'Slide to see each day', tick0:'Day 0',
+    aiTitle:'How does Dr. Bot know?',
+    aiLead:'Dr. Bot works in 3 steps, just like when you look at a picture and answer a question.',
+    ai1t:'1. Look', ai1:'A camera takes a picture of the skin and sends it to Dr. Bot.',
+    ai2t:'2. Think', ai2:'It compares the picture with thousands of pictures it has seen before, to check if it looks like a bruise.',
+    ai3t:'3. Answer', ai3:'It draws a box around the bruise and says how many percent sure it is.',
+    catTitle:'Just like when you learned what a "cat" is',
+    catText:'When you were little, you saw lots of cats: orange ones, black ones, fat ones, skinny ones. Soon you just knew: that\'s a cat! Dr. Bot is the same. We showed Dr. Bot lots and lots of bruise pictures on many skin colours, until it remembered what a bruise looks like.',
+    tonesAria:'Different skin colours Dr. Bot has to learn',
+    gameTitle:'Who is better? You or Dr. Bot!',
+    gameLead:'Look at the picture and say if it is a bruise. Dr. Bot will answer too. Sometimes robots get it wrong!',
+    you:'You', yes:'Yes, a bruise', no:'No',
+    careTitle:'What should I do if I get a bruise?',
+    careH:'Easy ways to take care',
+    care1:'<b>Cool it down:</b> wrap ice in a cloth and hold it there for about 10 minutes',
+    care2:'<b>Rest the bruised spot</b> and try not to bump it again',
+    care3:'<b>Tell your parents or teacher</b> every time you get hurt',
+    warnH:'Tell a grown-up right away if...',
+    warn1:'It hurts a lot or is very swollen',
+    warn2:"You can't move your arm or leg",
+    warn3:"You have lots of bruises but don't know how you got them",
+    note1:'<b>Dr. Bot is not a real doctor</b><br>Dr. Bot is a project made by university students. If you get hurt, a doctor or a grown-up should take a look.',
+    note2:"<b>We don't keep your photos</b><br>Photos taken at the booth are only used while you play, then deleted right away.",
+    footer:'An AI bruise detection project · Thanks for visiting our booth!'
+  };
+
+  /* ---------- text for parts drawn by script ---------- */
+  var T={
+    th:{
+      day:function(d){return 'วันที่ '+d},
+      stages:[
+        {max:1,name:'สีแดง',text:'เพิ่งชนมาใหม่ๆ เลือดเพิ่งซึมออกมาใต้ผิว'},
+        {max:4,name:'สีน้ำเงินม่วง',text:'เลือดใต้ผิวเริ่มเปลี่ยนสี รอยช้ำเลยดูคล้ำขึ้น'},
+        {max:7,name:'สีเขียว',text:'ร่างกายกำลังเก็บกวาดเลือดออกไป ทีละนิด'},
+        {max:11,name:'สีเหลืองน้ำตาล',text:'ใกล้หายแล้ว! สีจางลงเรื่อยๆ'},
+        {max:14,name:'หายแล้ว!',text:'ร่างกายเก็บกวาดเสร็จ ผิวกลับมาเหมือนเดิม เก่งมาก!'}
+      ],
+      progress:function(i,n){return 'รูปที่ '+i+' จาก '+n},
+      cardAria:'รูปผิวหนังให้ทาย',
+      hint:'ดูรูปให้ดีๆ แล้วกดตอบเลย! รอยฟกช้ำจะมีขอบฟุ้งๆ และสีคล้ำ',
+      kidOk:'หนูตอบถูก!', kidNo:'อุ๊ย หนูตอบผิด',
+      kidSaid:function(a){return 'หนูตอบว่า: '+a},
+      yes:'ใช่ รอยฟกช้ำ', no:'ไม่ใช่',
+      thinking:'หมอบอทกำลังคิด',
+      botOk:'หมอบอทตอบถูก', botNo:'หมอบอทตอบผิด!',
+      botSaid:function(a,c){return 'หมอบอทตอบว่า: '+a+' · มั่นใจ '+c+'%'},
+      answer:function(n){return 'คำเฉลย: '+n},
+      next:'รูปต่อไป', seeScore:'ดูผลคะแนน',
+      win:'หนูชนะหมอบอท! เก่งมากเลย', tie:'เสมอกัน! หนูกับหมอบอทเก่งพอๆ กัน', lose:'หมอบอทชนะรอบนี้ ลองใหม่อีกครั้งนะ!',
+      scoreLine:function(k,b){return 'หนูได้ '+k+' คะแนน หมอบอทได้ '+b+' คะแนน'},
+      lesson:'หมอบอทยังตอบผิดได้ เช่น เข้าใจผิดว่าเงาเป็นรอยช้ำ นี่แหละคือเหตุผลที่ AI ต้องเรียนรู้จากรูปเยอะๆ และต้องมีคนช่วยตรวจเสมอ',
+      again:'เล่นอีกครั้ง',
+      cards:{
+        purple:{name:'รอยฟกช้ำสีม่วง',why:'รอยฟกช้ำสีม่วงน้ำเงิน มักเป็นรอยที่เกิดมาได้ 2-4 วัน ขอบจะฟุ้งๆ ไม่คม'},
+        red:{name:'รอยฟกช้ำสีแดง',why:'รอยฟกช้ำสีแดง คือรอยใหม่ที่เพิ่งชนมาไม่นาน'},
+        green:{name:'รอยฟกช้ำสีเขียวเหลือง',why:'รอยฟกช้ำที่กำลังจะหาย หมอบอทตอบถูก แต่ไม่ค่อยมั่นใจ เพราะสีจางกว่ารอยอื่น'},
+        shadow:{name:'เงา',why:'นี่คือเงาเฉยๆ! หมอบอทสับสน เพราะเงาก็เป็นสีเข้มเหมือนรอยช้ำ พี่ๆ ต้องสอนด้วยรูปเงาเพิ่มอีก'},
+        mud:{name:'ดินโคลน',why:'นี่คือดินโคลน ล้างออกได้ เป็นจุดๆ ขอบคม ไม่เหมือนรอยช้ำ'},
+        bite:{name:'รอยยุงกัด',why:'นี่คือรอยยุงกัด เป็นตุ่มเล็กๆ สีชมพู และมักจะคัน'},
+        mark:{name:'ปาน',why:'นี่คือปาน มีมาตั้งแต่เกิด ขอบชัด และสีไม่เปลี่ยนไปตามวัน'},
+        ink:{name:'รอยปากกาเมจิก',why:'นี่คือรอยปากกาเมจิก! สีน้ำเงินทำให้หมอบอทเข้าใจผิดว่าเป็นรอยช้ำ'}
+      }
+    },
+    en:{
+      day:function(d){return 'Day '+d},
+      stages:[
+        {max:1,name:'Red',text:'Just bumped. The blood has only just leaked under the skin.'},
+        {max:4,name:'Blue-purple',text:'The blood under the skin starts to change colour, so the bruise looks darker.'},
+        {max:7,name:'Green',text:'The body is cleaning up the blood, little by little.'},
+        {max:11,name:'Yellow-brown',text:'Almost better! The colour keeps fading.'},
+        {max:14,name:'All gone!',text:'The body finished cleaning up and the skin is back to normal. Well done!'}
+      ],
+      progress:function(i,n){return 'Picture '+i+' of '+n},
+      cardAria:'A picture of skin to guess',
+      hint:'Look carefully at the picture, then answer! Bruises have soft, blurry edges and a dark colour.',
+      kidOk:'You got it right!', kidNo:'Oops, not quite',
+      kidSaid:function(a){return 'You said: '+a},
+      yes:'Yes, a bruise', no:'No',
+      thinking:'Dr. Bot is thinking',
+      botOk:'Dr. Bot got it right', botNo:'Dr. Bot got it wrong!',
+      botSaid:function(a,c){return 'Dr. Bot said: '+a+' · '+c+'% sure'},
+      answer:function(n){return 'Answer: '+n},
+      next:'Next picture', seeScore:'See the score',
+      win:'You beat Dr. Bot! Great job!', tie:"It's a tie! You and Dr. Bot are just as good", lose:'Dr. Bot wins this round. Try again!',
+      scoreLine:function(k,b){return 'You got '+k+' points. Dr. Bot got '+b+' points.'},
+      lesson:'Dr. Bot can still make mistakes, like thinking a shadow is a bruise. That is why AI needs to learn from lots of pictures, and a person should always check.',
+      again:'Play again',
+      cards:{
+        purple:{name:'Purple bruise',why:'A blue-purple bruise is usually 2 to 4 days old. Its edges are soft and blurry.'},
+        red:{name:'Red bruise',why:'A red bruise is a new one. The bump happened not long ago.'},
+        green:{name:'Green-yellow bruise',why:'This bruise is getting better. Dr. Bot got it right but was not very sure, because the colour is lighter.'},
+        shadow:{name:'Shadow',why:'This is just a shadow! Dr. Bot got confused because shadows are dark like bruises. The team needs to teach it with more shadow pictures.'},
+        mud:{name:'Mud',why:'This is mud. It washes off. It is made of spots with sharp edges, not like a bruise.'},
+        bite:{name:'Mosquito bite',why:'This is a mosquito bite. It is a small pink bump, and it is usually itchy.'},
+        mark:{name:'Birthmark',why:'This is a birthmark. You are born with it, its edges are clear, and its colour does not change.'},
+        ink:{name:'Marker pen',why:'This is marker pen! The blue colour made Dr. Bot think it was a bruise.'}
+      }
+    }
+  };
+
+  var lang='th';
+  try{ if(localStorage.getItem('drbot-lang')==='en') lang='en'; }catch(e){}
+
+  var i18nEls=[].slice.call(document.querySelectorAll('[data-i18n]'));
+  i18nEls.forEach(function(el){ el._th=el.innerHTML; });
+  var ariaEls=[].slice.call(document.querySelectorAll('[data-i18n-aria]'));
+  ariaEls.forEach(function(el){ el._thAria=el.getAttribute('aria-label'); });
+
+  function applyStatic(){
+    document.documentElement.lang=lang;
+    i18nEls.forEach(function(el){
+      var k=el.getAttribute('data-i18n');
+      el.innerHTML = lang==='en' && EN[k]!=null ? EN[k] : el._th;
+    });
+    ariaEls.forEach(function(el){
+      var k=el.getAttribute('data-i18n-aria');
+      el.setAttribute('aria-label', lang==='en' && EN[k]!=null ? EN[k] : el._thAria);
+    });
+    $('langTh').setAttribute('aria-pressed', lang==='th');
+    $('langEn').setAttribute('aria-pressed', lang==='en');
+  }
+  function setLang(l){
+    lang=l;
+    try{ localStorage.setItem('drbot-lang',l); }catch(e){}
+    applyStatic(); updateDay(); renderGame(false);
+  }
+  $('langTh').addEventListener('click',function(){setLang('th')});
+  $('langEn').addEventListener('click',function(){setLang('en')});
+
+  /* ---------- colour timeline ---------- */
+  var keys=[
+    {d:0,c:[200,58,78],o:.9},
+    {d:3,c:[78,59,143],o:.9},
+    {d:6,c:[110,138,58],o:.85},
+    {d:9,c:[199,164,71],o:.75},
+    {d:11,c:[180,140,90],o:.45},
+    {d:14,c:[224,172,138],o:0}
+  ];
+  function lerp(a,b,t){return a+(b-a)*t}
+  function colorAt(d){
+    for(var i=0;i<keys.length-1;i++){
+      var a=keys[i],b=keys[i+1];
+      if(d>=a.d&&d<=b.d){
+        var t=(d-a.d)/(b.d-a.d);
+        return {c:[0,1,2].map(function(k){return Math.round(lerp(a.c[k],b.c[k],t))}),o:lerp(a.o,b.o,t)};
+      }
+    }
+    return keys[keys.length-1];
+  }
+  var day=$('day');
+  function updateDay(){
+    var L=T[lang], d=+day.value, col=colorAt(d), rgb='rgb('+col.c.join(',')+')';
+    $('dS0').setAttribute('stop-color',rgb); $('dS0').setAttribute('stop-opacity',col.o.toFixed(2));
+    $('dS1').setAttribute('stop-color',rgb); $('dS1').setAttribute('stop-opacity',(col.o*.65).toFixed(2));
+    $('dayLabel').textContent=L.day(d);
+    $('swatch').style.background=d>=12?'#E0AC8A':rgb;
+    var st=L.stages.filter(function(s){return d<=s.max})[0];
+    $('stageName').textContent=st.name;
+    $('stageText').textContent=st.text;
+  }
+  day.addEventListener('input',updateDay);
+
+  /* ---------- game ---------- */
+  var skins=['#F5D0B5','#E0AC8A','#C68863','#8D5A3B'];
+  var CARDS=[
+    {kind:'purple',bruise:true, bot:true, conf:94},
+    {kind:'red',   bruise:true, bot:true, conf:88},
+    {kind:'green', bruise:true, bot:true, conf:61},
+    {kind:'shadow',bruise:false,bot:true, conf:72},
+    {kind:'mud',   bruise:false,bot:false,conf:90},
+    {kind:'bite',  bruise:false,bot:false,conf:83},
+    {kind:'mark',  bruise:false,bot:false,conf:77},
+    {kind:'ink',   bruise:false,bot:true, conf:58}
+  ];
+  var gid=0;
+  function svgFor(kind,skin,aria){
+    var id='g'+(gid++), body='', defs='';
+    function blob(c1,c2,rx,ry,cx,cy){
+      defs+='<radialGradient id="'+id+'"><stop offset="0" stop-color="'+c1+'" stop-opacity=".88"/><stop offset=".55" stop-color="'+c2+'" stop-opacity=".6"/><stop offset="1" stop-color="'+c2+'" stop-opacity="0"/></radialGradient>';
+      body+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="url(#'+id+')"/>';
+    }
+    if(kind==='purple') blob('#4B2E7A','#7E5BA6',62,42,150,100);
+    if(kind==='red')    blob('#A8263C','#D9576A',56,38,140,104);
+    if(kind==='green')  blob('#71863A','#C8B25A',60,44,160,96);
+    if(kind==='shadow'){
+      defs+='<radialGradient id="'+id+'"><stop offset="0" stop-color="#000" stop-opacity=".42"/><stop offset=".6" stop-color="#000" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>';
+      body+='<ellipse cx="150" cy="104" rx="80" ry="46" fill="url(#'+id+')"/>';
+    }
+    if(kind==='mud'){
+      [[120,90,16],[146,104,22],[176,86,12],[160,128,10],[110,120,8],[196,112,7],[132,70,6],[188,140,5],[100,96,4],[212,94,4]]
+        .forEach(function(p){body+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+p[2]+'" fill="#5E4026" opacity=".9"/>'});
+    }
+    if(kind==='bite') body+='<circle cx="150" cy="100" r="22" fill="#E58C8C" opacity=".75"/><circle cx="150" cy="100" r="12" fill="#DB6F72"/><circle cx="150" cy="100" r="3" fill="#8A2E33"/>';
+    if(kind==='mark') body+='<path d="M110 92 C112 70 160 66 186 80 C210 94 200 126 172 130 C140 136 108 118 110 92Z" fill="#7A4E2C" opacity=".55"/>';
+    if(kind==='ink')  body+='<path d="M96 110 C110 70 140 140 156 90 S196 130 208 86 M104 130 C130 112 170 134 196 118" fill="none" stroke="#2E4FCF" stroke-width="7" stroke-linecap="round" opacity=".85"/>';
+    return '<svg viewBox="0 0 300 200" role="img" aria-label="'+aria+'"><defs>'+defs+'</defs><rect width="300" height="200" fill="'+skin+'"/><path d="M0 0h300v14H0zM0 186h300v14H0z" fill="#000" opacity=".06"/>'+body+'</svg>';
+  }
+
+  /* state: phase = ask | thinking | answered | final */
+  var deck=[],idx=0,kid=0,bot=0,phase='ask',kidAnswer=null,timer=null,cardKey='';
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+  function start(){
+    clearTimeout(timer);
+    deck=shuffle(CARDS.map(function(c,i){return Object.assign({skin:skins[i%skins.length]},c)}));
+    idx=0;kid=0;bot=0;phase='ask';kidAnswer=null;cardKey='';
+    renderGame(false);
+  }
+  function renderGame(animate){
+    var L=T[lang];
+    $('kidScore').textContent=kid; $('botScore').textContent=bot;
+    if(phase==='final'){ renderFinal(); return; }
+    $('playArea').hidden=false; $('finalArea').hidden=true;
+    var c=deck[idx];
+    $('progress').textContent=L.progress(idx+1,deck.length);
+    var key=idx+'|'+lang;
+    if(cardKey!==key){ $('cardFrame').innerHTML=svgFor(c.kind,c.skin,L.cardAria); cardKey=key; }
+    var locked=phase!=='ask';
+    $('yesBtn').disabled=locked; $('noBtn').disabled=locked;
+    var r=$('result');
+    if(phase==='ask'){ r.innerHTML='<p class="hint">'+L.hint+'</p>'; return; }
+    var kidOk=(kidAnswer===c.bruise), botOk=(c.bot===c.bruise), info=L.cards[c.kind];
+    var html='<div class="res-row"><span class="tag '+(kidOk?'ok':'no')+'">'+(kidOk?L.kidOk:L.kidNo)+'</span><span>'+L.kidSaid(kidAnswer?L.yes:L.no)+'</span></div>';
+    if(phase==='thinking'){
+      html+='<div class="res-row"><span class="thinking dots">'+L.thinking+'</span></div>';
+      r.innerHTML=html; return;
+    }
+    html+='<div class="res-row"><span class="tag '+(botOk?'ok':'no')+'">'+(botOk?L.botOk:L.botNo)+'</span>'+
+      '<span>'+L.botSaid(c.bot?L.yes:L.no,c.conf)+'</span>'+
+      '<div class="meter" aria-hidden="true"><i id="meterBar"'+(animate?'':' style="width:'+c.conf+'%"')+'></i></div></div>'+
+      '<div class="res-row"><span class="tag">'+L.answer(info.name)+'</span><p class="why">'+info.why+'</p></div>'+
+      '<button class="btn" type="button" id="nextBtn">'+(idx<deck.length-1?L.next:L.seeScore)+'</button>';
+    r.innerHTML=html;
+    if(animate) requestAnimationFrame(function(){requestAnimationFrame(function(){var m=$('meterBar'); if(m) m.style.width=c.conf+'%';});});
+    var nb=$('nextBtn');
+    nb.addEventListener('click',function(){
+      idx++; phase = idx<deck.length ? 'ask' : 'final'; kidAnswer=null; renderGame(false);
+    });
+    if(animate) nb.focus({preventScroll:true});
+  }
+  function answer(sayYes){
+    if(phase!=='ask') return;
+    var c=deck[idx];
+    kidAnswer=sayYes; phase='thinking';
+    if(sayYes===c.bruise) kid++;
+    renderGame(false);
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    clearTimeout(timer);
+    timer=setTimeout(function(){
+      if(c.bot===c.bruise) bot++;
+      phase='answered';
+      renderGame(true);
+    }, reduce?100:1100);
+  }
+  function renderFinal(){
+    var L=T[lang];
+    $('playArea').hidden=true;
+    var f=$('finalArea');
+    var msg = kid>bot ? L.win : (kid===bot ? L.tie : L.lose);
+    f.innerHTML='<svg width="110" height="110" aria-hidden="true"><use href="#bot"/></svg>'+
+      '<h3>'+msg+'</h3><p class="lead">'+L.scoreLine(kid,bot)+'</p><p>'+L.lesson+'</p>'+
+      '<button class="btn coral" type="button" id="againBtn">'+L.again+'</button>';
+    f.hidden=false;
+    $('againBtn').addEventListener('click',start);
+  }
+  $('yesBtn').addEventListener('click',function(){answer(true)});
+  $('noBtn').addEventListener('click',function(){answer(false)});
+
+  applyStatic();
+  updateDay();
+  start();
+})();
+</script>

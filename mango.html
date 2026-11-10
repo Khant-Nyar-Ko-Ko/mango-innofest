@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>ฟาร์มมะม่วงหมอบอท</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;600;700&display=swap">
+<style>
+/* Layout: one big game stage, sticker-book frame matching the Dr. Bot site; HUD above, staff settings tucked below */
+:root{
+  --bg:#EDF6F0;
+  --surface:#FFFFFF;
+  --ink:#1E2847;
+  --muted:#4F5A78;
+  --line:#1E2847;
+  --coral:#FF6A57;
+  --sun:#FFC83D;
+  --mango:#FF9F1C;
+  --plum:#7A5AD8;
+  --teal:#11968E;
+  --good:#1F9D55;
+  --bad:#D9443A;
+  --on-accent:#1E2847;
+  --display:"Itim","Mali","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;
+  --body:"Mali","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A2E; --surface:#222B4A; --ink:#F2F4FB; --muted:#B4BCD8; --line:#8A96C2;
+    --coral:#FF7D6B; --sun:#FFCF52; --mango:#FFB04A; --plum:#A28BFF; --teal:#3CC4BA;
+    --good:#4CCB7F; --bad:#FF6F66; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A2E; --surface:#222B4A; --ink:#F2F4FB; --muted:#B4BCD8; --line:#8A96C2;
+  --coral:#FF7D6B; --sun:#FFCF52; --mango:#FFB04A; --plum:#A28BFF; --teal:#3CC4BA;
+  --good:#4CCB7F; --bad:#FF6F66; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 32px;display:grid;gap:14px}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top h1{font-size:clamp(1.6rem,4.4vw,2.4rem)}
+.lang{display:inline-flex;border:3px solid var(--line);border-radius:999px;overflow:hidden;box-shadow:3px 3px 0 var(--line);background:var(--surface)}
+.lang button{font-family:var(--display);font-size:1.05rem;border:0;background:transparent;color:var(--ink);padding:6px 16px;min-height:44px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sun);color:var(--on-accent)}
+
+.hud{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,calc(68vh * 4 / 3));margin:0 auto}
+.hud > div{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:6px 10px;text-align:center;box-shadow:3px 3px 0 var(--line);min-width:0}
+.hud small{display:block;font-size:.85rem;color:var(--muted)}
+.hud b{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.1;font-variant-numeric:tabular-nums}
+.goalbar{height:10px;border:2px solid var(--line);border-radius:999px;overflow:hidden;margin-top:4px;background:var(--bg)}
+.goalbar i{display:block;height:100%;width:0;background:var(--good);transition:width .2s}
+
+.stage{position:relative;width:min(100%,calc(68vh * 4 / 3));margin:0 auto;aspect-ratio:4/3;max-width:100%;border:3px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:6px 6px 0 var(--line);background:#BFE8FF}
+canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:16px;background:rgba(20,26,46,.35)}
+.panel{background:var(--surface);color:var(--ink);border:3px solid var(--line);border-radius:22px;box-shadow:5px 5px 0 var(--line);padding:clamp(14px,3vw,26px);max-width:520px;width:100%;display:grid;gap:12px;text-align:center;justify-items:center;max-height:100%;overflow:auto}
+.panel h2{font-size:clamp(1.6rem,5vw,2.4rem)}
+.rules{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.rule{display:flex;align-items:center;gap:8px;border:3px solid var(--line);border-radius:16px;padding:6px 12px;font-family:var(--display);font-size:1.2rem}
+.rule svg{width:40px;height:44px}
+.rule.plus{color:var(--good)} .rule.minus{color:var(--bad)}
+.muted{color:var(--muted);font-size:.95rem}
+.btn{font-family:var(--display);font-size:1.4rem;border:3px solid var(--line);border-radius:999px;padding:10px 30px;cursor:pointer;box-shadow:4px 4px 0 var(--line);background:var(--sun);color:var(--on-accent);min-height:56px;transition:transform .12s, box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn.coral{background:var(--coral)}
+.btn:focus-visible,.lang button:focus-visible,.staff-btn:focus-visible,select:focus-visible,input:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+.prize{font-family:var(--display);font-size:clamp(2.2rem,8vw,3.6rem);color:var(--good);line-height:1.1}
+.close{font-family:var(--display);font-size:clamp(2rem,7vw,3rem);color:var(--mango);line-height:1.1}
+.stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.stats span{border:2px solid var(--line);border-radius:999px;padding:2px 12px;font-size:.95rem}
+.fact{background:var(--bg);border-radius:14px;padding:10px 14px;font-size:.95rem;text-align:left}
+
+.foot{display:flex;justify-content:center}
+.staff-btn{font-family:var(--body);font-size:.9rem;background:transparent;border:2px dashed var(--muted);color:var(--muted);border-radius:999px;padding:6px 14px;cursor:pointer}
+.staff{width:min(100%,560px);margin:0 auto;background:var(--surface);border:3px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:12px}
+.staff h3{font-size:1.2rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid label{display:grid;gap:4px;font-size:.95rem;min-width:0}
+.grid input,.grid select{font:inherit;font-size:1rem;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
+@media (max-width:460px){ .grid{grid-template-columns:1fr} .rule{font-size:1rem} }
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+.home-link{font-family:var(--display);font-size:1.05rem;text-decoration:none;color:var(--ink);background:var(--surface);border:3px solid var(--line);border-radius:999px;padding:6px 16px;box-shadow:3px 3px 0 var(--line);min-height:44px;display:inline-flex;align-items:center}
+.home-link:focus-visible{outline:4px solid var(--plum);outline-offset:3px}
+.top-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1 data-k="title">ฟาร์มมะม่วงหมอบอท</h1>
+    <div class="top-right"><a class="home-link" href="index.html" data-k="home">← หน้าแรก</a>
+    <div class="lang" role="group" aria-label="ภาษา / Language">
+      <button type="button" id="langTh" aria-pressed="true">ไทย</button>
+      <button type="button" id="langEn" aria-pressed="false">EN</button>
+    </div></div>
+  </header>
+
+  <div class="hud" aria-live="off">
+    <div><small data-k="score">คะแนน</small><b id="hudScore">0</b></div>
+    <div><small data-k="time">เวลา</small><b id="hudTime">30</b></div>
+    <div><small data-k="goal">เป้าหมาย</small><b id="hudGoal">7</b><div class="goalbar"><i id="goalFill"></i></div></div>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="cv" aria-label="เกมเก็บมะม่วง" role="img"></canvas>
+    <div class="overlay" id="startScreen">
+      <div class="panel">
+        <h2 data-k="title">ฟาร์มมะม่วงหมอบอท</h2>
+        <p data-k="sub">ช่วยหมอบอทเก็บมะม่วงดีๆ ระวังมะม่วงช้ำ!</p>
+        <div class="rules">
+          <div class="rule plus"><svg viewBox="0 0 40 44" aria-hidden="true"><use href="#mGood"/></svg><span data-k="ruleGood">มะม่วงดี +1</span></div>
+          <div class="rule minus"><svg viewBox="0 0 40 44" aria-hidden="true"><use href="#mBad"/></svg><span data-k="ruleBad">มะม่วงช้ำ −1</span></div>
+        </div>
+        <p id="goalText"></p>
+        <p class="muted" data-k="howto">ลากนิ้วไปซ้าย-ขวา หรือกดปุ่มลูกศร</p>
+        <button class="btn" type="button" id="startBtn" data-k="start">เริ่มเล่น</button>
+      </div>
+    </div>
+    <div class="overlay" id="endScreen" hidden>
+      <div class="panel" id="endPanel"></div>
+    </div>
+  </div>
+
+  <div class="foot"><button class="staff-btn" type="button" id="staffBtn" aria-expanded="false" data-k="staff">ตั้งค่าสำหรับทีมงาน</button></div>
+  <form class="staff" id="staffPanel" hidden>
+    <h3 data-k="staff">ตั้งค่าสำหรับทีมงาน</h3>
+    <div class="grid">
+      <label><span data-k="setTarget">คะแนนเป้าหมาย</span><input id="setTarget" type="number" min="1" max="50" value="7"></label>
+      <label><span data-k="setTime">เวลาต่อรอบ (วินาที)</span>
+        <select id="setTime"><option>20</option><option selected>30</option><option>45</option><option>60</option></select></label>
+      <label><span data-k="setSpeed">ความเร็ว</span>
+        <select id="setSpeed"><option value="slow" data-k="slow">ช้า</option><option value="normal" selected data-k="normal">ปกติ</option><option value="fast" data-k="fast">เร็ว</option></select></label>
+      <label><span data-k="setBad">จำนวนมะม่วงช้ำ</span>
+        <select id="setBad"><option value="few" data-k="few">น้อย</option><option value="normal" selected data-k="normal">ปกติ</option><option value="many" data-k="many">เยอะ</option></select></label>
+    </div>
+    <p class="muted" data-k="saved">บันทึกไว้ในเครื่องนี้อัตโนมัติ</p>
+  </form>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mGood" viewBox="0 0 40 44"><path d="M20 6 q3-5 7-4" stroke="#6B4423" stroke-width="3" fill="none"/><ellipse cx="28" cy="6" rx="6" ry="3" fill="#3E9B4F"/><ellipse cx="20" cy="26" rx="14" ry="17" fill="#FFB627" stroke="#1E2847" stroke-width="3"/><ellipse cx="15" cy="20" rx="4" ry="6" fill="#fff" opacity=".5"/></symbol>
+    <symbol id="mBad" viewBox="0 0 40 44"><path d="M20 6 q3-5 7-4" stroke="#6B4423" stroke-width="3" fill="none"/><ellipse cx="20" cy="26" rx="14" ry="17" fill="#C9963E" stroke="#1E2847" stroke-width="3"/><ellipse cx="25" cy="22" rx="6" ry="5" fill="#5A3418"/><ellipse cx="14" cy="31" rx="5" ry="4" fill="#5A3418"/><circle cx="24" cy="34" r="3" fill="#5A3418"/></symbol>
+  </defs>
+</svg>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var S={
+    th:{home:'← หน้าแรก',title:'ฟาร์มมะม่วงหมอบอท',sub:'ช่วยหมอบอทเก็บมะม่วงดีๆ ระวังมะม่วงช้ำ!',ruleGood:'มะม่วงดี +1',ruleBad:'มะม่วงช้ำ −1',
+      goalText:function(n,s){return 'เก็บให้ได้ <b>'+n+' คะแนน</b> ภายใน '+s+' วินาที รับรางวัลเลย!'},
+      howto:'ลากนิ้วไปซ้าย-ขวา หรือกดปุ่มลูกศร',start:'เริ่มเล่น',score:'คะแนน',time:'เวลา',goal:'เป้าหมาย',
+      win:'ได้รางวัล!',winSub:function(s){return 'เก่งมาก! ได้ '+s+' คะแนน ไปรับขนมมะม่วงจากพี่ๆ ได้เลย'},
+      lose:'เกือบแล้ว!',loseSub:function(s,n){return 'ได้ '+s+' คะแนน ต้องการ '+n+' คะแนน รับสติกเกอร์ไปก่อนนะ แล้วลองใหม่ได้!'},
+      stats:function(g,b){return ['มะม่วงดี '+g+' ลูก','มะม่วงช้ำ '+b+' ลูก']},
+      tip:'เคล็ดลับ: มะม่วงช้ำจะมีจุดสีน้ำตาลเข้ม เหมือนรอยฟกช้ำบนผิวเลย',
+      fact:'รู้ไหม? โรงงานผลไม้ใช้กล้องและ AI คัดมะม่วงช้ำออก เหมือนที่หมอบอทหารอยฟกช้ำบนผิว',
+      again:'เล่นอีกครั้ง',staff:'ตั้งค่าสำหรับทีมงาน',setTarget:'คะแนนเป้าหมาย',setTime:'เวลาต่อรอบ (วินาที)',setSpeed:'ความเร็ว',setBad:'จำนวนมะม่วงช้ำ',
+      slow:'ช้า',normal:'ปกติ',fast:'เร็ว',few:'น้อย',many:'เยอะ',saved:'บันทึกไว้ในเครื่องนี้อัตโนมัติ',canvas:'เกมเก็บมะม่วง'},
+    en:{home:'← Home',title:"Dr. Bot's Mango Farm",sub:'Help Dr. Bot pick the good mangoes. Watch out for bruised ones!',ruleGood:'Good mango +1',ruleBad:'Bruised mango −1',
+      goalText:function(n,s){return 'Get <b>'+n+' points</b> in '+s+' seconds to win a prize!'},
+      howto:'Drag left and right, or use the arrow keys',start:'Start',score:'Score',time:'Time',goal:'Goal',
+      win:'You win a prize!',winSub:function(s){return 'Great job! You got '+s+' points. Collect your mango candy from the team!'},
+      lose:'So close!',loseSub:function(s,n){return 'You got '+s+' points and needed '+n+'. Take a sticker, and try again!'},
+      stats:function(g,b){return ['Good mangoes: '+g,'Bruised mangoes: '+b]},
+      tip:'Tip: bruised mangoes have dark brown spots, just like a bruise on skin.',
+      fact:'Did you know? Fruit factories use cameras and AI to sort out bruised mangoes, just like Dr. Bot finds bruises on skin.',
+      again:'Play again',staff:'Team settings',setTarget:'Target score',setTime:'Round time (seconds)',setSpeed:'Speed',setBad:'Bruised mangoes',
+      slow:'Slow',normal:'Normal',fast:'Fast',few:'Few',many:'Many',saved:'Saved on this device automatically',canvas:'Mango catching game'}
+  };
+  var lang='th';
+  var cfg={target:7,time:30,speed:'normal',bad:'normal'};
+  try{
+    if(localStorage.getItem('drbot-lang')==='en') lang='en';
+    var saved=JSON.parse(localStorage.getItem('mango-cfg')||'null'); if(saved) Object.assign(cfg,saved);
+  }catch(e){}
+
+  function t(k){return S[lang][k]}
+  function applyLang(){
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-k]').forEach(function(el){var v=t(el.getAttribute('data-k')); if(typeof v==='string') el.textContent=v;});
+    $('cv').setAttribute('aria-label',t('canvas'));
+    $('goalText').innerHTML=t('goalText')(cfg.target,cfg.time);
+    $('langTh').setAttribute('aria-pressed',lang==='th'); $('langEn').setAttribute('aria-pressed',lang==='en');
+    if(state==='over') renderEnd();
+  }
+  function setLang(l){lang=l; try{localStorage.setItem('drbot-lang',l)}catch(e){} applyLang();}
+  $('langTh').addEventListener('click',function(){setLang('th')});
+  $('langEn').addEventListener('click',function(){setLang('en')});
+
+  /* ---------- staff settings ---------- */
+  $('setTarget').value=cfg.target; $('setTime').value=String(cfg.time); $('setSpeed').value=cfg.speed; $('setBad').value=cfg.bad;
+  $('staffBtn').addEventListener('click',function(){
+    var p=$('staffPanel'); p.hidden=!p.hidden; this.setAttribute('aria-expanded',!p.hidden);
+  });
+  $('staffPanel').addEventListener('submit',function(e){e.preventDefault()});
+  $('staffPanel').addEventListener('change',function(){
+    cfg.target=Math.max(1,Math.min(50,parseInt($('setTarget').value,10)||7));
+    cfg.time=parseInt($('setTime').value,10)||30;
+    cfg.speed=$('setSpeed').value; cfg.bad=$('setBad').value;
+    try{localStorage.setItem('mango-cfg',JSON.stringify(cfg))}catch(e){}
+    if(state!=='playing'){ timeLeft=cfg.time; updateHud(true); }
+    applyLang();
+  });
+
+  /* ---------- game ---------- */
+  var W=800,H=600,BASKET_Y=500,BASKET_HALF=66;
+  var cv=$('cv'),ctx=cv.getContext('2d'),scale=1;
+  var state='ready',mangoes=[],pops=[],confetti=[],score=0,goodN=0,badN=0,timeLeft=cfg.time,spawnT=0;
+  var bx=W/2,targetX=W/2,keys={left:false,right:false},last=0;
+  var SPEED={slow:.8,normal:1,fast:1.25}, BAD={few:.25,normal:.35,many:.45};
+
+  function resize(){
+    var r=cv.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+    cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
+    scale=cv.width/W; draw();
+  }
+  window.addEventListener('resize',resize);
+
+  function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+  var leaves=[];for(var i=0;i<16;i++){leaves.push({x:i*55-10,y:20+((i*37)%30),r:52+((i*13)%20),c:i%2?'#3E9B4F':'#56B45E'})}
+  function drawBg(){
+    var g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#A9DEFF'); g.addColorStop(1,'#E6F7FF');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#FFE27A'; ctx.beginPath(); ctx.arc(700,150,38,0,7); ctx.fill();
+    ctx.fillStyle='#8A5A34'; ctx.fillRect(30,40,34,H); ctx.fillRect(W-64,40,34,H);
+    leaves.forEach(function(l){ctx.fillStyle=l.c;ctx.beginPath();ctx.arc(l.x,l.y,l.r,0,7);ctx.fill();});
+    ctx.fillStyle='#2F7D3E'; ctx.fillRect(0,0,W,14);
+    ctx.fillStyle='#7CC46A'; ctx.fillRect(0,H-46,W,46);
+    ctx.fillStyle='#69B158'; for(var x=0;x<W;x+=24){ctx.beginPath();ctx.moveTo(x,H-46);ctx.lineTo(x+6,H-58);ctx.lineTo(x+12,H-46);ctx.fill();}
+  }
+  function drawMango(m){
+    ctx.save(); ctx.translate(m.x,m.y); ctx.rotate(m.rot);
+    var r=m.r;
+    ctx.strokeStyle='#6B4423'; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(0,-r*.95); ctx.quadraticCurveTo(4,-r*1.35,12,-r*1.4); ctx.stroke();
+    ctx.fillStyle='#3E9B4F'; ctx.beginPath(); ctx.ellipse(14,-r*1.3,11,5,-.3,0,7); ctx.fill();
+    var g=ctx.createRadialGradient(-r*.3,-r*.3,2,0,0,r*1.1);
+    if(m.bad){g.addColorStop(0,'#DDB25A');g.addColorStop(1,'#A9772E');}
+    else {g.addColorStop(0,'#FFE066');g.addColorStop(1,'#FF9F1C');}
+    ctx.fillStyle=g; ctx.strokeStyle='#1E2847'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.ellipse(0,0,r*.82,r,0,0,7); ctx.fill(); ctx.stroke();
+    if(m.bad){
+      ctx.fillStyle='rgba(80,44,20,.9)';
+      ctx.beginPath(); ctx.ellipse(r*.25,-r*.2,r*.32,r*.26,.4,0,7); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(-r*.3,r*.3,r*.26,r*.2,-.3,0,7); ctx.fill();
+      ctx.beginPath(); ctx.arc(r*.25,r*.55,r*.13,0,7); ctx.fill();
+    } else {
+      ctx.fillStyle='rgba(255,255,255,.55)'; ctx.beginPath(); ctx.ellipse(-r*.3,-r*.35,r*.16,r*.28,.3,0,7); ctx.fill();
+    }
+    ctx.restore();
+  }
+  function drawPlayer(){
+    var x=bx,y=BASKET_Y;
+    // Dr. Bot head behind the basket
+    ctx.strokeStyle='#1E2847'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(x,y-74); ctx.lineTo(x,y-60); ctx.stroke();
+    ctx.fillStyle='#FF6A57'; ctx.beginPath(); ctx.arc(x,y-78,7,0,7); ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#9FE3D8'; rr(x-40,y-60,80,58,18); ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#1E2847'; rr(x-28,y-50,56,28,12); ctx.fill();
+    ctx.fillStyle='#FFC83D'; ctx.beginPath(); ctx.arc(x-13,y-36,6,0,7); ctx.arc(x+13,y-36,6,0,7); ctx.fill();
+    // basket
+    ctx.fillStyle='#C68B4E'; ctx.beginPath();
+    ctx.moveTo(x-BASKET_HALF,y); ctx.lineTo(x+BASKET_HALF,y); ctx.lineTo(x+BASKET_HALF-14,y+52); ctx.lineTo(x-BASKET_HALF+14,y+52); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle='rgba(30,40,71,.45)'; ctx.lineWidth=2;
+    for(var i=1;i<4;i++){ctx.beginPath();ctx.moveTo(x-BASKET_HALF+3.5*i,y+13*i);ctx.lineTo(x+BASKET_HALF-3.5*i,y+13*i);ctx.stroke();}
+    for(var j=-2;j<=2;j++){ctx.beginPath();ctx.moveTo(x+j*24,y);ctx.lineTo(x+j*19,y+52);ctx.stroke();}
+    ctx.strokeStyle='#1E2847'; ctx.lineWidth=4; ctx.fillStyle='#A86E35'; rr(x-BASKET_HALF-6,y-8,BASKET_HALF*2+12,14,7); ctx.fill(); ctx.stroke();
+  }
+  function draw(){
+    ctx.setTransform(scale,0,0,scale,0,0);
+    drawBg();
+    mangoes.forEach(drawMango);
+    drawPlayer();
+    pops.forEach(function(p){
+      ctx.globalAlpha=Math.max(0,p.life); ctx.font='bold 38px Itim, Mali, sans-serif'; ctx.textAlign='center';
+      ctx.lineWidth=6; ctx.strokeStyle='#fff'; ctx.strokeText(p.txt,p.x,p.y); ctx.fillStyle=p.c; ctx.fillText(p.txt,p.x,p.y); ctx.globalAlpha=1;
+    });
+    confetti.forEach(function(c){ctx.fillStyle=c.c; ctx.save(); ctx.translate(c.x,c.y); ctx.rotate(c.r); ctx.fillRect(-6,-3,12,6); ctx.restore();});
+  }
+
+  var lastHud='';
+  function updateHud(force){
+    var s=score+'|'+Math.ceil(timeLeft)+'|'+cfg.target;
+    if(!force&&s===lastHud) return; lastHud=s;
+    $('hudScore').textContent=score; $('hudTime').textContent=Math.max(0,Math.ceil(timeLeft)); $('hudGoal').textContent=cfg.target;
+    $('goalFill').style.width=Math.min(100,score/cfg.target*100)+'%';
+  }
+
+  function startGame(){
+    mangoes=[];pops=[];confetti=[];score=0;goodN=0;badN=0;timeLeft=cfg.time;spawnT=.3;bx=targetX=W/2;
+    state='playing'; $('startScreen').hidden=true; $('endScreen').hidden=true; $('staffPanel').hidden=true; $('staffBtn').setAttribute('aria-expanded','false');
+    updateHud(true); last=performance.now(); cv.focus({preventScroll:true});
+  }
+  function endGame(){
+    state='over'; mangoes=[];
+    if(score>=cfg.target){
+      for(var i=0;i<120;i++) confetti.push({x:Math.random()*W,y:-Math.random()*H*.6,vy:120+Math.random()*180,vx:(Math.random()-.5)*80,r:Math.random()*6,vr:(Math.random()-.5)*8,c:['#FFC83D','#FF6A57','#11968E','#7A5AD8','#FF9F1C'][i%5]});
+    }
+    renderEnd(); $('endScreen').hidden=false;
+  }
+  function renderEnd(){
+    var win=score>=cfg.target, st=t('stats')(goodN,badN);
+    $('endPanel').innerHTML=
+      (win?'<div class="prize">'+t('win')+'</div><p>'+t('winSub')(score)+'</p>'
+          :'<div class="close">'+t('lose')+'</div><p>'+t('loseSub')(score,cfg.target)+'</p>')+
+      '<div class="stats"><span>'+st[0]+'</span><span>'+st[1]+'</span></div>'+
+      '<p class="fact">'+(win?t('fact'):t('tip'))+'</p>'+
+      '<button class="btn'+(win?'':' coral')+'" type="button" id="againBtn">'+t('again')+'</button>';
+    $('againBtn').addEventListener('click',startGame);
+  }
+
+  function update(dt){
+    if(state==='playing'){
+      timeLeft-=dt;
+      var p=1-Math.max(0,timeLeft)/cfg.time, mul=SPEED[cfg.speed]||1;
+      spawnT-=dt;
+      if(spawnT<=0){
+        spawnT=(0.95-0.45*p)/mul;
+        mangoes.push({x:90+Math.random()*(W-180),y:-30,r:28,bad:Math.random()<(BAD[cfg.bad]||.35),
+          vy:(170+170*p)*mul*(0.9+Math.random()*.25),rot:(Math.random()-.5)*.6,vr:(Math.random()-.5)*1.5});
+      }
+      var step=620*dt;
+      if(keys.left) targetX-=step; if(keys.right) targetX+=step;
+      targetX=Math.max(BASKET_HALF+10,Math.min(W-BASKET_HALF-10,targetX));
+      bx+= (targetX-bx)*Math.min(1,dt*18);
+      for(var i=mangoes.length-1;i>=0;i--){
+        var m=mangoes[i]; m.y+=m.vy*dt; m.rot+=m.vr*dt;
+        if(m.y+m.r*.6>=BASKET_Y-6 && m.y<BASKET_Y+26 && Math.abs(m.x-bx)<BASKET_HALF+m.r*.3){
+          if(m.bad){ score=Math.max(0,score-1); badN++; pops.push({x:m.x,y:BASKET_Y-90,txt:'−1',c:'#D9443A',life:1}); }
+          else { score++; goodN++; pops.push({x:m.x,y:BASKET_Y-90,txt:'+1',c:'#1F9D55',life:1}); }
+          mangoes.splice(i,1); continue;
+        }
+        if(m.y-m.r>H) mangoes.splice(i,1);
+      }
+      if(timeLeft<=0){ timeLeft=0; endGame(); }
+      updateHud(false);
+    }
+    for(var j=pops.length-1;j>=0;j--){ pops[j].y-=60*dt; pops[j].life-=dt*1.2; if(pops[j].life<=0) pops.splice(j,1); }
+    for(var k=confetti.length-1;k>=0;k--){ var c=confetti[k]; c.y+=c.vy*dt; c.x+=c.vx*dt; c.r+=c.vr*dt; if(c.y>H+20) confetti.splice(k,1); }
+  }
+  function loop(now){
+    var dt=Math.min(.05,(now-last)/1000); last=now;
+    update(dt); draw();
+    requestAnimationFrame(loop);
+  }
+
+  /* ---------- controls ---------- */
+  function toGame(e){var r=cv.getBoundingClientRect(); return (e.clientX-r.left)/r.width*W;}
+  cv.tabIndex=0;
+  cv.addEventListener('pointerdown',function(e){ targetX=toGame(e); try{cv.setPointerCapture(e.pointerId)}catch(_){}} );
+  cv.addEventListener('pointermove',function(e){ if(e.pointerType==='mouse'||e.buttons||e.pressure>0) targetX=toGame(e); });
+  window.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A'){keys.left=true; if(state==='playing') e.preventDefault();}
+    if(e.key==='ArrowRight'||e.key==='d'||e.key==='D'){keys.right=true; if(state==='playing') e.preventDefault();}
+  });
+  window.addEventListener('keyup',function(e){
+    if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') keys.left=false;
+    if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') keys.right=false;
+  });
+  document.addEventListener('visibilitychange',function(){ last=performance.now(); });
+  $('startBtn').addEventListener('click',startGame);
+
+  applyLang(); updateHud(true); resize();
+  // sample mangoes on the start screen so the scene isn't empty
+  mangoes=[{x:250,y:250,r:28,bad:false,rot:.2,vr:0,vy:0},{x:420,y:200,r:28,bad:true,rot:-.2,vr:0,vy:0},{x:560,y:300,r:28,bad:false,rot:.1,vr:0,vy:0}];
+  last=performance.now(); requestAnimationFrame(loop);
+})();
+</script>
